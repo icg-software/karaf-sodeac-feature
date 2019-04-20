@@ -22,7 +22,7 @@
       <feature>scr</feature>
       <feature>jdbc</feature>
       
-      <bundle>mvn:org.sodeac/org.sodeac.common/0.1.0</bundle>
+      <bundle>mvn:org.sodeac/org.sodeac.common/0.2.0</bundle>
       <bundle>mvn:org.sodeac/org.sodeac.streampartitioner.api/1.0.0</bundle>
       <bundle>mvn:org.sodeac/org.sodeac.streampartitioner.provider/1.0.1</bundle>
       <bundle>mvn:org.sodeac/org.sodeac.xuri/1.0.0</bundle>
