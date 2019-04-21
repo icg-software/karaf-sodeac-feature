@@ -157,6 +157,20 @@
 	</profile>
   </profiles>
   
+  <licenses>
+	<license>
+	  <name>Eclipse Public License v2.0</name>
+	  <url>http://www.eclipse.org/legal/epl-v20.html</url>
+	</license>
+  </licenses>
+  
+  <developers>
+    <developer>
+      <id>sebastian.palarus</id>
+      <name>Sebastian Palarus</name>
+    </developer>
+  </developers>
+  
   <scm>
 	<connection>scm:git:https://github.com/spalarus/karaf-sodeac-feature.git</connection>
 	<url>https://github.com/spalarus/karaf-sodeac-feature.git</url>
