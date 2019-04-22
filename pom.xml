@@ -8,6 +8,7 @@
   <packaging>pom</packaging>
 
   <name>Sodeac feature</name>
+  <description>Sodec for karaf</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -177,6 +178,4 @@
   </scm>
   
   <url>https://github.com/spalarus/karaf-sodeac-feature</url>
-  
-  <description>Sodec for karaf</description>
 </project>
