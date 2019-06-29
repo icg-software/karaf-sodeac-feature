@@ -33,15 +33,15 @@
       <bundle>mvn:org.sodeac/org.sodeac.dbschema.driver.base/1.0.0</bundle>
       <bundle>mvn:org.sodeac/org.sodeac.dbschema.driver.h2/1.0.0</bundle>
       <bundle>mvn:org.sodeac/org.sodeac.dbschema.driver.postgresql/1.0.0</bundle>
-      <bundle>mvn:org.postgresql/postgresql/42.2.5</bundle>
+      <bundle>mvn:org.postgresql/postgresql/42.2.6</bundle>
       <bundle>mvn:com.h2database/h2/1.4.199</bundle>
       	
     </feature>
     
     <feature name="sodeac-common-bundles" description="sodeac core libs" version="${pom.version}">
     
-      	<bundle>mvn:org.apache.commons/commons-lang3/3.8.1</bundle>
-		<bundle>mvn:org.apache.commons/commons-csv/1.6</bundle>
+      	<bundle>mvn:org.apache.commons/commons-lang3/3.9</bundle>
+		<bundle>mvn:org.apache.commons/commons-csv/1.7</bundle>
 		<bundle>mvn:commons-io/commons-io/2.6</bundle>
 		<bundle>mvn:commons-dbutils/commons-dbutils/1.7</bundle>
 		<bundle>mvn:org.apache.commons/commons-compress/1.18</bundle>
@@ -51,12 +51,15 @@
 		<bundle>mvn:org.apache.commons/commons-collections4/4.3</bundle>
 		<bundle>mvn:commons-collections/commons-collections/3.2.2</bundle>
 		<bundle>mvn:commons-beanutils/commons-beanutils/1.9.3</bundle>
+		<bundle>mvn:commons-logging/commons-logging/1.2</bundle>
+		<bundle>mvn:org.apache.commons/commons-jexl3/3.1</bundle>
 		
-		<bundle>mvn:io.dropwizard.metrics/metrics-core/3.2.6</bundle>
+		<bundle>mvn:io.dropwizard.metrics/metrics-core/4.0.5</bundle>
 		<bundle>mvn:com.google.guava/guava/26.0-jre</bundle>
 		<bundle>mvn:com.googlecode.json-simple/json-simple/1.1.1</bundle>
-		<bundle>mvn:org.bouncycastle/bcprov-jdk15on/1.61</bundle>
-		<bundle>mvn:org.bouncycastle/bcpg-jdk15on/1.61</bundle>
+		<bundle>mvn:org.bouncycastle/bcprov-jdk15on/1.62</bundle>
+		<bundle>mvn:org.bouncycastle/bcpg-jdk15on/1.62</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.dom4j/2.1.1_1</bundle>
 		
     </feature>
     
@@ -66,18 +69,18 @@
     	<feature>transaction</feature>
     	<feature>http</feature>
     	
-		<bundle>mvn:org.apache.mina/mina-core/2.0.20</bundle>
+		<bundle>mvn:org.apache.mina/mina-core/2.0.21</bundle>
 		<bundle>mvn:commons-collections/commons-collections/3.2.2</bundle>
 		<bundle>mvn:commons-lang/commons-lang/2.6</bundle>
 		<bundle>mvn:commons-codec/commons-codec/1.12</bundle>
-		<bundle>mvn:org.apache.commons/commons-pool2/2.6.1</bundle>
+		<bundle>mvn:org.apache.commons/commons-pool2/2.6.2</bundle>
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.antlr/2.7.7_5</bundle>
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xpp3/1.1.4c_7</bundle>
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.dom4j/1.6.1_5</bundle>
-		<bundle>mvn:org.bouncycastle/bcprov-jdk15on/1.61</bundle>
-		<bundle>mvn:org.bouncycastle/bcpg-jdk15on/1.61</bundle>
+		<bundle>mvn:org.bouncycastle/bcprov-jdk15on/1.62</bundle>
+		<bundle>mvn:org.bouncycastle/bcpg-jdk15on/1.62</bundle>
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.junit/4.12_1</bundle>
-		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.quartz/2.3.0_2</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.quartz/2.3.1_1</bundle>
 		
 		<bundle>mvn:org.sodeac/org.sodeac.karaf.apacheds/0.1.0</bundle>
 		
@@ -104,20 +107,21 @@
 		<feature>pax-jms-config</feature>
 		<feature>aries-blueprint</feature>
 		<feature>scheduler</feature>
+		<feature>openjpa3</feature>
 		<feature>service-wrapper</feature>
 		
     </feature>
     
     <feature name="sodeac-camel-basics" description="camel basics for sodeac distribution" version="${karaf.version}">
     
-		<bundle>mvn:org.codehaus.groovy/groovy-jsr223/2.5.6</bundle>
-		<bundle>mvn:org.codehaus.groovy/groovy-json/2.5.6</bundle>
-		<bundle>mvn:org.codehaus.groovy/groovy-xml/2.5.6</bundle>
-		<bundle>mvn:org.codehaus.groovy/groovy-datetime/2.5.6</bundle>
-		<bundle>mvn:org.codehaus.groovy/groovy-nio/2.5.6</bundle>
-		<bundle>mvn:org.codehaus.groovy/groovy-dateutil/2.5.6</bundle>
-		<bundle>mvn:org.codehaus.groovy/groovy-sql/2.5.6</bundle>
-		<bundle>mvn:org.codehaus.groovy/groovy/2.5.6</bundle>
+		<bundle>mvn:org.codehaus.groovy/groovy-jsr223/${groovy.version}</bundle>
+		<bundle>mvn:org.codehaus.groovy/groovy-json/${groovy.version}</bundle>
+		<bundle>mvn:org.codehaus.groovy/groovy-xml/${groovy.version}</bundle>
+		<bundle>mvn:org.codehaus.groovy/groovy-datetime/${groovy.version}</bundle>
+		<bundle>mvn:org.codehaus.groovy/groovy-nio/${groovy.version}</bundle>
+		<bundle>mvn:org.codehaus.groovy/groovy-dateutil/${groovy.version}</bundle>
+		<bundle>mvn:org.codehaus.groovy/groovy-sql/${groovy.version}</bundle>
+		<bundle>mvn:org.codehaus.groovy/groovy/${groovy.version}</bundle>
 
 		<feature>camel</feature>
 		<feature>camel-groovy</feature>
@@ -146,10 +150,11 @@
 		<feature>camel-saxon</feature>
 		<feature>camel-soap</feature>
 		<feature>camel-stax</feature>
+		<feature>camel-jpa</feature>
 		<feature>camel-hystrix</feature>
 		<feature>camel-reactive-streams</feature>
 		
-		<bundle>mvn:io.reactivex.rxjava2/rxjava/2.2.8</bundle>
+		<bundle>mvn:io.reactivex.rxjava2/rxjava/2.2.10</bundle>
 		<bundle>mvn:org.apache.camel/camel-rxjava2/${camel.version}</bundle>
 		
 		<!-- add missing command bundle -->
@@ -168,6 +173,7 @@
 		<feature>artemis-jms-client</feature>
 		<feature>artemis</feature>
 		<feature>sodeac-camel-basics</feature>
+		<feature>pax-jms-artemis</feature>
 
 		<configfile finalname="etc/org.apache.activemq.artemis.cfg">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/cfg</configfile>
 		<configfile finalname="etc/artemis-sodeac-local.xml">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/xml/artemis-sodeac-local</configfile>
