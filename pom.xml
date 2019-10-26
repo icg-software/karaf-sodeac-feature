@@ -4,7 +4,7 @@
 
   <groupId>org.sodeac</groupId>
   <artifactId>org.sodeac.karaf.feature</artifactId>
-  <version>0.4.0</version>
+  <version>0.5.0</version>
   <packaging>pom</packaging>
 
   <name>Sodeac feature</name>
@@ -12,13 +12,14 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <karaf.version>4.2.6</karaf.version>
+    <karaf.version>4.2.7</karaf.version>
     <apacheds.api.version>2.0.0.AM2</apacheds.api.version>
     <apacheds.server.version>2.0.0.AM25</apacheds.server.version>
-    <artemis.version>2.9.0</artemis.version>
-    <camel.version>2.24.1</camel.version>
-    <hawtio.version>2.7.0</hawtio.version>
-    <groovy.version>2.5.7</groovy.version>
+    <artemis.version>2.10.1</artemis.version>
+    <camel.version>2.24.2</camel.version>
+    <hawtio.version>2.8.0</hawtio.version>
+    <groovy.version>2.5.8</groovy.version>
+    <cxf.version>3.2.10</cxf.version>
   </properties>
   
   <build>
