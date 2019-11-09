@@ -4,11 +4,11 @@
 
   <groupId>org.sodeac</groupId>
   <artifactId>org.sodeac.karaf.feature</artifactId>
-  <version>0.5.1</version>
+  <version>0.5.2</version>
   <packaging>pom</packaging>
 
   <name>Sodeac feature</name>
-  <description>Sodec for karaf</description>
+  <description>Sodeac Karaf Feature</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
