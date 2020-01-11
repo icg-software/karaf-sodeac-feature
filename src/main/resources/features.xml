@@ -24,7 +24,7 @@
       <feature>jdbc</feature>
       
       <bundle>mvn:org.sodeac/org.sodeac.karaf.sftphome/1.0.0</bundle>
-      <bundle>mvn:org.sodeac/org.sodeac.common/0.5.3</bundle>
+      <bundle>mvn:org.sodeac/org.sodeac.common/0.5.4</bundle>
       <bundle>mvn:org.sodeac/org.sodeac.streampartitioner.api/1.0.0</bundle>
       <bundle>mvn:org.sodeac/org.sodeac.streampartitioner.provider/1.0.1</bundle>
       <bundle>mvn:org.sodeac/org.sodeac.xuri/1.0.0</bundle>
@@ -34,13 +34,14 @@
       <bundle>mvn:org.sodeac/org.sodeac.dbschema.driver.base/1.0.0</bundle>
       <bundle>mvn:org.sodeac/org.sodeac.dbschema.driver.h2/1.0.0</bundle>
       <bundle>mvn:org.sodeac/org.sodeac.dbschema.driver.postgresql/1.0.0</bundle>
-      <bundle>mvn:org.postgresql/postgresql/42.2.8</bundle>
+      <bundle>mvn:org.postgresql/postgresql/42.2.9</bundle>
       <bundle>mvn:com.h2database/h2/1.4.200</bundle>
       	
     </feature>
     
     <feature name="sodeac-common-bundles" description="sodeac core libs" version="${pom.version}">
     
+    	<bundle>mvn:org.json/json/20190722</bundle>
       	<bundle>mvn:org.apache.commons/commons-lang3/3.9</bundle>
 		<bundle>mvn:org.apache.commons/commons-csv/1.7</bundle>
 		<bundle>mvn:commons-io/commons-io/2.6</bundle>
@@ -54,12 +55,13 @@
 		<bundle>mvn:commons-beanutils/commons-beanutils/1.9.4</bundle>
 		<bundle>mvn:commons-logging/commons-logging/1.2</bundle>
 		<bundle>mvn:org.apache.commons/commons-jexl3/3.1</bundle>
-		<bundle>mvn:org.apache.commons/commons-vfs2/2.4.1</bundle>
+		<bundle>mvn:org.apache.commons/commons-vfs2/2.5.0</bundle>
 		
 		<bundle>mvn:io.dropwizard.metrics/metrics-core/4.0.7</bundle>
-		<bundle>mvn:com.google.guava/guava/28.1-jre</bundle>
+		<bundle>mvn:com.google.guava/guava/28.2-jre</bundle>
 		<bundle>mvn:com.google.guava/failureaccess/1.0.1</bundle>
 		<bundle>mvn:com.googlecode.json-simple/json-simple/1.1.1</bundle>
+		<bundle>mvn:com.google.code.gson/gson/2.8.6</bundle>
 		<bundle>mvn:org.bouncycastle/bcprov-jdk15on/1.64</bundle>
 		<bundle>mvn:org.bouncycastle/bcpg-jdk15on/1.64</bundle>
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.dom4j/2.1.1_1</bundle>
@@ -67,6 +69,9 @@
 		<bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxws-api-2.2/2.9.0</bundle>
 		
 		<bundle>mvn:org.antlr/antlr4-runtime/4.7.2</bundle>
+		<bundle>mvn:org.mybatis/mybatis/3.5.3</bundle>
+		<bundle>mvn:org.freemarker/freemarker/2.3.29</bundle>
+		<bundle>mvn:com.fasterxml.uuid/java-uuid-generator/3.2.0</bundle>
 		
     </feature>
     
@@ -192,7 +197,7 @@
 		<feature>camel-hystrix</feature>
 		<feature>camel-reactive-streams</feature>
 		
-		<bundle>mvn:io.reactivex.rxjava2/rxjava/2.2.13</bundle>
+		<bundle>mvn:io.reactivex.rxjava2/rxjava/2.2.16</bundle>
 		<bundle>mvn:org.apache.camel/camel-rxjava2/${camel.version}</bundle>
 		
     </feature>
