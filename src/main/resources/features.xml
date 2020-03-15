@@ -56,7 +56,8 @@
 		<bundle>mvn:commons-logging/commons-logging/1.2</bundle>
 		<bundle>mvn:org.apache.commons/commons-jexl3/3.1</bundle>
 		<bundle>mvn:org.apache.commons/commons-vfs2/2.6.0</bundle>
-		
+		<bundle>mvn:eu.agno3.jcifs/jcifs-ng/2.1.4</bundle>
+		<bundle>wrap:mvn:net.idauto.oss.jcifs/vfs-jcifs-ng/1.0.1$Bundle-SymbolicName=net.idauto.oss.jcifs-ng&amp;Bundle-Version=1.0.1</bundle>
 		<bundle>mvn:io.dropwizard.metrics/metrics-core/4.0.7</bundle>
 		<bundle>mvn:com.google.guava/guava/28.2-jre</bundle>
 		<bundle>mvn:com.google.guava/failureaccess/1.0.1</bundle>
@@ -64,6 +65,7 @@
 		<bundle>mvn:com.google.code.gson/gson/2.8.5</bundle> 		<!-- versions > 2.8.5 requires Java 9 !!! -->
 		<bundle>mvn:org.bouncycastle/bcprov-jdk15on/1.64</bundle>
 		<bundle>mvn:org.bouncycastle/bcpg-jdk15on/1.64</bundle>
+		<bundle>mvn:org.glassfish/jakarta.json/1.1.6</bundle>
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.dom4j/2.1.1_1</bundle>
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jaxb-impl/2.2.11_1</bundle>
 		<bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxws-api-2.2/2.9.0</bundle>
