@@ -17,6 +17,7 @@
 	<repository>mvn:io.hawt/hawtio-karaf/${hawtio.version}/xml/features</repository>
 	<repository>mvn:org.apache.camel.karaf/apache-camel/${camel.version}/xml/features</repository>
 	<repository>mvn:org.apache.cxf.karaf/apache-cxf/${cxf.version}/xml/features</repository>
+	<repository>mvn:org.apache.aries.jax.rs/org.apache.aries.jax.rs.features/1.0.8/xml</repository>
 	
 	<feature name="sodeac-core" description="sodeac core libs" version="${pom.version}">
       
@@ -24,7 +25,7 @@
       <feature>jdbc</feature>
       
       <bundle>mvn:org.sodeac/org.sodeac.karaf.sftphome/1.0.0</bundle>
-      <bundle>mvn:org.sodeac/org.sodeac.common/0.6.0</bundle>
+      <bundle>mvn:org.sodeac/org.sodeac.common/0.6.2</bundle>
       <bundle>mvn:org.sodeac/org.sodeac.streampartitioner.api/1.0.0</bundle>
       <bundle>mvn:org.sodeac/org.sodeac.streampartitioner.provider/1.0.1</bundle>
       <bundle>mvn:org.sodeac/org.sodeac.xuri/1.0.0</bundle>
@@ -34,7 +35,7 @@
       <bundle>mvn:org.sodeac/org.sodeac.dbschema.driver.base/1.0.0</bundle>
       <bundle>mvn:org.sodeac/org.sodeac.dbschema.driver.h2/1.0.0</bundle>
       <bundle>mvn:org.sodeac/org.sodeac.dbschema.driver.postgresql/1.0.0</bundle>
-      <bundle>mvn:org.postgresql/postgresql/42.2.10</bundle>
+      <bundle>mvn:org.postgresql/postgresql/42.2.12</bundle>
       <bundle>mvn:com.h2database/h2/1.4.200</bundle>
       	
     </feature>
@@ -42,7 +43,7 @@
     <feature name="sodeac-common-bundles" description="sodeac core libs" version="${pom.version}">
     
     	<bundle>mvn:org.json/json/20190722</bundle>
-      	<bundle>mvn:org.apache.commons/commons-lang3/3.9</bundle>
+      	<bundle>mvn:org.apache.commons/commons-lang3/3.10</bundle>
 		<bundle>mvn:org.apache.commons/commons-csv/1.8</bundle>
 		<bundle>mvn:commons-io/commons-io/2.6</bundle>
 		<bundle>mvn:commons-dbutils/commons-dbutils/1.7</bundle>
@@ -54,57 +55,42 @@
 		<bundle>mvn:commons-collections/commons-collections/3.2.2</bundle>
 		<bundle>mvn:commons-beanutils/commons-beanutils/1.9.4</bundle>
 		<bundle>mvn:commons-logging/commons-logging/1.2</bundle>
+		<bundle>mvn:org.apache.commons/commons-pool2/2.8.0</bundle>
 		<bundle>mvn:org.apache.commons/commons-jexl3/3.1</bundle>
 		<bundle>mvn:org.apache.commons/commons-vfs2/2.6.0</bundle>
 		<bundle>mvn:eu.agno3.jcifs/jcifs-ng/2.1.4</bundle>
 		<bundle>wrap:mvn:net.idauto.oss.jcifs/vfs-jcifs-ng/1.0.1$Bundle-SymbolicName=net.idauto.oss.jcifs-ng&amp;Bundle-Version=1.0.1</bundle>
 		<bundle>mvn:io.dropwizard.metrics/metrics-core/4.0.7</bundle>
-		<bundle>mvn:com.google.guava/guava/28.2-jre</bundle>
+		<bundle>mvn:com.google.guava/guava/29.0-jre</bundle>
 		<bundle>mvn:com.google.guava/failureaccess/1.0.1</bundle>
 		<bundle>mvn:com.googlecode.json-simple/json-simple/1.1.1</bundle>
 		<bundle>mvn:com.google.code.gson/gson/2.8.5</bundle> 		<!-- versions > 2.8.5 requires Java 9 !!! -->
-		<bundle>mvn:org.bouncycastle/bcprov-jdk15on/1.64</bundle>
-		<bundle>mvn:org.bouncycastle/bcpg-jdk15on/1.64</bundle>
+		<bundle>mvn:org.bouncycastle/bcprov-jdk15on/1.65</bundle>
+		<bundle>mvn:org.bouncycastle/bcpg-jdk15on/1.65</bundle>
 		<bundle>mvn:org.glassfish/jakarta.json/1.1.6</bundle>
+		<bundle>mvn:io.jsonwebtoken/jjwt-api/0.11.1</bundle>
+		<bundle>mvn:io.jsonwebtoken/jjwt-impl/0.11.1</bundle>
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.dom4j/2.1.1_1</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.dom4j/1.6.1_5</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.antlr/2.7.7_5</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xpp3/1.1.4c_7</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.quartz/2.3.1_1</bundle>
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jaxb-impl/2.2.11_1</bundle>
 		<bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxws-api-2.2/2.9.0</bundle>
+		<bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.saaj-api-1.3/2.9.0</bundle>
 		
 		<bundle>mvn:org.antlr/antlr4-runtime/4.8-1</bundle>
 		<bundle>mvn:org.mybatis/mybatis/3.5.4</bundle>
-		<bundle>mvn:org.freemarker/freemarker/2.3.29</bundle>
+		<bundle>mvn:org.freemarker/freemarker/2.3.30</bundle>
 		<bundle>mvn:com.fasterxml.uuid/java-uuid-generator/3.3.0</bundle>
-		
-    </feature>
-    
-    <feature name="sodeac-apacheds" description="apacheds for sdc" version="${pom.version}">
-    	
-    	<feature>scr</feature>
-    	<feature>transaction</feature>
-    	<feature>http</feature>
-    	
-		<bundle>mvn:org.apache.mina/mina-core/2.0.21</bundle>
-		<bundle>mvn:commons-collections/commons-collections/3.2.2</bundle>
-		<bundle>mvn:commons-lang/commons-lang/2.6</bundle>
-		<bundle>mvn:commons-codec/commons-codec/1.14</bundle>
-		<bundle>mvn:org.apache.commons/commons-pool2/2.8.0</bundle>
-		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.antlr/2.7.7_5</bundle>
-		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xpp3/1.1.4c_7</bundle>
-		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.dom4j/1.6.1_5</bundle>
-		<bundle>mvn:org.bouncycastle/bcprov-jdk15on/1.64</bundle>
-		<bundle>mvn:org.bouncycastle/bcpg-jdk15on/1.64</bundle>
-		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.junit/4.13_1</bundle>
-		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.quartz/2.3.1_1</bundle>
-		
-		<bundle>mvn:org.sodeac/org.sodeac.karaf.apacheds/0.1.0</bundle>
 		
     </feature>
     
     <feature name="sodeac-cxf" description="cxf for sdc" version="${pom.version}">
     	
     	<!-- cxf feature without corba -->
-    	
-    	<feature version="${cxf.version}">cxf-core</feature>
+        
+        <feature version="${cxf.version}">cxf-core</feature>
     	<feature version="${cxf.version}">cxf-jaxws</feature>
     	<feature version="${cxf.version}">cxf-jaxrs</feature>
     	<feature version="${cxf.version}">cxf-databinding-jaxb</feature>
@@ -116,6 +102,7 @@
     	<feature version="${cxf.version}">cxf-transports-udp</feature>
     	<feature version="${cxf.version}">cxf-xjc-runtime</feature>
     	<feature version="${cxf.version}">cxf-ws-security</feature>
+    	<feature version="${cxf.version}">cxf-rs-security-oauth2</feature>
     	<feature version="${cxf.version}">cxf-ws-rm</feature>
     	<feature version="${cxf.version}">cxf-ws-mex</feature>
     	<feature version="${cxf.version}">cxf-javascript</feature>
@@ -125,6 +112,7 @@
     	<feature version="${cxf.version}">cxf-features-throttling</feature>
     	<feature version="${cxf.version}">cxf-features-logging</feature>
     	
+    	<bundle>mvn:org.apache.cxf/cxf-rt-rs-security-sso-oidc/${cxf.version}</bundle>
     	<bundle>mvn:org.apache.cxf.karaf/cxf-karaf-commands/${cxf.version}</bundle>
 		
     </feature>
@@ -136,6 +124,7 @@
 		<feature>standard</feature>
 		<feature>scr</feature>
 		<feature>http</feature>
+		<feature>http-whiteboard</feature>
 		<feature>webconsole</feature>
 		<feature>jasypt-encryption</feature>
 		<feature>jdbc</feature>
@@ -199,14 +188,13 @@
 		<feature>camel-hystrix</feature>
 		<feature>camel-reactive-streams</feature>
 		
-		<bundle>mvn:io.reactivex.rxjava2/rxjava/2.2.17</bundle>
+		<bundle>mvn:io.reactivex.rxjava2/rxjava/2.2.19</bundle>
 		<bundle>mvn:org.apache.camel/camel-rxjava2/${camel.version}</bundle>
 		
     </feature>
     
     <feature name="sodeac-distribution" description="sodeac distribution" version="${pom.version}">
     	<feature>sodeac-karaf-basics</feature>
-    	<feature>sodeac-apacheds</feature>
 		<feature>sodeac-common-bundles</feature>
 		<feature>sodeac-core</feature>
 		<feature>sodeac-cxf</feature>
@@ -216,7 +204,9 @@
 		<feature>artemis</feature>
 		<feature>sodeac-camel-basics</feature>
 		<feature>pax-jms-artemis</feature>
-
+		<feature>aries-jax-rs-whiteboard</feature>
+		<feature>aries-jax-rs-whiteboard-jackson</feature>
+        
 		<configfile finalname="etc/org.apache.activemq.artemis.cfg">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/cfg</configfile>
 		<configfile finalname="etc/artemis-sodeac-local.xml">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/xml/artemis-sodeac-local</configfile>
 
