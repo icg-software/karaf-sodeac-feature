@@ -17,7 +17,6 @@
 	<repository>mvn:io.hawt/hawtio-karaf/${hawtio.version}/xml/features</repository>
 	<repository>mvn:org.apache.camel.karaf/apache-camel/${camel.version}/xml/features</repository>
 	<repository>mvn:org.apache.cxf.karaf/apache-cxf/${cxf.version}/xml/features</repository>
-	<repository>mvn:org.apache.aries.jax.rs/org.apache.aries.jax.rs.features/1.0.8/xml</repository>
 	
 	<feature name="sodeac-core" description="sodeac core libs" version="${pom.version}">
       
@@ -124,8 +123,8 @@
 		<feature>standard</feature>
 		<feature>scr</feature>
 		<feature>http</feature>
-		<feature>http-whiteboard</feature>
 		<feature>webconsole</feature>
+		<feature>http-whiteboard</feature>
 		<feature>jasypt-encryption</feature>
 		<feature>jdbc</feature>
 		<feature>transaction</feature>
@@ -204,8 +203,6 @@
 		<feature>artemis</feature>
 		<feature>sodeac-camel-basics</feature>
 		<feature>pax-jms-artemis</feature>
-		<feature>aries-jax-rs-whiteboard</feature>
-		<feature>aries-jax-rs-whiteboard-jackson</feature>
         
 		<configfile finalname="etc/org.apache.activemq.artemis.cfg">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/cfg</configfile>
 		<configfile finalname="etc/artemis-sodeac-local.xml">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/xml/artemis-sodeac-local</configfile>

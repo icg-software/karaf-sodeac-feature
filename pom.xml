@@ -13,8 +13,6 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <karaf.version>4.2.8</karaf.version>
-    <apacheds.api.version>2.0.0.AM2</apacheds.api.version>
-    <apacheds.server.version>2.0.0.AM25</apacheds.server.version>
     <artemis.version>2.12.0</artemis.version>
     <camel.version>2.25.1</camel.version>
     <hawtio.version>2.10.0</hawtio.version>
