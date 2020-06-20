@@ -23,8 +23,10 @@
       <feature>scr</feature>
       <feature>jdbc</feature>
       
+      <bundle>mvn:org.glassfish/jakarta.json/${jarkarta.json.version}</bundle>
+      
       <bundle>mvn:org.sodeac/org.sodeac.karaf.sftphome/1.0.0</bundle>
-      <bundle>mvn:org.sodeac/org.sodeac.common/0.6.3</bundle>
+      <bundle>mvn:org.sodeac/org.sodeac.common/0.6.4</bundle>
       <bundle>mvn:org.sodeac/org.sodeac.streampartitioner.api/1.0.0</bundle>
       <bundle>mvn:org.sodeac/org.sodeac.streampartitioner.provider/1.0.1</bundle>
       <bundle>mvn:org.sodeac/org.sodeac.xuri/1.0.0</bundle>
@@ -39,55 +41,94 @@
       	
     </feature>
     
+    <feature name="sodeac-apache-commons" description="apache commons libs" version="${pom.version}">
+    
+      	<bundle>mvn:org.apache.commons/commons-lang3/${apache-commons-lang3.version}</bundle>
+		<bundle>mvn:org.apache.commons/commons-csv/${apache-commons-csv.version}</bundle>
+		<bundle>mvn:commons-io/commons-io/${apache-commons-io.version}</bundle>
+		<bundle>mvn:commons-dbutils/commons-dbutils/${apache-commons-dbutils.version}</bundle>
+		<bundle>mvn:org.apache.commons/commons-compress/${apache-commons-compress.version}</bundle>
+		<bundle>mvn:commons-codec/commons-codec/${apache-commons-codec.version}</bundle>
+		<bundle>mvn:commons-net/commons-net/${apache-commons-net.version}</bundle>
+		<bundle>mvn:org.apache.commons/commons-math3/${apache-commons-math3.version}</bundle>
+		<bundle>mvn:commons-collections/commons-collections/${apache-commons-collection.version}</bundle>
+		<bundle>mvn:org.apache.commons/commons-collections4/${apache-commons-collections4.version}</bundle>
+		<bundle>mvn:commons-beanutils/commons-beanutils/${apache-commons-beanutils.version}</bundle>
+		<bundle>mvn:commons-logging/commons-logging/${apache-commons-logging.version}</bundle>
+		<bundle>mvn:org.apache.commons/commons-pool2/${apache-commons-pool2.version}</bundle>
+		<bundle>mvn:org.apache.commons/commons-jexl3/${apache-commons-jexl3.version}</bundle>
+		<bundle>mvn:org.apache.commons/commons-vfs2/${apache-commons-vfs2.version}</bundle>
+		<bundle>mvn:commons-cli/commons-cli/${apache-commons-cli.version}</bundle>
+		
+		<bundle>mvn:org.apache.httpcomponents/httpcore-osgi/${apache-commons-httpcore}</bundle>
+    	<bundle>mvn:org.apache.httpcomponents/httpasyncclient-osgi/${apache-commons-httpasyncclient}</bundle>
+    	<bundle>mvn:org.apache.httpcomponents/httpclient-osgi/${apache-commons-httpclient}</bundle>
+		
+    </feature>
+    
+     <feature name="sodeac-security" description="security libs" version="${pom.version}">
+     
+     	<bundle>mvn:org.bouncycastle/bcprov-jdk15on/${bouncycastle-bcprov.version}</bundle>
+		<bundle>mvn:org.bouncycastle/bcpg-jdk15on/${bouncycastle-bcpg.version}</bundle>
+		<bundle>mvn:org.bouncycastle/bcpkix-jdk15on/${bouncycastle-pkix.version}</bundle>
+		
+     	<bundle>mvn:io.jsonwebtoken/jjwt-api/${jjwt-api.version}</bundle>
+		<bundle>mvn:io.jsonwebtoken/jjwt-impl/${jjwt-impl.version}</bundle>
+     
+     </feature>
+    
     <feature name="sodeac-common-bundles" description="sodeac core libs" version="${pom.version}">
     
-    	<bundle>mvn:org.json/json/20190722</bundle>
-      	<bundle>mvn:org.apache.commons/commons-lang3/3.10</bundle>
-		<bundle>mvn:org.apache.commons/commons-csv/1.8</bundle>
-		<bundle>mvn:commons-io/commons-io/2.6</bundle>
-		<bundle>mvn:commons-dbutils/commons-dbutils/1.7</bundle>
-		<bundle>mvn:org.apache.commons/commons-compress/1.20</bundle>
-		<bundle>mvn:commons-codec/commons-codec/1.14</bundle>
-		<bundle>mvn:commons-net/commons-net/3.6</bundle>
-		<bundle>mvn:org.apache.commons/commons-math3/3.6.1</bundle>
-		<bundle>mvn:org.apache.commons/commons-collections4/4.4</bundle>
-		<bundle>mvn:commons-collections/commons-collections/3.2.2</bundle>
-		<bundle>mvn:commons-beanutils/commons-beanutils/1.9.4</bundle>
-		<bundle>mvn:commons-logging/commons-logging/1.2</bundle>
-		<bundle>mvn:org.apache.commons/commons-pool2/2.8.0</bundle>
-		<bundle>mvn:org.apache.commons/commons-jexl3/3.1</bundle>
-		<bundle>mvn:org.apache.commons/commons-vfs2/2.6.0</bundle>
-		<bundle>mvn:eu.agno3.jcifs/jcifs-ng/2.1.4</bundle>
-		<bundle>wrap:mvn:net.idauto.oss.jcifs/vfs-jcifs-ng/1.0.1$Bundle-SymbolicName=net.idauto.oss.jcifs-ng&amp;Bundle-Version=1.0.1</bundle>
-		<bundle>mvn:io.dropwizard.metrics/metrics-core/4.0.7</bundle>
-		<bundle>mvn:com.google.guava/guava/29.0-jre</bundle>
-		<bundle>mvn:com.google.guava/failureaccess/1.0.1</bundle>
+    	<feature>sodeac-apache-commons</feature>
+    	<feature>sodeac-security</feature>
+    	<feature>sodeac-core</feature>
+    	
+    	<!-- bundle>mvn:org.json/json/20190722</bundle-->
+      	<!-- bundle>mvn:io.dropwizard.metrics/metrics-core/4.1.9</bundle-->
+      	
+		<bundle>mvn:com.google.guava/failureaccess/${guava-failureaccess.version}</bundle>
+		<bundle>mvn:com.google.guava/guava/${guava.version}</bundle>
 		<bundle>mvn:com.googlecode.json-simple/json-simple/1.1.1</bundle>
-		<bundle>mvn:com.google.code.gson/gson/2.8.5</bundle> 		<!-- versions > 2.8.5 requires Java 9 !!! -->
-		<bundle>mvn:org.bouncycastle/bcprov-jdk15on/1.65</bundle>
-		<bundle>mvn:org.bouncycastle/bcpg-jdk15on/1.65</bundle>
-		<bundle>mvn:org.glassfish/jakarta.json/1.1.6</bundle>
-		<bundle>mvn:io.jsonwebtoken/jjwt-api/0.11.1</bundle>
-		<bundle>mvn:io.jsonwebtoken/jjwt-impl/0.11.1</bundle>
-		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.dom4j/2.1.1_1</bundle>
-		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.dom4j/1.6.1_5</bundle>
-		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.antlr/2.7.7_5</bundle>
+		<bundle>mvn:com.google.code.gson/gson/${gson.version}</bundle>
+		
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.dom4j/${dom4j-1.version}</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.dom4j/${dom4j-2.version}</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.antlr/${antlr-2.version}</bundle>
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xpp3/1.1.4c_7</bundle>
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.quartz/2.3.1_1</bundle>
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jaxb-impl/2.2.11_1</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jzlib/1.1.3_2</bundle>
+		
+		<bundle start-level="30">mvn:javax.validation/validation-api/${validation-api-1.version}</bundle>
+		<bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxrs-api-2.1/${jaxrs-api-2.1.version}</bundle>
 		<bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxws-api-2.2/2.9.0</bundle>
 		<bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.saaj-api-1.3/2.9.0</bundle>
 		
-		<bundle>mvn:org.antlr/antlr4-runtime/4.8-1</bundle>
-		<bundle>mvn:org.mybatis/mybatis/3.5.4</bundle>
-		<bundle>mvn:org.freemarker/freemarker/2.3.30</bundle>
-		<bundle>mvn:com.fasterxml.uuid/java-uuid-generator/3.3.0</bundle>
+		<bundle>mvn:org.freemarker/freemarker/${freemarker.version}</bundle>
+		
+		<!-- bundle>mvn:org.antlr/antlr4-runtime/4.8-1</bundle>
+		
+		<bundle>mvn:ch.qos.logback/logback-core/1.2.3</bundle>
+    	<bundle>mvn:ch.qos.logback/logback-classic/1.2.3</bundle-->
+		
+    </feature>
+    
+    <feature name="sodeac-jackson" description="jackson components" version="${pom.version}">
+    
+    	<bundle start-level="30">mvn:javax.validation/validation-api/${validation-api-1.version}</bundle>
+    	
+    	<bundle>mvn:com.fasterxml.jackson.core/jackson-annotations/${jackson.version}</bundle>
+		<bundle>mvn:com.fasterxml.jackson.core/jackson-core/${jackson.version}</bundle>
+		<bundle>mvn:com.fasterxml.jackson.core/jackson-databind/${jackson.version}</bundle>
+		<bundle>mvn:com.fasterxml.jackson.module/jackson-module-jsonSchema/${jackson.version}</bundle>
 		
     </feature>
     
     <feature name="sodeac-cxf" description="cxf for sdc" version="${pom.version}">
     	
     	<!-- cxf feature without corba -->
+    	
+    	<feature>sodeac-jackson</feature>
         
         <feature version="${cxf.version}">cxf-core</feature>
     	<feature version="${cxf.version}">cxf-jaxws</feature>
@@ -111,12 +152,61 @@
     	<feature version="${cxf.version}">cxf-features-throttling</feature>
     	<feature version="${cxf.version}">cxf-features-logging</feature>
     	
+    	<bundle>mvn:javax.persistence/javax.persistence-api/${persistence-api.version}</bundle>
     	<bundle>mvn:org.apache.cxf/cxf-rt-rs-security-sso-oidc/${cxf.version}</bundle>
     	<bundle>mvn:org.apache.cxf.karaf/cxf-karaf-commands/${cxf.version}</bundle>
 		
     </feature>
     
-    <feature name="sodeac-karaf-basics" description="karaf basics for sodeac distribution" version="${karaf.version}">
+    <feature name="sodeac-netty" description="sodeac netty components">
+    
+    	<feature>sodeac-security</feature>
+    	
+    	<bundle>mvn:io.netty/netty-common/${netty.version}</bundle>
+    	<bundle>mvn:io.netty/netty-resolver/${netty.version}</bundle>
+    	<bundle>mvn:io.netty/netty-buffer/${netty.version}</bundle>
+    	<bundle>mvn:io.netty/netty-transport/${netty.version}</bundle>
+ 		<bundle>mvn:io.netty/netty-codec/${netty.version}</bundle>
+ 		<bundle>mvn:io.netty/netty-codec-http/${netty.version}</bundle>
+ 		<bundle>mvn:io.netty/netty-codec-http2/${netty.version}</bundle>
+ 		<bundle>mvn:io.netty/netty-codec/${netty.version}</bundle>
+ 		<bundle>mvn:io.netty/netty-codec-socks/${netty.version}</bundle>
+ 		<bundle>mvn:io.netty/netty-handler/${netty.version}</bundle>
+ 		<bundle>mvn:io.netty/netty-handler-proxy/${netty.version}</bundle>
+ 		<bundle>mvn:io.netty/netty-codec-dns/${netty.version}</bundle>
+        <bundle>mvn:io.netty/netty-resolver-dns/${netty.version}</bundle>
+        <bundle>mvn:io.netty/netty-transport-native-unix-common/${netty.version}</bundle>
+        <bundle>mvn:io.netty/netty-transport-native-epoll/${netty.version}</bundle>
+        <bundle>mvn:io.netty/netty-transport-native-kqueue/${netty.version}</bundle>
+        <bundle>mvn:io.netty/netty-codec-stomp/${netty.version}</bundle>
+        <bundle>mvn:io.netty/netty-codec-mqtt/${netty.version}</bundle>
+        
+    </feature>
+    
+    <feature name="sodeac-hibernate" description="sodeac hibernate components" version="${pom.version}">
+    	
+    	<feature>transaction-api</feature>
+		<feature>aries-blueprint</feature>
+    	<feature>transaction-api</feature>
+    	
+    	<bundle>mvn:javax.persistence/javax.persistence-api/${persistence-api.version}</bundle>
+    	<bundle>mvn:javax.interceptor/javax.interceptor-api/${interceptor-api-1.version}</bundle>
+    	
+    	<bundle>mvn:org.jboss.logging/jboss-logging/${jboss-logging.version}</bundle>
+    	<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.antlr/${antlr-2.version}</bundle>
+    	<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.dom4j/${dom4j-2.version}</bundle>
+    	<bundle>mvn:net.bytebuddy/byte-buddy/${bytebuddy.version}</bundle>
+		<bundle>mvn:org.jboss/jandex/${jandex.version}</bundle>
+		<bundle>mvn:org.javassist/javassist/${javassist.version}</bundle>
+		<bundle>mvn:com.fasterxml/classmate/${classmate.version}</bundle>
+    	
+    	<bundle>mvn:org.hibernate.common/hibernate-commons-annotations/${hibernate-5-annotations.version}</bundle>
+    	<bundle>mvn:org.hibernate/hibernate-core/${hibernate-5.version}</bundle>
+    	<bundle>mvn:org.hibernate/hibernate-osgi/${hibernate-5.version}</bundle>
+    	
+    </feature>
+    
+    <feature name="sodeac-karaf-basics" description="karaf basics for sodeac distribution" version="${pom.version}">
 		
 		<details>karaf basic features</details>
 
@@ -138,14 +228,19 @@
 		<feature>pax-jms-config</feature>
 		<feature>aries-blueprint</feature>
 		<feature>scheduler</feature>
-		<feature>openjpa3</feature>
-		<feature>service-wrapper</feature>
 		
     </feature>
     
-    <feature name="sodeac-camel-basics" description="camel basics for sodeac distribution" version="${karaf.version}">
+    <feature name="sodeac-camel-basics" description="camel basics for sodeac distribution" version="${pom.version}">
         
+        <feature>scr</feature>
         <feature>sodeac-cxf</feature>
+        <feature>sodeac-common-bundles</feature>
+        <feature>sodeac-hibernate</feature>
+		<feature>sodeac-netty</feature>
+		<feature>jdbc</feature>
+		
+		<bundle>mvn:io.vertx/vertx-core/${vertx.version}</bundle>
         
 		<bundle>mvn:org.codehaus.groovy/groovy-jsr223/${groovy.version}</bundle>
 		<bundle>mvn:org.codehaus.groovy/groovy-json/${groovy.version}</bundle>
@@ -188,13 +283,333 @@
 		<feature>camel-reactive-streams</feature>
 		<feature>camel-jdbc</feature>
 		<feature>camel-sql</feature>
+		<feature>camel-vertx</feature>
 		
-		<bundle>mvn:io.reactivex.rxjava2/rxjava/2.2.19</bundle>
+		<bundle>mvn:org.reactivestreams/reactive-streams/${reactive-streams.version}</bundle>
+		<bundle>mvn:io.reactivex.rxjava2/rxjava/${rxjava2.version}</bundle>
 		<bundle>mvn:org.apache.camel/camel-rxjava2/${camel.version}</bundle>
 		
     </feature>
+
+    <feature name="sodeac-eip" description="eip stuff" version="${pom.version}">
+        
+        <feature>standard</feature>
+		<feature>scr</feature>
+		<feature>http</feature>
+		<feature>webconsole</feature>
+		<feature>http-whiteboard</feature>
+		<feature>jasypt-encryption</feature>
+		<feature>jdbc</feature>
+		<feature>transaction</feature>
+		<feature>jndi</feature>
+		<feature>pax-jdbc</feature>
+		<feature>pax-jdbc-config</feature>
+		<feature>pax-jdbc-pool-dbcp2</feature>
+		<feature>pax-jdbc-spec</feature>
+		<feature>jms</feature>
+		<feature>pax-jms-pool</feature>
+		<feature>pax-jms-config</feature>
+		<feature>aries-blueprint</feature>
+		<feature>scheduler</feature>
+		
+		<feature>artemis-core-client</feature>
+		<feature>artemis-jms-client</feature>
+		
+        <feature>sodeac-security</feature>
+        <feature>sodeac-apache-commons</feature>
+        <feature>sodeac-cxf</feature>
+        <feature>sodeac-camel-basics</feature>
+        
+        <bundle>mvn:eu.agno3.jcifs/jcifs-ng/${jcifs-ng.version}</bundle>
+		<bundle>mvn:org.sodeac/org.sodeac.karaf.thirdparty.vfs-jcifs-ng/${vfs-jcifs-ng.version}</bundle>
+		
+    </feature>
     
-    <feature name="sodeac-distribution" description="sodeac distribution" version="${pom.version}">
+    <feature name="sodeac-spi" description="spi components" version="${pom.version}">
+    	
+    	<bundle>mvn:org.ow2.asm/asm/${asm.version}</bundle>
+        <bundle>mvn:org.ow2.asm/asm-util/${asm.version}</bundle>
+        <bundle>mvn:org.ow2.asm/asm-tree/${asm.version}</bundle>
+        <bundle>mvn:org.ow2.asm/asm-analysis/${asm.version}</bundle>
+        <bundle>mvn:org.ow2.asm/asm-commons/${asm.version}</bundle>
+        
+        <bundle start-level="30">mvn:org.apache.aries.spifly/org.apache.aries.spifly.dynamic.bundle/1.2.3</bundle> 
+        <bundle start-level="30">mvn:org.apache.aries/org.apache.aries.util/1.1.3</bundle>
+        
+    </feature>
+    
+    <feature name="sodeac-cluster-core" description="cluster components" version="${pom.version}">
+    	
+    	<feature>transaction</feature>
+    	<feature>aries-blueprint</feature>
+    	<feature>jndi</feature>
+    	<feature>sodeac-spi</feature>
+    	<feature>sodeac-hibernate</feature>
+    	
+    	<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.javax-cache-api/${javax-cache.version}</bundle>
+    	<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.c3p0/${c3p0.version}</bundle>
+    	
+    	<bundle>mvn:org.reactivestreams/reactive-streams/${reactive-streams.version}</bundle>
+		<bundle>mvn:io.reactivex.rxjava2/rxjava/${rxjava2.version}</bundle>
+    	<bundle>mvn:com.github.ben-manes.caffeine/caffeine/${caffeine.version}</bundle>
+    	<bundle>mvn:com.google.code.gson/gson/${gson.version}</bundle> 	
+    	<bundle>mvn:com.zaxxer/HikariCP/${hikari-cp-2.version}</bundle>
+    	
+    	<bundle>mvn:org.jboss.logging/jboss-logging/${jboss-logging.version}</bundle>
+    	<bundle>mvn:org.sodeac/org.sodeac.karaf.thirdparty.jboss.marshalling/${jboss-marshalling.version}</bundle>
+    	
+    	<bundle>mvn:org.jgroups/jgroups/4.0.23.Final</bundle>
+    	<bundle>mvn:org.infinispan.protostream/protostream/4.2.5.Final</bundle>
+    	
+    	<bundle>mvn:org.sodeac/org.sodeac.karaf.thirdparty.infinispan-aio-osgi/9.4.19.Final_1</bundle>
+    	
+    </feature>
+    
+    <feature name="sodeac-vertx-core" description="vert.x core components" version="${pom.version}">
+    	
+		<feature>sodeac-cluster-core</feature>
+		<feature>sodeac-jackson</feature>
+		<feature>sodeac-netty</feature>
+		
+		<bundle>mvn:io.dropwizard.metrics/metrics-core/${dropwizardmetrics-4.version}</bundle>
+		<bundle>mvn:org.reactivestreams/reactive-streams/${reactive-streams.version}</bundle>
+		<bundle>mvn:io.reactivex.rxjava2/rxjava/${rxjava2.version}</bundle>
+		
+		<bundle>mvn:io.vertx/vertx-core/${vertx.version}</bundle>
+		<bundle>mvn:io.vertx/vertx-dropwizard-metrics/${vertx.version}</bundle>
+		<bundle>mvn:io.vertx/vertx-rx-java2/${vertx.version}</bundle>
+		
+		<capability>
+			osgi.service;objectClass=io.vertx.core.Vertx,
+			osgi.service;objectClass=io.vertx.core.spi.VertxMetricsFactory,
+			osgi.service;objectClass=io.vertx.core.eventbus.EventBus,
+			osgi.service;objectClass=io.vertx.ext.dropwizard.MetricsService
+		</capability>
+		
+    </feature>
+    
+     <feature name="sodeac-vertx-cluster" description="vert.x worker components" version="${pom.version}">
+    	
+		<feature>sodeac-cluster-core</feature>
+		<feature>sodeac-vertx-core</feature>
+		<feature>jdbc</feature>
+		
+		
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.c3p0/${c3p0.version}</bundle>
+		
+		<bundle>mvn:io.vertx/vertx-web-common/${vertx.version}</bundle>
+		<bundle>mvn:io.vertx/vertx-auth-common/${vertx.version}</bundle>
+		<bundle>mvn:io.vertx/vertx-jwt/${vertx.version}</bundle>
+		<bundle>mvn:io.vertx/vertx-bridge-common/${vertx.version}</bundle>
+		<bundle>mvn:io.vertx/vertx-web/${vertx.version}</bundle>
+		<bundle>mvn:io.vertx/vertx-codegen/${vertx.version}</bundle>
+		
+		<bundle>mvn:io.vertx/vertx-sql-common/${vertx.version}</bundle>
+		<bundle>mvn:io.vertx/vertx-jdbc-client/${vertx.version}</bundle>
+		
+		<bundle>mvn:org.sodeac/org.sodeac.karaf.thirdparty.vertx-service-discovery/${vertx.version}_1</bundle>
+		<bundle>mvn:io.vertx/vertx-health-check/${vertx.version}</bundle>
+		
+		<bundle>mvn:org.sodeac/org.sodeac.karaf.thirdparty.vertx-infinispan/3.9.1_1</bundle>
+    	
+		
+    </feature>
+    
+    <feature name="sodeac-cloud" description="cloud components" version="${pom.version}">
+    	
+    	<feature>transaction</feature>
+    	<feature>sodeac-security</feature>
+    	
+    	<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.okio/${okio.version}</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.okhttp/${okhttp.version}</bundle>
+        
+        <bundle>mvn:joda-time/joda-time/${jodatime.version}</bundle>
+    	<bundle>mvn:net.i2p.crypto/eddsa/${eddsa.version}</bundle>
+        <bundle>mvn:com.hierynomus/sshj/${sshj.version}</bundle>
+    	<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jsch/${jsch.version}</bundle>
+    	<bundle>mvn:com.jcraft/jsch.agentproxy.core/${jsch-agentproxy-version}</bundle>
+    	<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jsch-agentproxy-sshj/${jsch-agentproxy-sshj.version}</bundle>
+    	<!-- bundle>mvn:com.jcraft/jsch.agentproxy.connector-factory/0.0.9</bundle-->
+        <bundle>mvn:com.jcraft/jsch.agentproxy.usocket-nc/${jsch-agentproxy-usocket.version}</bundle>
+        <bundle>mvn:com.jcraft/jsch.agentproxy.sshagent/${jsch-agentproxy-sshagent.version}</bundle>
+        
+        <!--  special requirement for jcloud -->
+		<bundle>mvn:com.google.guava/guava/23.6.1-jre</bundle> 
+		
+		<bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxrs-api-2.1/${jaxrs-api-2.1.version}</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.javax-inject/${inject-api-1.version}</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aopalliance/${aopalliance.version}</bundle>
+		<bundle>mvn:com.google.inject/guice/${guice-3.version}</bundle>
+    	<bundle>mvn:com.google.inject.extensions/guice-assistedinject/${guice-3.version}</bundle>
+    	<bundle>mvn:com.google.inject.extensions/guice-multibindings/${guice-3.version}</bundle>
+    	
+    	<bundle>mvn:com.google.code.gson/gson/${gson.version}</bundle> 		
+    	<bundle>mvn:org.yaml/snakeyaml/${snakeyaml.version}</bundle>
+    	
+    	<bundle>mvn:org.apache.jclouds/jclouds-gson/${jclouds.version}</bundle>
+    	<bundle>mvn:org.apache.jclouds/jclouds-core/${jclouds.version}</bundle>
+    	<bundle>mvn:org.apache.jclouds/jclouds-scriptbuilder/${jclouds.version}</bundle>
+    	<bundle>mvn:org.apache.jclouds/jclouds-compute/${jclouds.version}</bundle>
+    	<bundle>mvn:org.apache.jclouds/jclouds-blobstore/${jclouds.version}</bundle>
+    	
+    	<bundle>mvn:org.apache.jclouds.driver/jclouds-slf4j/${jclouds.version}</bundle>
+    	<bundle>mvn:org.apache.jclouds.driver/jclouds-log4j/${jclouds.version}</bundle>
+    	<bundle>mvn:org.apache.jclouds.driver/jclouds-bouncycastle/${jclouds.version}</bundle>
+    	<bundle>mvn:org.apache.jclouds.driver/jclouds-sshj/${jclouds.version}</bundle>
+    	<bundle>mvn:org.apache.jclouds.driver/jclouds-jsch/${jclouds.version}</bundle>
+    	<bundle>mvn:org.apache.jclouds.driver/jclouds-okhttp/${jclouds.version}</bundle>
+    	
+    	<bundle>mvn:org.apache.jclouds.api/docker/${jclouds.version}</bundle>
+    	<bundle>mvn:org.apache.jclouds.api/oauth/${jclouds.version}</bundle>
+    	<bundle>mvn:org.apache.jclouds.api/docker/${jclouds.version}</bundle>
+    	
+    </feature>
+    
+    <!-- feature name="sodeac-keycloak" description="keycloak components" version="${pom.version}">
+    
+    	<feature>sodeac-distribution</feature>
+    	
+    	<bundle>wrap:mvn:com.beust/jcommander/1.78$Bundle-SymbolicName=com.beust.JCommander&amp;Bundle-Version=1.78</bundle>
+    	<bundle>mvn:com.google.zxing/core/3.4.0</bundle>
+    	<bundle>wrap:mvn:com.google.zxing/javase/3.4.0$Bundle-SymbolicName=com.google.zxing.javase&amp;Bundle-Version=3.4.0</bundle>
+    	<bundle>wrap:mvn:org.liquibase/liquibase-core/3.5.5$Bundle-SymbolicName=liquibase-core&amp;Bundle-Version=3.5.5</bundle> todo 3.9 ? 
+    	    	
+    	<bundle>mvn:org.keycloak/keycloak-core/${keycloak.version}</bundle>
+    	<bundle>mvn:org.keycloak/keycloak-common/${keycloak.version}</bundle>
+    	<bundle>wrap:mvn:org.keycloak/keycloak-services/${keycloak.version}$Bundle-SymbolicName=keycloak-services&amp;Bundle-Version=${keycloak.version}</bundle>
+    	<bundle>wrap:mvn:org.keycloak/keycloak-server-spi/${keycloak.version}$Bundle-SymbolicName=keycloak-server-spi&amp;Bundle-Version=${keycloak.version}</bundle>
+    	<bundle>wrap:mvn:org.keycloak/keycloak-server-spi-private/${keycloak.version}$Bundle-SymbolicName=keycloak-server-spi-private&amp;Bundle-Version=${keycloak.version}</bundle>
+    	<bundle>wrap:mvn:org.keycloak/keycloak-js-adapter/${keycloak.version}$Bundle-SymbolicName=keycloak-js-adapter&amp;Bundle-Version=${keycloak.version}</bundle>
+    	<bundle>wrap:mvn:org.keycloak/keycloak-themes/${keycloak.version}$Bundle-SymbolicName=keycloak-themes&amp;Bundle-Version=${keycloak.version}</bundle>
+    	<bundle>wrap:mvn:org.keycloak/keycloak-model-jpa/${keycloak.version}$Bundle-SymbolicName=keycloak-model-jpa&amp;Bundle-Version=${keycloak.version}</bundle>
+    	
+    </feature-->
+    
+    <!-- feature name="sodeac-keycloak-infinispan" description="keycloak components for infinispan module" version="${pom.version}">
+    
+    	<feature>sodeac-keycloak</feature>
+    	
+    	<bundle>mvn:org.jgroups/jgroups/4.1.9.Final</bundle> 4.2 ??? 
+    	<bundle>wrap:org.jboss.marshalling/jboss-marshalling/2.0.9.Final$Bundle-SymbolicName=jboss-marshalling&amp;Bundle-Version=2.0.9.Final</bundle>
+    	<bundle>mvn:org.infinispan/infinispan-commons/9.4.19.Final</bundle>
+    	<bundle>mvn:org.infinispan/infinispan-core/9.4.19.Final</bundle>
+    	
+    	
+    </feature-->
+    
+    <feature name="sodeac-cave" description="cave components" version="${pom.version}">
+    	
+    	<feature>standard</feature>
+		<feature>http</feature>
+		<feature>scr</feature>
+		<feature>scheduler</feature>
+		<feature>sodeac-jackson</feature>
+		<feature version="${cxf.version}">cxf-jaxrs</feature>
+		
+		<bundle>mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${jackson.version}</bundle>
+		<bundle>mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${jackson.version}</bundle>
+    	
+    	<bundle>mvn:org.apache.karaf.cave.repository/org.apache.karaf.cave.repository.api/${cave.version}</bundle>
+    	<bundle>mvn:org.apache.karaf.cave.gateway/org.apache.karaf.cave.gateway.api/${cave.version}</bundle>
+    	<bundle>mvn:org.apache.karaf.cave.deployer/org.apache.karaf.cave.deployer.api/${cave.version}</bundle>
+    	<bundle>mvn:org.apache.karaf.cave.repository/org.apache.karaf.cave.repository.service/${cave.version}</bundle>
+    	<bundle>mvn:org.apache.karaf.cave.gateway/org.apache.karaf.cave.gateway.service/${cave.version}</bundle>
+    	<bundle>mvn:org.apache.karaf.cave.deployer/org.apache.karaf.cave.deployer.service/${cave.version}</bundle>
+    </feature>
+    
+    <feature name="sodeac-opendj" description="directory server components" version="${pom.version}">
+    
+    	<feature>standard</feature>
+		<feature>jdbc</feature>
+		<feature>jms</feature>
+		<feature>transaction</feature>
+    	<feature>sodeac-jackson</feature>
+    	
+    	<bundle start-level="30">mvn:javax.validation/validation-api/${validation-api-1.version}</bundle>
+    	<bundle start-level="30">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.activation-api-1.1/${activation-api-1.1.version}</bundle>
+    	<bundle start-level="30">mvn:com.sun.mail/javax.mail/${mail-api.version}</bundle>
+    	<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.javax-inject/${inject-api-1.version}</bundle>
+    	<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xmlresolver/${xmlresolver.version}</bundle>
+    	<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xerces/${xerces.version}</bundle>
+
+		<bundle>mvn:com.google.guava/failureaccess/${guava-failureaccess.version}</bundle>
+		<bundle>mvn:com.google.guava/guava/${guava.version}</bundle>
+		
+		<bundle>mvn:org.reactivestreams/reactive-streams/${reactive-streams.version}</bundle>
+		<bundle>mvn:io.reactivex.rxjava2/rxjava/${rxjava2.version}</bundle>
+
+    	<bundle>mvn:org.apache.httpcomponents/httpcore-osgi/${apache-commons-httpcore}</bundle>
+    	<bundle>mvn:org.apache.httpcomponents/httpasyncclient-osgi/${apache-commons-httpasyncclient}</bundle>
+    	<bundle>mvn:org.apache.httpcomponents/httpclient-osgi/${apache-commons-httpclient}</bundle>
+    	<bundle>mvn:joda-time/joda-time/${jodatime.version}</bundle>
+    	<bundle>mvn:io.dropwizard.metrics/metrics-core/${dropwizardmetrics-3.version}</bundle>
+    	<bundle>mvn:com.zaxxer/HikariCP/${hikari-cp-2.version}</bundle>
+    	<bundle>mvn:net.sf.supercsv/super-csv/${supercsv.version}</bundle>
+		<bundle>mvn:io.swagger/swagger-annotations/${swagger-1.version}</bundle>
+		<bundle>mvn:io.swagger/swagger-models/${swagger-1.version}</bundle>
+		<bundle>mvn:org.glassfish.grizzly/grizzly-framework/${grizzly.version}</bundle>
+		<bundle>mvn:org.glassfish.grizzly/grizzly-http/${grizzly.version}</bundle>
+		<bundle>mvn:org.glassfish.grizzly/grizzly-http-server/${grizzly.version}</bundle>
+		<bundle>mvn:org.freemarker/freemarker/${freemarker.version}</bundle>
+		
+		<!-- bundle>mvn:org.sodeac/org.sodeac.karaf.thirdparty.opendj/${opendj.version}</bundle --> <!-- todo deploy -->
+    	
+    </feature>
+    
+    <feature name="sodeac-standalone" description="sodeac distribution" version="${pom.version}">
+    
+    	<feature>sodeac-karaf-basics</feature>
+    	<feature>sodeac-apache-commons</feature>
+    	<feature>sodeac-security</feature>
+    	
+		<feature>sodeac-common-bundles</feature>
+		<feature>sodeac-core</feature>
+		<feature>sodeac-cxf</feature>
+		<feature>sodeac-hibernate</feature>
+		<feature>hawtio</feature>
+		<feature>artemis-core-client</feature>
+		<feature>artemis-jms-client</feature>
+		<feature>artemis</feature>
+		<feature>sodeac-eip</feature>
+		<feature>pax-jms-artemis</feature>
+        
+		<configfile finalname="etc/org.apache.activemq.artemis.cfg">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/cfg</configfile>
+		<configfile finalname="etc/artemis-sodeac-local.xml">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/xml/artemis-sodeac-local</configfile>
+		<configfile finalname="etc/artemis-sodeac-unlisten.xml">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/xml/artemis-sodeac-unlisten</configfile>
+		
+		<feature>service-wrapper</feature>
+
+    </feature>
+    
+    <feature name="sodeac-master" description="sodeac master" version="${pom.version}">
+    
+    	<feature>sodeac-karaf-basics</feature>
+    	<feature>sodeac-security</feature>
+    	
+		<feature>sodeac-core</feature>
+		<feature>sodeac-hibernate</feature> <!-- 4 keycloak ? -->
+		<feature>hawtio</feature>
+		<feature>artemis-core-client</feature>
+		<feature>artemis-jms-client</feature>
+		<feature>artemis</feature>
+		<feature>pax-jms-artemis</feature>
+		
+		<feature>sodeac-cluster-core</feature>
+		<feature>sodeac-vertx-core</feature>
+		<feature>sodeac-cloud</feature>
+		<feature>sodeac-cave</feature>
+		<feature>sodeac-opendj</feature>
+        
+		<configfile finalname="etc/org.apache.activemq.artemis.cfg">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/cfg</configfile>
+		<configfile finalname="etc/artemis-sodeac-local.xml">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/xml/artemis-sodeac-local</configfile>
+		<configfile finalname="etc/artemis-sodeac-unlisten.xml">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/xml/artemis-sodeac-unlisten</configfile>
+		
+		<feature>service-wrapper</feature>
+
+    </feature>
+    
+    <feature name="sodeac-worker" description="sodeac worker" version="${pom.version}">
+    
     	<feature>sodeac-karaf-basics</feature>
 		<feature>sodeac-common-bundles</feature>
 		<feature>sodeac-core</feature>
@@ -202,13 +617,8 @@
 		<feature>hawtio</feature>
 		<feature>artemis-core-client</feature>
 		<feature>artemis-jms-client</feature>
-		<feature>artemis</feature>
 		<feature>sodeac-camel-basics</feature>
-		<feature>pax-jms-artemis</feature>
-        
-		<configfile finalname="etc/org.apache.activemq.artemis.cfg">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/cfg</configfile>
-		<configfile finalname="etc/artemis-sodeac-local.xml">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/xml/artemis-sodeac-local</configfile>
-
+		
     </feature>
 
 </features>
