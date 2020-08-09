@@ -4,7 +4,7 @@
 
   <groupId>org.sodeac</groupId>
   <artifactId>org.sodeac.karaf.feature</artifactId>
-  <version>0.6.4</version>
+  <version>0.6.5</version>
   <packaging>pom</packaging>
 
   <name>Sodeac feature</name>
@@ -13,10 +13,10 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     
-    <karaf.version>4.2.8</karaf.version>
-    <artemis.version>2.12.0</artemis.version>
-    <camel.version>2.25.1</camel.version>
-    <hawtio.version>2.10.0</hawtio.version>
+    <karaf.version>4.2.9</karaf.version>
+    <artemis.version>2.14.0</artemis.version>
+    <camel.version>2.25.2</camel.version>
+    <hawtio.version>2.10.1</hawtio.version>
     <groovy.version>2.5.11</groovy.version>
     <cxf.version>3.3.6</cxf.version>
     <jackson.version>2.10.3</jackson.version>
@@ -88,14 +88,14 @@
   	<hibernate-5-annotations.version>5.0.5.Final</hibernate-5-annotations.version>
   	
   	<vertx.version>3.9.1</vertx.version>
-	<netty.version>4.1.48.Final</netty.version>
+	<netty.version>4.1.51.Final</netty.version>
   	
-  	<bouncycastle-bcprov.version>1.65.01</bouncycastle-bcprov.version>
-  	<bouncycastle-pkix.version>1.65</bouncycastle-pkix.version>
-  	<bouncycastle-bcpg.version>1.65</bouncycastle-bcpg.version>
+  	<bouncycastle-bcprov.version>1.66</bouncycastle-bcprov.version>
+  	<bouncycastle-pkix.version>1.66</bouncycastle-pkix.version>
+  	<bouncycastle-bcpg.version>1.66</bouncycastle-bcpg.version>
   	
-  	<jjwt-api.version>0.11.1</jjwt-api.version>
-  	<jjwt-impl.version>0.11.1</jjwt-impl.version>
+  	<jjwt-api.version>0.11.2</jjwt-api.version>
+  	<jjwt-impl.version>0.11.2</jjwt-impl.version>
   	
   	<apache-commons-lang3.version>3.10</apache-commons-lang3.version>
   	<apache-commons-csv.version>1.8</apache-commons-csv.version>
