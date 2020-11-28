@@ -25,8 +25,8 @@
       
       <bundle>mvn:org.glassfish/jakarta.json/${jarkarta.json.version}</bundle>
       
-      <bundle>mvn:org.sodeac/org.sodeac.karaf.sftphome/1.0.0</bundle>
-      <bundle>mvn:org.sodeac/org.sodeac.common/0.6.6</bundle>
+      <bundle>mvn:org.sodeac/org.sodeac.karaf.sftphome/1.1.0</bundle>
+      <bundle>mvn:org.sodeac/org.sodeac.common/0.6.8</bundle>
       <bundle>mvn:org.sodeac/org.sodeac.streampartitioner.api/1.0.0</bundle>
       <bundle>mvn:org.sodeac/org.sodeac.streampartitioner.provider/1.0.1</bundle>
       <bundle>mvn:org.sodeac/org.sodeac.xuri/1.0.0</bundle>
@@ -36,7 +36,7 @@
       <bundle>mvn:org.sodeac/org.sodeac.dbschema.driver.base/1.0.0</bundle>
       <bundle>mvn:org.sodeac/org.sodeac.dbschema.driver.h2/1.0.0</bundle>
       <bundle>mvn:org.sodeac/org.sodeac.dbschema.driver.postgresql/1.0.0</bundle>
-      <bundle>mvn:org.postgresql/postgresql/42.2.14</bundle>
+      <bundle>mvn:org.postgresql/postgresql/42.2.18</bundle>
       <bundle>mvn:com.h2database/h2/1.4.200</bundle>
       	
     </feature>
@@ -103,14 +103,7 @@
 		<bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxrs-api-2.1/${jaxrs-api-2.1.version}</bundle>
 		<bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxws-api-2.2/2.9.0</bundle>
 		<bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.saaj-api-1.3/2.9.0</bundle>
-		
-		<bundle>mvn:org.freemarker/freemarker/${freemarker.version}</bundle>
-		
-		<!-- bundle>mvn:org.antlr/antlr4-runtime/4.8-1</bundle>
-		
-		<bundle>mvn:ch.qos.logback/logback-core/1.2.3</bundle>
-    	<bundle>mvn:ch.qos.logback/logback-classic/1.2.3</bundle-->
-		
+				
     </feature>
     
     <feature name="sodeac-jackson" description="jackson components" version="${pom.version}">
@@ -239,9 +232,7 @@
         <feature>sodeac-hibernate</feature>
 		<feature>sodeac-netty</feature>
 		<feature>jdbc</feature>
-		
-		<bundle>mvn:io.vertx/vertx-core/${vertx.version}</bundle>
-        
+		        
 		<bundle>mvn:org.codehaus.groovy/groovy-jsr223/${groovy.version}</bundle>
 		<bundle>mvn:org.codehaus.groovy/groovy-json/${groovy.version}</bundle>
 		<bundle>mvn:org.codehaus.groovy/groovy-xml/${groovy.version}</bundle>
@@ -283,7 +274,6 @@
 		<feature>camel-reactive-streams</feature>
 		<feature>camel-jdbc</feature>
 		<feature>camel-sql</feature>
-		<feature>camel-vertx</feature>
 		
 		<bundle>mvn:org.reactivestreams/reactive-streams/${reactive-streams.version}</bundle>
 		<bundle>mvn:io.reactivex.rxjava2/rxjava/${rxjava2.version}</bundle>
@@ -325,7 +315,7 @@
 		
     </feature>
     
-    <feature name="sodeac-spi" description="spi components" version="${pom.version}">
+    <!-- feature name="sodeac-spi" description="spi components" version="${pom.version}">
     	
     	<bundle>mvn:org.ow2.asm/asm/${asm.version}</bundle>
         <bundle>mvn:org.ow2.asm/asm-util/${asm.version}</bundle>
@@ -336,9 +326,9 @@
         <bundle start-level="30">mvn:org.apache.aries.spifly/org.apache.aries.spifly.dynamic.bundle/1.2.3</bundle> 
         <bundle start-level="30">mvn:org.apache.aries/org.apache.aries.util/1.1.3</bundle>
         
-    </feature>
+    </feature-->
     
-    <feature name="sodeac-cluster-core" description="cluster components" version="${pom.version}">
+    <!-- feature name="sodeac-cluster-core" description="cluster components" version="${pom.version}">
     	
     	<feature>transaction</feature>
     	<feature>aries-blueprint</feature>
@@ -363,9 +353,9 @@
     	
     	<bundle>mvn:org.sodeac/org.sodeac.karaf.thirdparty.infinispan-aio-osgi/9.4.19.Final_1</bundle>
     	
-    </feature>
+    </feature-->
     
-    <feature name="sodeac-vertx-core" description="vert.x core components" version="${pom.version}">
+    <!-- feature name="sodeac-vertx-core" description="vert.x core components" version="${pom.version}">
     	
 		<feature>sodeac-cluster-core</feature>
 		<feature>sodeac-jackson</feature>
@@ -386,9 +376,9 @@
 			osgi.service;objectClass=io.vertx.ext.dropwizard.MetricsService
 		</capability>
 		
-    </feature>
+    </feature-->
     
-     <feature name="sodeac-vertx-cluster" description="vert.x worker components" version="${pom.version}">
+     <!-- >feature name="sodeac-vertx-cluster" description="vert.x worker components" version="${pom.version}">
     	
 		<feature>sodeac-cluster-core</feature>
 		<feature>sodeac-vertx-core</feature>
@@ -413,7 +403,7 @@
 		<bundle>mvn:org.sodeac/org.sodeac.karaf.thirdparty.vertx-infinispan/3.9.1_1</bundle>
     	
 		
-    </feature>
+    </feature-->
     
     <feature name="sodeac-cloud" description="cloud components" version="${pom.version}">
     	
@@ -517,7 +507,7 @@
     	<bundle>mvn:org.apache.karaf.cave.deployer/org.apache.karaf.cave.deployer.service/${cave.version}</bundle>
     </feature>
     
-    <feature name="sodeac-opendj" description="directory server components" version="${pom.version}">
+    <!-- feature name="sodeac-opendj" description="directory server components" version="${pom.version}">
     
     	<feature>standard</feature>
 		<feature>jdbc</feature>
@@ -552,9 +542,9 @@
 		<bundle>mvn:org.glassfish.grizzly/grizzly-http-server/${grizzly.version}</bundle>
 		<bundle>mvn:org.freemarker/freemarker/${freemarker.version}</bundle>
 		
-		<!-- bundle>mvn:org.sodeac/org.sodeac.karaf.thirdparty.opendj/${opendj.version}</bundle --> <!-- todo deploy -->
+		// <bundle>mvn:org.sodeac/org.sodeac.karaf.thirdparty.opendj/${opendj.version}</bundle>
     	
-    </feature>
+    </feature -->
     
     <feature name="sodeac-standalone" description="sodeac distribution" version="${pom.version}">
     
@@ -594,11 +584,8 @@
 		<feature>artemis</feature>
 		<feature>pax-jms-artemis</feature>
 		
-		<feature>sodeac-cluster-core</feature>
-		<feature>sodeac-vertx-core</feature>
 		<feature>sodeac-cloud</feature>
 		<feature>sodeac-cave</feature>
-		<feature>sodeac-opendj</feature>
         
 		<configfile finalname="etc/org.apache.activemq.artemis.cfg">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/cfg</configfile>
 		<configfile finalname="etc/artemis-sodeac-local.xml">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/xml/artemis-sodeac-local</configfile>
