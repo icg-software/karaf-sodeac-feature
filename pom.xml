@@ -4,7 +4,7 @@
 
   <groupId>org.sodeac</groupId>
   <artifactId>org.sodeac.karaf.feature</artifactId>
-  <version>0.6.7</version>
+  <version>0.6.8</version>
   <packaging>pom</packaging>
 
   <name>Sodeac feature</name>
@@ -35,6 +35,8 @@
   	<jsch-agentproxy-sshj.version>0.0.9_1</jsch-agentproxy-sshj.version>
   	<jsch-agentproxy-usocket.version>0.0.9</jsch-agentproxy-usocket.version>
   	<jsch-agentproxy-sshagent.version>0.0.9</jsch-agentproxy-sshagent.version>
+  	
+  	<servicemix-spec.version>2.9.0</servicemix-spec.version>
   	
   	<jodatime.version>2.10.6</jodatime.version>
   	<dropwizardmetrics-3.version>3.2.6</dropwizardmetrics-3.version>
