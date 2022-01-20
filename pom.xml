@@ -4,32 +4,55 @@
 
   <groupId>org.sodeac</groupId>
   <artifactId>org.sodeac.karaf.feature</artifactId>
-  <version>0.6.8</version>
+  <version>0.6.9</version>
   <packaging>pom</packaging>
 
   <name>Sodeac feature</name>
   <description>Sodeac Karaf Feature</description>
 
   <properties>
+  
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     
-    <artemis.version>2.16.0</artemis.version>
-    <camel.version>2.25.2</camel.version>
-    <hawtio.version>2.12.0</hawtio.version>
-    <groovy.version>2.5.13</groovy.version>
-    <cxf.version>3.3.6</cxf.version>
-    <jackson.version>2.10.3</jackson.version>
+    <sodeac.version>0.6.6</sodeac.version>
+    
+    <artemis.version>2.19.0</artemis.version>
+    <camel.version>2.25.4</camel.version>
+    
+    <h2.1.4.version>1.4.200</h2.1.4.version>
+    <h2.2.0.version>2.0.206</h2.2.0.version>
+    <postgres.42.version>42.2.24</postgres.42.version>
+    <firebird.3.version>3.0.12</firebird.3.version>
+    <firebird.4.version>4.0.5.java8</firebird.4.version>
+    <firebird.4.export.version>4.0.5</firebird.4.export.version>
+    <sqlserver.version>9.4.1.jre8</sqlserver.version>
+    
+    <hawtio.version>2.14.4</hawtio.version>
+  	<keycloak.version>12.0.2</keycloak.version>
     <cave.version>4.2.1</cave.version>
+    
+    <groovy.version>2.5.15</groovy.version>
+    
+    <cxf.version>3.5.0</cxf.version>
+    <stax2.version>4.2.1</stax2.version>
+    
+    <jackson.version>2.13.1</jackson.version>
+    
     <jclouds.version>2.2.1</jclouds.version>
-  	<keycloak.version>11.0.3</keycloak.version>
-  	<jarkarta.json.version>1.1.6</jarkarta.json.version>
+    <jclouds.gson.version>2.2.1</jclouds.gson.version>
+  	<jclouds.okio.version>1.2.0_1</jclouds.okio.version>
+  	<jclouds.okhttp.version>2.2.0_1</jclouds.okhttp.version>
   	
   	<asm.version>7.2</asm.version>
   	
-  	<okio.version>1.2.0_1</okio.version>
-  	<okhttp.version>2.2.0_1</okhttp.version>
-  	<eddsa.version>0.1.0</eddsa.version>
-  	<sshj.version>0.29.0</sshj.version>
+  	<kotlin.version>1.4.10</kotlin.version>
+  	<okio.version>2.9.0_1</okio.version>
+  	<okhttp.version>4.9.1</okhttp.version>
+  	
+  	<eddsa.version>0.3.0</eddsa.version>
+  	<hierynomus.sshj.version>0.32.0</hierynomus.sshj.version>
+  	<hierynomus.asn.version>0.6.0</hierynomus.asn.version>
+  	
   	<jsch.version>0.1.55_1</jsch.version>
   	<jsch-agentproxy-version>0.0.9</jsch-agentproxy-version>
   	<jsch-agentproxy-sshj.version>0.0.9_1</jsch-agentproxy-sshj.version>
@@ -37,6 +60,21 @@
   	<jsch-agentproxy-sshagent.version>0.0.9</jsch-agentproxy-sshagent.version>
   	
   	<servicemix-spec.version>2.9.0</servicemix-spec.version>
+  	
+  	<servicemix-jaxrs-api-2.1.version>2.9.1</servicemix-jaxrs-api-2.1.version>
+  	<servicemix-jaxws-2.3.version>2.3_3</servicemix-jaxws-2.3.version>
+  	<servicemix-saaj-api-1.3-version>1.4_2</servicemix-saaj-api-1.3-version>
+  	<servicemix-saaj-impl-1.3-version>1.3.28_1</servicemix-saaj-impl-1.3-version>
+  	<servicemix-saaj-api-1.4-version>1.4_2</servicemix-saaj-api-1.4-version>
+  	<servicemix-saaj-impl-1.4-version>1.5.1_1</servicemix-saaj-impl-1.4-version>
+  	
+    <jakarta.jws.version>2.1.0</jakarta.jws.version>
+    <jakarta.xml.version>2.3.3</jakarta.xml.version>
+  	<jakarta.json.version>1.1.6</jakarta.json.version>
+  	<jakarta.jaxws.version>2.3.2</jakarta.jaxws.version>
+  	<jakarta.saaj-api-1.4-version>1.4.2</jakarta.saaj-api-1.4-version>
+  	<stax-ex-version>1.8.3</stax-ex-version>
+  	<jakarta.saaj-impl-1.4-version>1.5.0</jakarta.saaj-impl-1.4-version>
   	
   	<jodatime.version>2.10.6</jodatime.version>
   	<dropwizardmetrics-3.version>3.2.6</dropwizardmetrics-3.version>
@@ -51,73 +89,96 @@
   	<rxjava2.version>2.2.19</rxjava2.version>
   	<opendj.version>4.4.5</opendj.version>
   	
-  	<validation-api-1.version>1.1.0.Final</validation-api-1.version>
+  	<!-- 
+  	
   	<activation-api-1.1.version>2.9.0</activation-api-1.1.version>
-  	<inject-api-1.version>1_1</inject-api-1.version>
-  	<persistence-api.version>2.2</persistence-api.version>
+  	<activation-api-1.2.version>1.2.1_3</activation-api-1.2.version>
   	<javax-cache.version>1.1.1_1</javax-cache.version>
+  	
+  	 -->
+  	 
+  	 <jakarta.activation.version>1.2.1</jakarta.activation.version>
+  	 <jakarta.java.mail.version>1.6.7</jakarta.java.mail.version>
+  	
+  	<annotation-api-1.3.version>1.3_3</annotation-api-1.3.version>
+  	<validation-api-1.version>1.1.0.Final</validation-api-1.version>
+  	<validation-api-2.version>2.0.1.Final</validation-api-2.version>
+  	
+  	<inject-api-1.version>1_1</inject-api-1.version>
+  	<guice-3.version>3.0</guice-3.version>
+  	<guice-4.version>4.2.3</guice-4.version>
+  	
+  	<persistence-api.version>2.2</persistence-api.version>
   	<interceptor-api-1.version>1.2.2</interceptor-api-1.version>
-  	<jaxrs-api-2.1.version>2.9.1</jaxrs-api-2.1.version>
   	<aopalliance.version>1.0_6</aopalliance.version>
   	
-  	<guice-3.version>3.0</guice-3.version>
-  	<gson.version>2.8.5</gson.version> <!-- versions gt 2.8.5 requires Java 9 !!! -->
-  	<snakeyaml.version>1.26</snakeyaml.version>
+  	<json.simple.version>1.1.1</json.simple.version>
+  	<gson.version>2.8.9</gson.version> <!-- versions gt 2.8.5 requires Java 9 !!! -->
+  	<snakeyaml.version>1.30</snakeyaml.version>
   	
-  	<jcifs-ng.version>2.1.4</jcifs-ng.version>
+  	<jcifs-ng.version>2.1.7</jcifs-ng.version>
   	<vfs-jcifs-ng.version>1.0.1</vfs-jcifs-ng.version>
   	
   	<xmlresolver.version>1.2_5</xmlresolver.version>
   	<xerces.version>2.12.0_1</xerces.version>
-  	<mail-api.version>1.6.1</mail-api.version> <!-- todo 1.6.2 ? -->
-  	<guava-failureaccess.version>1.0.1</guava-failureaccess.version>
-  	<guava.version>29.0-jre</guava.version>
   	
-  	<jboss-logging.version>3.4.1.Final</jboss-logging.version>
-  	<antlr-2.version>2.7.7_5</antlr-2.version>
-  	<javassist.version>3.27.0-GA</javassist.version>
-  	<jandex.version>2.1.3.Final</jandex.version>
-  	<bytebuddy.version>1.10.11</bytebuddy.version>
-  	<classmate.version>1.5.1</classmate.version>
+  	<mail-api.version>1.6.2</mail-api.version> <!-- todo 1.6.2 ? -->
+  	
+  	<guava-failureaccess.version>1.0.1</guava-failureaccess.version>
+  	<guava.version>31.0.1-jre</guava.version>
+  	<guava.jclouds.version>23.6.1-jre</guava.jclouds.version>
+  	
   	<dom4j-1.version>1.6.1_5</dom4j-1.version>
   	<dom4j-2.version>2.1.3_1</dom4j-2.version>
   	
   	<jboss-marshalling.version>2.0.9.Final_1</jboss-marshalling.version>
   	<reactive-streams.version>1.0.2</reactive-streams.version>
   	
-  	<hibernate-5.version>5.3.20.Final</hibernate-5.version>
+  	<javassist.version>3.27.0-GA</javassist.version>
+  	<jandex.version>2.0.5.Final</jandex.version>
+  	<jboss-logging.version>3.4.2.Final</jboss-logging.version>
+  	
+  	<antlr-2.version>2.7.7_5</antlr-2.version>
+  	<antlr-4.runtime.version>4.9.3</antlr-4.runtime.version>
+  	
+  	<bytebuddy.version>1.11.12</bytebuddy.version>
+  	<classmate.version>1.5.1</classmate.version>
+  	
+  	<hibernate-5.version>5.3.25.Final</hibernate-5.version>
   	<hibernate-5-annotations.version>5.0.5.Final</hibernate-5-annotations.version>
   	
-  	<vertx.version>3.9.1</vertx.version>
-	<netty.version>4.1.54.Final</netty.version>
+  	<vertx.version>3.9.11</vertx.version>
+	<netty.version>4.1.72.Final</netty.version>
+	<netty.tcnative.version>2.0.46.Final</netty.tcnative.version>
   	
-  	<bouncycastle-bcprov.version>1.66</bouncycastle-bcprov.version>
-  	<bouncycastle-pkix.version>1.66</bouncycastle-pkix.version>
-  	<bouncycastle-bcpg.version>1.66</bouncycastle-bcpg.version>
+  	<bouncycastle-bcprov.version>1.69</bouncycastle-bcprov.version>
+  	<bouncycastle-pkix.version>1.69</bouncycastle-pkix.version>
+  	<bouncycastle-bcpg.version>1.69</bouncycastle-bcpg.version>
   	
   	<jjwt-api.version>0.11.2</jjwt-api.version>
   	<jjwt-impl.version>0.11.2</jjwt-impl.version>
   	
-  	<apache-commons-lang3.version>3.10</apache-commons-lang3.version>
-  	<apache-commons-csv.version>1.8</apache-commons-csv.version>
-  	<apache-commons-io.version>2.6</apache-commons-io.version>
+  	<apache-commons-lang3.version>3.12.0</apache-commons-lang3.version>
+  	<apache-commons-csv.version>1.9.0</apache-commons-csv.version>
+  	<apache-commons-io.version>2.11.0</apache-commons-io.version>
   	<apache-commons-dbutils.version>1.7</apache-commons-dbutils.version>
-  	<apache-commons-compress.version>1.20</apache-commons-compress.version>
-  	<apache-commons-codec.version>1.14</apache-commons-codec.version>
-  	<apache-commons-net.version>3.6</apache-commons-net.version>
+  	<apache-commons-compress.version>1.21</apache-commons-compress.version>
+  	<apache-commons-codec.version>1.15</apache-commons-codec.version>
+  	<apache-commons-net.version>3.8.0</apache-commons-net.version>
   	<apache-commons-math3.version>3.6.1</apache-commons-math3.version>
   	<apache-commons-collection.version>3.2.2</apache-commons-collection.version>
   	<apache-commons-collections4.version>4.4</apache-commons-collections4.version>
   	<apache-commons-beanutils.version>1.9.4</apache-commons-beanutils.version>
   	<apache-commons-logging.version>1.2</apache-commons-logging.version>
-  	<apache-commons-pool2.version>2.8.0</apache-commons-pool2.version>
-  	<apache-commons-jexl3.version>3.1</apache-commons-jexl3.version>
-  	<apache-commons-vfs2.version>2.7.0</apache-commons-vfs2.version>
-  	<apache-commons-cli.version>1.4</apache-commons-cli.version>
+  	<apache-commons-pool2.version>2.11.1</apache-commons-pool2.version>
+  	<apache-commons-jexl3.version>3.2.1</apache-commons-jexl3.version>
+  	<apache-commons-vfs2.version>2.9.0</apache-commons-vfs2.version>
+  	<apache-commons-cli.version>1.5.0</apache-commons-cli.version>
   	
-  	<apache-commons-httpcore>4.4.13</apache-commons-httpcore>
-  	<apache-commons-httpclient>4.5.12</apache-commons-httpclient>
-  	<apache-commons-httpasyncclient>4.1.4</apache-commons-httpasyncclient>
+  	<apache-commons-httpcore>4.4.15</apache-commons-httpcore>
+  	<apache-commons-httpclient>4.5.13</apache-commons-httpclient>
+  	<apache-commons-httpasyncclient>4.1.5</apache-commons-httpasyncclient>
+  	
   </properties>
   
   <build>
@@ -157,6 +218,7 @@
 	  <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
+        <version>3.2.0</version>
         <executions>
           <execution>
             <id>filter</id>
@@ -183,6 +245,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
+        <version>3.2.0</version>
         <executions>
           <execution>
             <id>attach-artifacts</id>
@@ -275,6 +338,10 @@
       <id>sebastian.palarus</id>
       <name>Sebastian Palarus</name>
     </developer>
+    <developer>
+      <id>jonas.liepe</id>
+      <name>Jonas Liepe</name>
+    </developer>
   </developers>
   
   <scm>
@@ -283,4 +350,5 @@
   </scm>
   
   <url>https://github.com/spalarus/karaf-sodeac-feature</url>
+  
 </project>
