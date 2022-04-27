@@ -174,6 +174,8 @@
   	<apache-commons-jexl3.version>3.2.1</apache-commons-jexl3.version>
   	<apache-commons-vfs2.version>2.9.0</apache-commons-vfs2.version>
   	<apache-commons-cli.version>1.5.0</apache-commons-cli.version>
+  	<apache-commons-digester.version>2.1</apache-commons-digester.version>
+  	<apache-commons-validator.version>1.7</apache-commons-validator.version>
   	
   	<apache-commons-httpcore>4.4.15</apache-commons-httpcore>
   	<apache-commons-httpclient>4.5.13</apache-commons-httpclient>
