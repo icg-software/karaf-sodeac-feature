@@ -48,6 +48,8 @@
 	<feature name="sodeac-apache-commons" description="apache commons libs" version="${pom.version}">
 
 		<bundle>mvn:org.apache.commons/commons-lang3/${apache-commons-lang3.version}</bundle>
+		<bundle>mvn:org.apache.commons/commons-text/${apache-commons-text.version}</bundle>
+		<bundle>mvn:org.apache.commons/commons-configuration2/${apache-commons-configuration2.version}</bundle>
 		<bundle>mvn:org.apache.commons/commons-csv/${apache-commons-csv.version}</bundle>
 		<bundle>mvn:commons-io/commons-io/${apache-commons-io.version}</bundle>
 		<bundle>mvn:commons-dbutils/commons-dbutils/${apache-commons-dbutils.version}</bundle>
