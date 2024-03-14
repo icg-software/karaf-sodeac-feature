@@ -4,7 +4,7 @@
 
   <groupId>org.sodeac</groupId>
   <artifactId>org.sodeac.karaf.feature</artifactId>
-  <version>0.6.10</version>
+  <version>0.7.1</version>
   <packaging>pom</packaging>
 
   <name>Sodeac feature</name>
@@ -20,37 +20,40 @@
     <camel.version>2.25.4</camel.version>
     
     <h2.1.4.version>1.4.200</h2.1.4.version>
-    <h2.2.0.version>2.0.206</h2.2.0.version>
-    <postgres.42.version>42.2.24</postgres.42.version>
+    <h2.2.0.version>2.2.224</h2.2.0.version>
+    <postgres.42.version>42.7.2</postgres.42.version>
     <firebird.3.version>3.0.12</firebird.3.version>
-    <firebird.4.version>4.0.5.java8</firebird.4.version>
-    <firebird.4.export.version>4.0.5</firebird.4.export.version>
-    <sqlserver.version>9.4.1.jre8</sqlserver.version>
+    <firebird.4.version>4.0.10.java11</firebird.4.version>
+    <firebird.4.export.version>4.0.10</firebird.4.export.version>
+    <sqlserver.version>12.6.1.jre11</sqlserver.version>
     
-    <hawtio.version>2.14.4</hawtio.version>
-  	<keycloak.version>12.0.2</keycloak.version>
+    <hawtio.version>2.17.7</hawtio.version>
+  	<keycloak.version>24.0.1</keycloak.version>
     <cave.version>4.2.1</cave.version>
     
-    <groovy.version>2.5.15</groovy.version>
+    <groovy2.version>2.5.23</groovy2.version>
+    <groovy3.version>3.0.21</groovy3.version>
+    <groovy4.version>4.0.19</groovy4.version>
     
-    <cxf.version>3.5.0</cxf.version>
-    <stax2.version>4.2.1</stax2.version>
+    <cxf.version>4.0.3</cxf.version>
     
-    <jackson.version>2.13.1</jackson.version>
-    
-    <jclouds.version>2.2.1</jclouds.version>
-    <jclouds.gson.version>2.2.1</jclouds.gson.version>
-  	<jclouds.okio.version>1.2.0_1</jclouds.okio.version>
-  	<jclouds.okhttp.version>2.2.0_1</jclouds.okhttp.version>
+    <jackson.version>2.16.1</jackson.version>
   	
-  	<asm.version>7.2</asm.version>
+  	<guava-failureaccess.version>1.0.2</guava-failureaccess.version>
+  	<guava.version>33.0.0-jre</guava.version>
+  	<guava.jclouds.version>33.0.0-jre</guava.jclouds.version>
+    
+    <jclouds.version>2.5.0</jclouds.version>
+    <jclouds.gson.version>2.5.0</jclouds.gson.version>
+  	<jclouds.okio.version>1.15.0_1</jclouds.okio.version>
+  	<jclouds.okhttp.version>3.14.9</jclouds.okhttp.version>
   	
-  	<kotlin.version>1.4.10</kotlin.version>
-  	<okio.version>2.9.0_1</okio.version>
-  	<okhttp.version>4.9.1</okhttp.version>
+  	<kotlin.version>1.6.20</kotlin.version>
+  	<okio.version>3.5.0_1</okio.version>
+  	<okhttp.version>4.10.0_3</okhttp.version>
   	
   	<eddsa.version>0.3.0</eddsa.version>
-  	<hierynomus.sshj.version>0.32.0</hierynomus.sshj.version>
+  	<hierynomus.sshj.version>0.38.0</hierynomus.sshj.version>
   	<hierynomus.asn.version>0.6.0</hierynomus.asn.version>
   	
   	<jsch.version>0.1.55_1</jsch.version>
@@ -68,17 +71,18 @@
   	<servicemix-saaj-api-1.4-version>1.4_2</servicemix-saaj-api-1.4-version>
   	<servicemix-saaj-impl-1.4-version>1.5.1_1</servicemix-saaj-impl-1.4-version>
   	
-    <jakarta.jws.version>2.1.0</jakarta.jws.version>
-    <jakarta.xml.version>2.3.3</jakarta.xml.version>
+    <jakarta.jws.version>3.0.0</jakarta.jws.version>
+    <jakarta.xml.version>4.0.2</jakarta.xml.version>
   	<jakarta.json.version>1.1.6</jakarta.json.version>
-  	<jakarta.jaxws.version>2.3.2</jakarta.jaxws.version>
-  	<jakarta.saaj-api-1.4-version>1.4.2</jakarta.saaj-api-1.4-version>
-  	<stax-ex-version>1.8.3</stax-ex-version>
-  	<jakarta.saaj-impl-1.4-version>1.5.0</jakarta.saaj-impl-1.4-version>
+  	<jakarta.jaxws.version>4.0.1</jakarta.jaxws.version>
+  	<jakarta.saaj-api-1.4-version>3.0.1</jakarta.saaj-api-1.4-version>
+  	<jakarta.saaj-impl-1.4-version>3.0.3</jakarta.saaj-impl-1.4-version>
+  	<stax-ex-version>2.1.0</stax-ex-version>
   	
-  	<jodatime.version>2.10.6</jodatime.version>
-  	<dropwizardmetrics-3.version>3.2.6</dropwizardmetrics-3.version>
-  	<dropwizardmetrics-4.version>4.1.9</dropwizardmetrics-4.version>
+  	<jodatime.version>2.12.7</jodatime.version>
+  	
+  	<!-- 
+  	
   	<c3p0.version>0.9.5.5_1</c3p0.version>
   	<hikari-cp-2.version>2.7.9</hikari-cp-2.version>
   	<supercsv.version>2.4.0</supercsv.version>
@@ -86,8 +90,12 @@
   	<grizzly.version>2.4.4</grizzly.version>
   	<freemarker.version>2.3.30</freemarker.version>
   	<caffeine.version>2.8.4</caffeine.version>
-  	<rxjava2.version>2.2.19</rxjava2.version>
   	<opendj.version>4.4.5</opendj.version>
+  	
+  	 -->
+  	
+  	<rxjava2.version>2.2.19</rxjava2.version>
+  	<rxjava3.version>3.1.8</rxjava3.version>
   	
   	<!-- 
   	
@@ -97,8 +105,8 @@
   	
   	 -->
   	 
-  	 <jakarta.activation.version>1.2.1</jakarta.activation.version>
-  	 <jakarta.java.mail.version>1.6.7</jakarta.java.mail.version>
+  	 <jakarta.activation.version>2.1.3</jakarta.activation.version>
+  	 <jakarta.java.mail.version>2.1.3</jakarta.java.mail.version>
   	
   	<annotation-api-1.3.version>1.3_3</annotation-api-1.3.version>
   	<validation-api-1.version>1.1.0.Final</validation-api-1.version>
@@ -107,78 +115,78 @@
   	<inject-api-1.version>1_1</inject-api-1.version>
   	<guice-3.version>3.0</guice-3.version>
   	<guice-4.version>4.2.3</guice-4.version>
+  	<guice-5.version>5.0.1</guice-5.version>
   	
   	<persistence-api.version>2.2</persistence-api.version>
   	<interceptor-api-1.version>1.2.2</interceptor-api-1.version>
   	<aopalliance.version>1.0_6</aopalliance.version>
   	
   	<json.simple.version>1.1.1</json.simple.version>
-  	<gson.version>2.8.9</gson.version> <!-- versions gt 2.8.5 requires Java 9 !!! -->
-  	<snakeyaml.version>1.30</snakeyaml.version>
+  	<gson.version>2.10.1</gson.version> <!-- versions gt 2.8.5 requires Java 9 !!! -->
+  	<snakeyaml.version>2.2</snakeyaml.version>
   	
-  	<jcifs-ng.version>2.1.7</jcifs-ng.version>
+  	<jcifs-ng.version>2.1.10</jcifs-ng.version>
   	<vfs-jcifs-ng.version>1.0.1</vfs-jcifs-ng.version>
   	
+  	<!--
   	<xmlresolver.version>1.2_5</xmlresolver.version>
   	<xerces.version>2.12.0_1</xerces.version>
-  	
-  	<mail-api.version>1.6.2</mail-api.version> <!-- todo 1.6.2 ? -->
-  	
-  	<guava-failureaccess.version>1.0.1</guava-failureaccess.version>
-  	<guava.version>31.0.1-jre</guava.version>
-  	<guava.jclouds.version>23.6.1-jre</guava.jclouds.version>
+  	-->
+  	<!-- <mail-api.version>1.6.2</mail-api.version> todo 1.6.2 ? -->
   	
   	<dom4j-1.version>1.6.1_5</dom4j-1.version>
-  	<dom4j-2.version>2.1.3_1</dom4j-2.version>
+  	<dom4j-2.version>2.1.4_1</dom4j-2.version>
   	
+  	<reactive-streams.version>1.0.4</reactive-streams.version>
+  	
+  	<!--
   	<jboss-marshalling.version>2.0.9.Final_1</jboss-marshalling.version>
-  	<reactive-streams.version>1.0.2</reactive-streams.version>
-  	
   	<javassist.version>3.27.0-GA</javassist.version>
   	<jandex.version>2.0.5.Final</jandex.version>
   	<jboss-logging.version>3.4.2.Final</jboss-logging.version>
-  	
-  	<antlr-2.version>2.7.7_5</antlr-2.version>
-  	<antlr-4.runtime.version>4.9.3</antlr-4.runtime.version>
-  	
   	<bytebuddy.version>1.11.12</bytebuddy.version>
   	<classmate.version>1.5.1</classmate.version>
-  	
   	<hibernate-5.version>5.3.25.Final</hibernate-5.version>
   	<hibernate-5-annotations.version>5.0.5.Final</hibernate-5-annotations.version>
+  	-->
+  	
+  	<antlr-2.version>2.7.7_5</antlr-2.version>
+  	<antlr-3.version>3.5.3_1</antlr-3.version>
+  	<antlr-3.runtime.version>3.5.3_1</antlr-3.runtime.version>
+  	<antlr-4.runtime.version>4.13.1</antlr-4.runtime.version>
   	
   	<vertx.version>3.9.11</vertx.version>
-	<netty.version>4.1.72.Final</netty.version>
-	<netty.tcnative.version>2.0.46.Final</netty.tcnative.version>
+	<netty.version>4.1.107.Final</netty.version>
+	<netty.tcnative.version>2.0.65.Final</netty.tcnative.version>
   	
-  	<bouncycastle-bcprov.version>1.69</bouncycastle-bcprov.version>
-  	<bouncycastle-pkix.version>1.69</bouncycastle-pkix.version>
-  	<bouncycastle-bcpg.version>1.69</bouncycastle-bcpg.version>
+  	<bouncycastle-bcprov.version>1.77</bouncycastle-bcprov.version>
+  	<bouncycastle-pkix.version>1.77</bouncycastle-pkix.version>
+  	<bouncycastle-bcpg.version>1.77</bouncycastle-bcpg.version>
   	
-  	<jjwt-api.version>0.11.2</jjwt-api.version>
-  	<jjwt-impl.version>0.11.2</jjwt-impl.version>
+  	<jjwt-api.version>0.12.5</jjwt-api.version>
+  	<jjwt-impl.version>0.12.5</jjwt-impl.version>
   	
-  	<apache-commons-lang3.version>3.12.0</apache-commons-lang3.version>
-  	<apache-commons-csv.version>1.9.0</apache-commons-csv.version>
-  	<apache-commons-io.version>2.11.0</apache-commons-io.version>
-  	<apache-commons-dbutils.version>1.7</apache-commons-dbutils.version>
-  	<apache-commons-compress.version>1.21</apache-commons-compress.version>
-  	<apache-commons-codec.version>1.15</apache-commons-codec.version>
-  	<apache-commons-net.version>3.8.0</apache-commons-net.version>
+  	<apache-commons-lang3.version>3.14.0</apache-commons-lang3.version>
+  	<apache-commons-csv.version>1.10.0</apache-commons-csv.version>
+  	<apache-commons-io.version>2.15.1</apache-commons-io.version>
+  	<apache-commons-dbutils.version>1.8.1</apache-commons-dbutils.version>
+  	<apache-commons-compress.version>1.26.1</apache-commons-compress.version>
+  	<apache-commons-codec.version>1.16.1</apache-commons-codec.version>
+  	<apache-commons-net.version>3.10.0</apache-commons-net.version>
   	<apache-commons-math3.version>3.6.1</apache-commons-math3.version>
   	<apache-commons-collection.version>3.2.2</apache-commons-collection.version>
   	<apache-commons-collections4.version>4.4</apache-commons-collections4.version>
   	<apache-commons-beanutils.version>1.9.4</apache-commons-beanutils.version>
-  	<apache-commons-logging.version>1.2</apache-commons-logging.version>
-  	<apache-commons-pool2.version>2.11.1</apache-commons-pool2.version>
-  	<apache-commons-jexl3.version>3.2.1</apache-commons-jexl3.version>
+  	<apache-commons-logging.version>1.3.0</apache-commons-logging.version>
+  	<apache-commons-pool2.version>2.12.0</apache-commons-pool2.version>
+  	<apache-commons-jexl3.version>3.3</apache-commons-jexl3.version>
   	<apache-commons-vfs2.version>2.9.0</apache-commons-vfs2.version>
-  	<apache-commons-cli.version>1.5.0</apache-commons-cli.version>
-  	<apache-commons-digester.version>2.1</apache-commons-digester.version>
-  	<apache-commons-validator.version>1.7</apache-commons-validator.version>
+  	<apache-commons-cli.version>1.6.0</apache-commons-cli.version>
+  	<apache-commons-digester.version>3.2</apache-commons-digester.version>
+  	<apache-commons-validator.version>1.8.0</apache-commons-validator.version>
   	
-  	<apache-commons-httpcore>4.4.15</apache-commons-httpcore>
-  	<apache-commons-httpclient>4.5.13</apache-commons-httpclient>
+  	<apache-commons-httpcore>4.4.16</apache-commons-httpcore>
+  	<apache-commons-httpclient>4.5.14</apache-commons-httpclient>
   	<apache-commons-httpasyncclient>4.1.5</apache-commons-httpasyncclient>
   	
   </properties>
@@ -194,7 +202,7 @@
 	  <plugin>
 	    <groupId>org.apache.maven.plugins</groupId>
 	    <artifactId>maven-source-plugin</artifactId>
-	    <version>3.0.1</version>
+	    <version>3.3.0</version>
 	    <executions>
 	      <execution>
 	        <id>attach-sources</id>
@@ -207,7 +215,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.0.0</version>
+        <version>3.6.3</version>
         <executions>
 	        <execution>
 	          <id>attach-javadocs</id>
@@ -234,7 +242,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>buildnumber-maven-plugin</artifactId>
-        <version>1.4</version>
+        <version>3.2.0</version>
 		<executions>
           <execution>
             <phase>validate</phase>
@@ -247,7 +255,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
-        <version>3.2.0</version>
+        <version>3.5.0</version>
         <executions>
           <execution>
             <id>attach-artifacts</id>
@@ -308,7 +316,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-gpg-plugin</artifactId>
-					<version>1.6</version>
+					<version>3.1.0</version>
 					<executions>
 						<execution>
 							<id>sign-artifacts</id>
