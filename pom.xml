@@ -4,7 +4,7 @@
 
   <groupId>org.sodeac</groupId>
   <artifactId>org.sodeac.karaf.feature</artifactId>
-  <version>0.6.10</version>
+  <version>0.6.10a</version>
   <packaging>pom</packaging>
 
   <name>Sodeac feature</name>
@@ -158,6 +158,8 @@
   	<jjwt-api.version>0.11.2</jjwt-api.version>
   	<jjwt-impl.version>0.11.2</jjwt-impl.version>
   	
+  	<apache-commons-text.version>1.10.0</apache-commons-text.version>
+  	<apache-commons-configuration2.version>2.8.0</apache-commons-configuration2.version>
   	<apache-commons-lang3.version>3.12.0</apache-commons-lang3.version>
   	<apache-commons-csv.version>1.9.0</apache-commons-csv.version>
   	<apache-commons-io.version>2.11.0</apache-commons-io.version>
