@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2019, 2020 Sebastian Palarus All rights reserved. This 
+	program and the accompanying materials are made available under the terms 
+	of the Eclipse Public License v2.0 which accompanies this distribution, and 
+	is available at http://www.eclipse.org/legal/epl-v20.html Contributors: Sebastian 
+	Palarus - initial API and implementation -->
+	
+<features name="${project.artifactId}-${project.version}"
+	xmlns="http://karaf.apache.org/xmlns/features/v1.3.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.3.0 http://karaf.apache.org/xmlns/features/v1.3.0">
+
+	<repository>mvn:org.apache.activemq/artemis-features/${artemis.version}/xml/features</repository>
+	<repository>mvn:io.hawt/hawtio-karaf/${hawtio.version}/xml/features</repository>
+	<repository>mvn:org.apache.cxf.karaf/apache-cxf/${cxf.version}/xml/features</repository>
+
+	<feature name="sodeac-core" description="sodeac core libs" version="${pom.version}">
+
+		<feature>scr</feature>
+		<feature>jdbc</feature>
+
+		<bundle>mvn:org.glassfish/jakarta.json/${jakarta.json.version}</bundle>
+
+		<bundle>mvn:org.sodeac/org.sodeac.karaf.sftphome/1.1.0</bundle>
+		<bundle>mvn:org.sodeac/org.sodeac.common/${sodeac.version}</bundle>
+		<bundle>mvn:org.sodeac/org.sodeac.streampartitioner.api/1.0.0</bundle>
+		<bundle>mvn:org.sodeac/org.sodeac.streampartitioner.provider/1.0.1</bundle>
+		<bundle>mvn:org.sodeac/org.sodeac.xuri/1.0.0</bundle>
+		<bundle>mvn:org.sodeac/org.sodeac.multichainlist/1.0.2</bundle>
+		<bundle>mvn:org.sodeac/org.sodeac.dbschema.api/1.0.0</bundle>
+		<bundle>mvn:org.sodeac/org.sodeac.dbschema.provider/1.0.2</bundle>
+		<bundle>mvn:org.sodeac/org.sodeac.dbschema.driver.base/1.0.0</bundle>
+		<bundle>mvn:org.sodeac/org.sodeac.dbschema.driver.h2/1.0.0</bundle>
+		<bundle>mvn:org.sodeac/org.sodeac.dbschema.driver.postgresql/1.0.0</bundle>
+
+		<bundle>mvn:org.postgresql/postgresql/${postgres.42.version}</bundle>
+		<bundle>mvn:com.h2database/h2/${h2.2.0.version}</bundle>
+		<bundle>wrap:mvn:org.firebirdsql.jdbc/jaybird-jdk18/${firebird.3.version}$Bundle-Name=Firebird 3 JDBC Driver&amp;Bundle-SymbolicName=org.firebirdsql.jdbc.jaybird&amp;Bundle-Version=${firebird.3.version}&amp;Export-Package= *;version=${firebird.3.version}</bundle> <!-- real bundle -->
+		<bundle>wrap:mvn:org.firebirdsql.jdbc/jaybird/${firebird.4.version}$Bundle-Name=Firebird 4 JDBC Driver&amp;Bundle-SymbolicName=org.firebirdsql.jdbc.jaybird&amp;Bundle-Version=${firebird.4.version}&amp;Export-Package= *;version=${firebird.4.export.version}</bundle> <!-- real bundle -->
+		<bundle>mvn:com.microsoft.sqlserver/mssql-jdbc/${sqlserver.version}</bundle>
+
+		<bundle>mvn:org.antlr/antlr4-runtime/${antlr-4.runtime.version}</bundle>
+		
+	</feature>
+
+	<feature name="sodeac-apache-commons" description="apache commons libs" version="${pom.version}">
+
+		<bundle>mvn:org.apache.commons/commons-lang3/${apache-commons-lang3.version}</bundle>
+		<bundle>mvn:org.apache.commons/commons-text/${apache-commons-text.version}</bundle>
+		<bundle>mvn:org.apache.commons/commons-configuration2/${apache-commons-configuration2.version}</bundle>
+		<bundle>mvn:org.apache.commons/commons-csv/${apache-commons-csv.version}</bundle>
+		<bundle>mvn:commons-io/commons-io/${apache-commons-io.version}</bundle>
+		<bundle>mvn:commons-dbutils/commons-dbutils/${apache-commons-dbutils.version}</bundle>
+		<bundle>mvn:org.apache.commons/commons-compress/${apache-commons-compress.version}</bundle>
+		<bundle>mvn:commons-codec/commons-codec/${apache-commons-codec.version}</bundle>
+		<bundle>mvn:commons-net/commons-net/${apache-commons-net.version}</bundle>
+		<bundle>mvn:org.apache.commons/commons-math3/${apache-commons-math3.version}</bundle>
+		<bundle>mvn:commons-collections/commons-collections/${apache-commons-collection.version}</bundle>
+		<bundle>mvn:org.apache.commons/commons-collections4/${apache-commons-collections4.version}</bundle>
+		<bundle>mvn:commons-beanutils/commons-beanutils/${apache-commons-beanutils.version}</bundle>
+		<bundle>mvn:commons-logging/commons-logging/${apache-commons-logging.version}</bundle>
+		<bundle>mvn:org.apache.commons/commons-pool2/${apache-commons-pool2.version}</bundle>
+		<bundle>mvn:org.apache.commons/commons-jexl3/${apache-commons-jexl3.version}</bundle>
+		<bundle>mvn:org.apache.commons/commons-vfs2/${apache-commons-vfs2.version}</bundle>
+		<bundle>mvn:commons-cli/commons-cli/${apache-commons-cli.version}</bundle>
+		<bundle>mvn:commons-digester/commons-digester/${apache-commons-digester.version}</bundle>
+		<bundle>mvn:commons-validator/commons-validator/${apache-commons-validator.version}</bundle>
+
+		<bundle>mvn:org.apache.httpcomponents/httpcore-osgi/${apache-commons-httpcore}</bundle>
+		<bundle>mvn:org.apache.httpcomponents/httpasyncclient-osgi/${apache-commons-httpasyncclient}</bundle>
+		<bundle>mvn:org.apache.httpcomponents/httpclient-osgi/${apache-commons-httpclient}</bundle>
+
+	</feature>
+
+	<feature name="sodeac-security" description="security libs" version="${pom.version}">
+
+		<bundle>mvn:org.bouncycastle/bcprov-jdk15on/${bouncycastle-bcprov.version}</bundle>
+		<bundle>mvn:org.bouncycastle/bcpg-jdk15on/${bouncycastle-bcpg.version}</bundle>
+		<bundle>mvn:org.bouncycastle/bcpkix-jdk15on/${bouncycastle-pkix.version}</bundle>
+
+		<bundle>mvn:io.jsonwebtoken/jjwt-api/${jjwt-api.version}</bundle>
+		<bundle>mvn:io.jsonwebtoken/jjwt-impl/${jjwt-impl.version}</bundle>
+
+	</feature>
+
+	<feature name="sodeac-jaxws-bundles" description="sodeac jaxws libs" version="${pom.version}">
+
+		<!-- SERVICEMIX -->
+
+		<!-- <bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxws-api-2.2/${servicemix-spec.version}</bundle> -->
+		<bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxws-api-2.3/${servicemix-jaxws-2.3.version}</bundle>
+
+		<!-- <bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.saaj-api-1.3/${servicemix-spec.version}</bundle> -->
+		<!-- <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.saaj-impl/${servicemix-saaj-impl-1.3-version}</bundle> -->
+		<bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.saaj-api-1.4/${servicemix-saaj-api-1.4-version}</bundle>
+		<!-- <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.saaj-impl/${servicemix-saaj-impl-1.4-version}</bundle> -->
+
+		<!-- JAKARTA -->
+
+		<!-- <bundle>mvn:jakarta.xml.ws/jakarta.xml.ws-api/${jakarta.jaxws.version}</bundle> -->
+		<!-- <bundle>wrap:mvn:com.sun.xml.ws/jaxws-rt/${jakarta.jaxws.version}$Bundle-Name=JAX-WS 
+			Runtime with module descriptor&amp;Bundle-SymbolicName=jaxws-rt&amp;Bundle-Version=${jakarta.jaxws.version}</bundle> -->
+		<!-- <bundle>mvn:com.sun.xml.messaging.saaj/saaj-impl/${jakarta.saaj-impl-1.3-version}</bundle> -->
+		<!-- <bundle>mvn:jakarta.xml.soap/jakarta.xml.soap-api/${jakarta.saaj-api-1.4-version}</bundle> -->
+		<!-- <bundle>mvn:org.jvnet.staxex/stax-ex/${stax-ex-version}</bundle> -->
+		<!-- <bundle>wrap:mvn:com.sun.xml.messaging.saaj/saaj-impl/${jakarta.saaj-impl-1.4-version}$Bundle-Name=Implementation 
+			of Jakarta SOAP with Attachments Specification&amp;Bundle-SymbolicName=com.sun.xml.messaging.saaj.saaj-impl&amp;Bundle-Version=${jakarta.saaj-impl-1.4-version}</bundle> -->
+
+	</feature>
+
+	<feature name="sodeac-common-bundles" description="sodeac core libs" version="${pom.version}">
+
+		<feature>sodeac-apache-commons</feature>
+		<feature>sodeac-security</feature>
+		<feature>sodeac-core</feature>
+		<feature>sodeac-jaxws-bundles</feature>
+
+		<!-- <bundle>mvn:org.json/json/20190722</bundle> -->
+		<!-- <bundle>mvn:io.dropwizard.metrics/metrics-core/4.1.9</bundle> -->
+
+		<bundle start-level="30">mvn:javax.validation/validation-api/${validation-api-1.version}</bundle>
+
+		<!-- <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.okio/${okio.version}</bundle> 
+			<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.okhttp/${okhttp.version}</bundle> -->
+
+		<bundle>wrap:mvn:org.jetbrains.kotlin/kotlin-stdlib/${kotlin.version}$Bundle-Name=kotlin-stdlib&amp;Bundle-SymbolicName=kotlin-stdlib&amp;Bundle-Version=${kotlin.version}</bundle>
+		<bundle>wrap:mvn:org.jetbrains.kotlin/kotlin-stdlib-common/${kotlin.version}$Bundle-Name=kotlin-stdlib-common&amp;Bundle-SymbolicName=kotlin-stdlib-common&amp;Bundle-Version=${kotlin.version}</bundle>
+
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.okio/${okio.version}</bundle>
+		<bundle>wrap:mvn:com.squareup.okhttp3/okhttp/${okhttp.version}$Bundle-Name=okhttp&amp;Bundle-SymbolicName=com.squareup.okhttp3.okhttp&amp;Bundle-Version=${okhttp.version}&amp;Export-Package= *;version=${okhttp.version}&amp;Import-Package=okio,*;resolution:=optional</bundle>
+
+		<bundle>mvn:com.google.guava/failureaccess/${guava-failureaccess.version}</bundle>
+		<bundle>mvn:com.google.guava/guava/${guava.version}</bundle>
+		<bundle>mvn:com.googlecode.json-simple/json-simple/${json.simple.version}</bundle>
+		<bundle>mvn:com.google.code.gson/gson/${gson.version}</bundle>
+
+		<!-- JAKARTA -->
+		
+		<!-- <bundle>mvn:jakarta.activation/jakarta.activation-api/${jakarta.activation.version}</bundle> -->
+		<!-- <bundle>mvn:com.sun.activation/jakarta.activation/${jakarta.activation.version}</bundle> -->
+		<!-- <bundle>mvn:com.sun.mail/jakarta.mail/${jakarta.java.mail.version}</bundle> -->
+
+		<!-- SERVICEMIX -->
+		
+		<bundle start-level="30">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.activation-api-1.1/${servicemix-spec.version}</bundle>
+
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.dom4j/${dom4j-1.version}</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.dom4j/${dom4j-2.version}</bundle>
+
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.antlr/${antlr-2.version}</bundle>
+
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xpp3/1.1.4c_7</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.quartz/2.3.1_1</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jaxb-impl/2.2.11_1</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jzlib/1.1.3_2</bundle>
+
+		<bundle>mvn:jakarta.jws/jakarta.jws-api/${jakarta.jws.version}</bundle>
+
+		<bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.annotation-api-1.3/${annotation-api-1.3.version}</bundle>
+		<bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxrs-api-2.1/${servicemix-jaxrs-api-2.1.version}</bundle>
+
+		<!-- OSGI -->
+
+		<bundle>mvn:org.osgi/org.osgi.util.function/1.1.0</bundle>
+		<bundle>mvn:org.osgi/org.osgi.util.promise/1.1.1</bundle>
+
+	</feature>
+
+	<feature name="sodeac-jackson" description="jackson components" version="${pom.version}">
+
+		<bundle start-level="30">mvn:javax.validation/validation-api/${validation-api-2.version}</bundle>
+		<bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxrs-api-2.1/${servicemix-jaxrs-api-2.1.version}</bundle>
+		
+		<bundle>mvn:com.fasterxml.jackson.core/jackson-core/${jackson.version}</bundle>
+		<bundle>mvn:com.fasterxml.jackson.core/jackson-annotations/${jackson.version}</bundle>
+		<bundle>mvn:com.fasterxml.jackson.core/jackson-databind/${jackson.version}</bundle>
+		
+		<bundle>mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${jackson.version}</bundle>
+		<bundle>mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${jackson.version}</bundle>
+		
+		<bundle>mvn:com.fasterxml.jackson.module/jackson-module-jsonSchema/${jackson.version}</bundle>
+		<bundle>mvn:com.fasterxml.jackson.module/jackson-module-jaxb-annotations/${jackson.version}</bundle>
+		
+		<bundle>mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-xml/${jackson.version}</bundle>
+		
+		<bundle>mvn:com.fasterxml.jackson.datatype/jackson-datatype-jsr310/${jackson.version}</bundle>
+
+	</feature>
+
+	<feature name="sodeac-cxf" description="cxf for sdc" version="${pom.version}">
+
+		<!-- cxf feature without corba -->
+
+		<feature>sodeac-jackson</feature>
+		<feature>sodeac-jaxws-bundles</feature>
+
+		<!-- <feature version="${cxf.version}">cxf</feature> <feature version="${cxf.version}">cxf-rs-security-oauth2</feature> -->
+
+		<feature version="${cxf.version}">cxf-core</feature>
+		<feature version="${cxf.version}">cxf-jaxws</feature>
+		<feature version="${cxf.version}">cxf-jaxrs</feature>
+		<feature version="${cxf.version}">cxf-databinding-jaxb</feature>
+		<feature version="${cxf.version}">cxf-databinding-aegis</feature>
+		<feature version="${cxf.version}">cxf-bindings-coloc</feature>
+		<feature version="${cxf.version}">cxf-http-provider</feature>
+		<feature version="${cxf.version}">cxf-transports-local</feature>
+		<feature version="${cxf.version}">cxf-transports-jms</feature>
+		<feature version="${cxf.version}">cxf-transports-udp</feature>
+		<feature version="${cxf.version}">cxf-xjc-runtime</feature>
+		<feature version="${cxf.version}">cxf-ws-security</feature>
+		<feature version="${cxf.version}">cxf-rs-security-oauth2</feature>
+		<feature version="${cxf.version}">cxf-ws-rm</feature>
+		<feature version="${cxf.version}">cxf-ws-mex</feature>
+		<feature version="${cxf.version}">cxf-javascript</feature>
+		<feature version="${cxf.version}">cxf-frontend-javascript</feature>
+		<feature version="${cxf.version}">cxf-features-clustering</feature>
+		<feature version="${cxf.version}">cxf-features-metrics</feature>
+		<feature version="${cxf.version}">cxf-features-throttling</feature>
+		<feature version="${cxf.version}">cxf-features-logging</feature>
+
+		<!-- <bundle>mvn:org.codehaus.woodstox/stax2-api/${stax2.version}</bundle> -->
+
+		<!-- <bundle>mvn:javax.persistence/javax.persistence-api/${persistence-api.version}</bundle> -->
+		<bundle>mvn:org.apache.cxf/cxf-rt-rs-security-sso-oidc/${cxf.version}</bundle>
+		<bundle>mvn:org.apache.cxf.karaf/cxf-karaf-commands/${cxf.version}</bundle>
+
+		<bundle>mvn:org.osgi/org.osgi.util.function/1.1.0</bundle>
+		<bundle>mvn:org.osgi/org.osgi.util.promise/1.1.1</bundle>
+
+		<bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.annotation-api-1.3/${annotation-api-1.3.version}</bundle>
+
+
+	</feature>
+
+	<feature name="sodeac-netty" description="sodeac netty components">
+
+		<feature>sodeac-security</feature>
+
+		<bundle>mvn:io.netty/netty-common/${netty.version}</bundle>
+		<bundle>mvn:io.netty/netty-resolver/${netty.version}</bundle>
+		<bundle>mvn:io.netty/netty-buffer/${netty.version}</bundle>
+		<bundle>mvn:io.netty/netty-transport/${netty.version}</bundle>
+		<bundle>mvn:io.netty/netty-codec/${netty.version}</bundle>
+		<bundle>mvn:io.netty/netty-codec-http/${netty.version}</bundle>
+		<bundle>mvn:io.netty/netty-codec-http2/${netty.version}</bundle>
+		<bundle>mvn:io.netty/netty-codec/${netty.version}</bundle>
+		<bundle>mvn:io.netty/netty-codec-socks/${netty.version}</bundle>
+		<bundle>mvn:io.netty/netty-handler/${netty.version}</bundle>
+		<bundle>mvn:io.netty/netty-handler-proxy/${netty.version}</bundle>
+		<bundle>mvn:io.netty/netty-codec-dns/${netty.version}</bundle>
+		<bundle>mvn:io.netty/netty-resolver-dns/${netty.version}</bundle>
+		<bundle>mvn:io.netty/netty-transport-native-unix-common/${netty.version}</bundle>
+		<bundle>mvn:io.netty/netty-transport-native-epoll/${netty.version}</bundle>
+		<bundle>mvn:io.netty/netty-transport-native-kqueue/${netty.version}</bundle>
+		<bundle>mvn:io.netty/netty-tcnative-classes/${netty.tcnative.version}</bundle>
+		<bundle>mvn:io.netty/netty-codec-stomp/${netty.version}</bundle>
+		<bundle>mvn:io.netty/netty-codec-mqtt/${netty.version}</bundle>
+
+	</feature>
+
+	<feature name="sodeac-hibernate" description="sodeac hibernate components" version="${pom.version}">
+
+		<feature>transaction-api</feature>
+		<feature>aries-blueprint</feature>
+		<feature>jpa</feature>
+		<feature>hibernate</feature>
+
+<!-- 		<bundle>mvn:javax.persistence/javax.persistence-api/${persistence-api.version}</bundle> -->
+		<bundle>mvn:javax.interceptor/javax.interceptor-api/${interceptor-api-1.version}</bundle>
+
+		<bundle>mvn:org.jboss.logging/jboss-logging/${jboss-logging.version}</bundle>
+		
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.antlr/${antlr-2.version}</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.dom4j/${dom4j-2.version}</bundle>
+		
+		<bundle>mvn:org.apache.aries.blueprint/blueprint-maven-plugin-annotation/1.3.0</bundle>
+		
+		<!-- 
+
+
+		<bundle>mvn:net.bytebuddy/byte-buddy/${bytebuddy.version}</bundle>
+		<bundle>mvn:org.jboss/jandex/${jandex.version}</bundle>
+		<bundle>mvn:org.javassist/javassist/${javassist.version}</bundle>
+		<bundle>mvn:com.fasterxml/classmate/${classmate.version}</bundle>
+
+		<bundle>mvn:org.hibernate.common/hibernate-commons-annotations/${hibernate-5-annotations.version}</bundle>
+		<bundle>mvn:org.hibernate/hibernate-core/${hibernate-5.version}</bundle>
+		<bundle>mvn:org.hibernate/hibernate-osgi/${hibernate-5.version}</bundle>
+		
+		 -->
+
+	</feature>
+
+	<feature name="sodeac-karaf-basics" description="karaf basics for sodeac distribution" version="${pom.version}">
+
+		<details>karaf basic features</details>
+
+		<feature>standard</feature>
+		<feature>scr</feature>
+		<feature>http</feature>
+		<feature>webconsole</feature>
+		<feature>http-whiteboard</feature>
+		<feature>jasypt-encryption</feature>
+		<feature>jdbc</feature>
+		<feature>transaction</feature>
+		<feature>jndi</feature>
+		<feature>pax-jdbc</feature>
+		<feature>pax-jdbc-config</feature>
+		<feature>pax-jdbc-pool-dbcp2</feature>
+		<feature>pax-jdbc-spec</feature>
+		<feature>jms</feature>
+		<feature>pax-jms-pool</feature>
+		<feature>pax-jms-config</feature>
+		<feature>aries-blueprint</feature>
+		<feature>scheduler</feature>
+		
+		<bundle>mvn:org.reactivestreams/reactive-streams/${reactive-streams.version}</bundle>
+		<bundle>mvn:io.reactivex.rxjava2/rxjava/${rxjava2.version}</bundle>
+
+	</feature>
+
+	<feature name="sodeac-standalone" description="sodeac distribution" version="${pom.version}">
+
+		<feature>sodeac-karaf-basics</feature>
+		<feature>sodeac-apache-commons</feature>
+		<feature>sodeac-security</feature>
+
+		<feature>sodeac-common-bundles</feature>
+		<feature>sodeac-core</feature>
+		<feature>sodeac-cxf</feature>
+		<feature>sodeac-hibernate</feature>
+		<feature>sodeac-netty</feature>
+		<feature>hawtio</feature>
+		<feature>artemis-core-client</feature>
+		<feature>artemis-jms-client</feature>
+		<feature>artemis</feature>
+		<feature>pax-jms-artemis</feature>
+
+		<configfile finalname="etc/org.apache.activemq.artemis.cfg">mvn:org.sodeac/org.sodeac.karaf.bs4.feature/${pom.version}/cfg</configfile>
+		<configfile finalname="etc/artemis-sodeac-local.xml">mvn:org.sodeac/org.sodeac.karaf.bs4.feature/${pom.version}/xml/artemis-sodeac-local</configfile>
+		<configfile finalname="etc/artemis-sodeac-unlisten.xml">mvn:org.sodeac/org.sodeac.karaf.bs4.feature/${pom.version}/xml/artemis-sodeac-unlisten</configfile>
+
+		<feature>service-wrapper</feature>
+
+	</feature>
+
+	<feature name="sodeac-master" description="sodeac master" version="${pom.version}">
+
+		<feature>sodeac-karaf-basics</feature>
+		<feature>sodeac-security</feature>
+
+		<feature>sodeac-core</feature>
+		<feature>sodeac-hibernate</feature> <!-- 4 keycloak ? -->
+		<feature>hawtio</feature>
+		<feature>artemis-core-client</feature>
+		<feature>artemis-jms-client</feature>
+		<feature>artemis</feature>
+		<feature>pax-jms-artemis</feature>
+
+		<configfile finalname="etc/org.apache.activemq.artemis.cfg">mvn:org.sodeac/org.sodeac.karaf.bs4.feature/${pom.version}/cfg</configfile>
+		<configfile finalname="etc/artemis-sodeac-local.xml">mvn:org.sodeac/org.sodeac.karaf.bs4.feature/${pom.version}/xml/artemis-sodeac-local</configfile>
+		<configfile finalname="etc/artemis-sodeac-unlisten.xml">mvn:org.sodeac/org.sodeac.karaf.bs4.feature/${pom.version}/xml/artemis-sodeac-unlisten</configfile>
+
+		<feature>service-wrapper</feature>
+
+	</feature>
+
+	<feature name="sodeac-worker" description="sodeac worker" version="${pom.version}">
+
+		<feature>sodeac-karaf-basics</feature>
+		<feature>sodeac-common-bundles</feature>
+		<feature>sodeac-core</feature>
+		<feature>sodeac-cxf</feature>
+		<feature>hawtio</feature>
+		<feature>artemis-core-client</feature>
+		<feature>artemis-jms-client</feature>
+
+	</feature>
+
+</features>
