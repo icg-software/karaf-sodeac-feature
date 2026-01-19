@@ -34,7 +34,7 @@
 		<bundle>mvn:org.sodeac/org.sodeac.dbschema.driver.postgresql/1.0.0</bundle>
 
 		<bundle>mvn:org.postgresql/postgresql/${postgres.42.version}</bundle>
-		<bundle>mvn:com.h2database/h2/${h2.2.0.version}</bundle>
+		<bundle>mvn:com.h2database/h2/${h2.1.4.version}</bundle>
 		<bundle>wrap:mvn:org.firebirdsql.jdbc/jaybird-jdk18/${firebird.3.version}$Bundle-Name=Firebird 3 JDBC Driver&amp;Bundle-SymbolicName=org.firebirdsql.jdbc.jaybird&amp;Bundle-Version=${firebird.3.version}&amp;Export-Package= *;version=${firebird.3.version}</bundle> <!-- real bundle -->
 		<bundle>wrap:mvn:org.firebirdsql.jdbc/jaybird/${firebird.4.version}$Bundle-Name=Firebird 4 JDBC Driver&amp;Bundle-SymbolicName=org.firebirdsql.jdbc.jaybird&amp;Bundle-Version=${firebird.4.version}&amp;Export-Package= *;version=${firebird.4.export.version}</bundle> <!-- real bundle -->
 		<bundle>mvn:com.microsoft.sqlserver/mssql-jdbc/${sqlserver.version}</bundle>
