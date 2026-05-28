@@ -14,7 +14,7 @@
         <feature>bsx2</feature>
     </feature>
 
-    <feature name="bsx1" version="${project.version}" description="Core BSX feature — base bundles required by all BSX projects" start-level="76">
+    <feature name="bsx1" version="${project.version}" description="Core BSX feature — base bundles required by all BSX projects">
         <feature>bsx1-base</feature>
         <feature>bsx1-sodeac</feature>
         <feature>bsx1-camel</feature>
@@ -22,21 +22,6 @@
         <feature>bsx1-jackson</feature>
         <feature>bsx1-database</feature>
         <feature>bsx1-jms</feature>
-
-        <!-- separate bsx-core project -->
-        <bundle>mvn:com.icg-software/com.icg-software.bsx.core/${bsx.core.version}</bundle>
-        <!-- bs:bsx-core projects + bsx-base-eip (dependant on mail.model)  -->
-        <bundle>mvn:com.icg-software/com.icg-software.bsx.utils/${bsx.utils.version}</bundle>
-        <bundle>mvn:com.icg-software/com.icg-software.integration.mail.model/${integration.mail.model.version}</bundle>
-        <bundle>mvn:com.icg-software.bsx/com.icg-software.bsx.eip/${bsx.eip.version}</bundle>
-        <bundle>mvn:com.icg-software/com.icg-software.bsx.db.common/${bsx.db.common.version}</bundle>
-        <bundle>mvn:com.icg-software/com.icg-software.bsx.jms.connetionfactory.bsx/${bsx.jms.connetionfactory.bsx.version}</bundle>
-        <bundle>mvn:com.icg-software/com.icg-software.bsx.karaf.commands/${bsx.karaf.commands.version}</bundle>
-        <bundle>mvn:com.icg-software/com.icg-software.integration.delegatemail/${integration.delegatemail.version}</bundle>
-        <bundle>mvn:com.icg-software/com.icg-software.integration.delegatemail.ssp.zerfdb/${integration.delegatemail.ssp.zerfdb.version}</bundle>
-        <bundle>mvn:com.icg-software/com.icg-software.integration.sendmail/${integration.sendmail.version}</bundle>
-
-        <bundle>mvn:com.icg-software/com.icg-software.integration.oracle.common/${oracle.common.version}</bundle>
     </feature>
 
     <feature name="bsx1-base" version="${project.version}" description="BSX base OSGi dependencies" start-level="70">

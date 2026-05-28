@@ -18,14 +18,6 @@
 
     <properties>
         <!-- only needed for features.xml -->
-        <!-- bsx-core bundles -->
-        <bsx.jms.connetionfactory.bsx.version>2.0.0-SNAPSHOT</bsx.jms.connetionfactory.bsx.version>
-        <bsx.karaf.commands.version>2.0.0-SNAPSHOT</bsx.karaf.commands.version>
-        <integration.delegatemail.version>2.0.0-SNAPSHOT</integration.delegatemail.version>
-        <integration.delegatemail.ssp.zerfdb.version>2.0.0-SNAPSHOT</integration.delegatemail.ssp.zerfdb.version>
-        <integration.sendmail.version>2.0.0-SNAPSHOT</integration.sendmail.version>
-        <oracle.common.version>2.0.0-SNAPSHOT</oracle.common.version>
-
         <!-- Sodeac: transitive prerequisites -->
         <sodeac.multichainlist.version>1.0.1</sodeac.multichainlist.version>
         <sodeac.xuri.version>1.0.0</sodeac.xuri.version>
