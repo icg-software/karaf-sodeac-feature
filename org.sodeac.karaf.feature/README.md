@@ -1,18 +1,43 @@
 # karaf-sodeac-feature
 
-### was durch com.icg-software.bsx.jms.connetionfactory.bsx wegfällt
+## Installation in Karaf 4.4.10
 
-- com.icg-software/com.icg-software.bsx.jms.connetionfactory.bsx/2.0.0-SNAPSHOT
-- jms.connetionfactory.bsx in bsx-core = CF-Bundle: https://git.extern1.icg-software.de/bs/bsx-core.git
+```bash
+# open karaf console
+karaf
+```
 
-| Feature                                   | Grund                                                                                       |
-|-------------------------------------------|---------------------------------------------------------------------------------------------|
-| `pax-jms-config`                          | Liest cfg-Dateien → CF erstellen. CF-Bundle macht das direkt via Blueprint                  |
-| `pax-jms-pool`                            | Connection Pooling. CF-Bundle nutzt `JmsPoolXAConnectionFactory` selbst                     |
-| `pax-jms-artemis`                         | Artemis-spezifischer pax-jms Provider. CF-Bundle nutzt `ActiveMQXAConnectionFactory` direkt |
-| `org.ops4j.connectionfactory-artemis.cfg` | War die Config für pax-jms-config                                                           |
+```bash
+feature:repo-add mvn:org.sodeac/org.sodeac.karaf.feature/2.0.0-SNAPSHOT/xml/features
 
-Was bleibt:
+#installs all at once
+feature:install sodeac-standalone
+```
 
-- jms — JMS API selbst
-- artemis-core-client + artemis-jms-client — die Artemis-Client-Bibliotheken die jms.connetionfactory.bsx intern verwendet
+### all other features
+
+```bash
+
+# 1) bsx-mail-service (outlook)
+feature:repo-add mvn:com.icg-software/graph.sdk.feature/2.0.0-SNAPSHOT/xml/features
+
+#installs all at once
+feature:install bsx-mailservice
+
+
+# 2) all bs-db (should be after bsx-mail-service, otherwise there might be failure in com.icg-software.bsx.datasource.icgbs.localhost!)
+# connect datasource: localhost or stage (only one is allowed to be active!)
+bundle:install -s mvn:com.icg-software.bsx/com.icg-software.bsx.datasource.icgbs.localhost/2.0.0-SNAPSHOT
+#bundle:install -s mvn:com.icg-software.bsx/com.icg-software.bsx.datasource.icgbs.sspbs.stage/2.0.0-SNAPSHOT
+
+# includes bs-db
+feature:repo-add mvn:com.icg-software/com.icg-software.integration.easy.feature/2.0.0-SNAPSHOT/xml/features
+feature:install bsx-easy-db
+
+```
+
+### Ersatz für pax-jms durch com.icg-software.bsx.jms.connetionfactory.bsx
+
+Das CF-Bundle (`com.icg-software.bsx.jms.connetionfactory.bsx`, [bsx-core](https://git.extern1.icg-software.de/bs/bsx-core.git)) übernimmt die JMS Connection Factory direkt via Blueprint und ersetzt damit die pax-jms-Features (`pax-jms-config`, `pax-jms-pool`, `pax-jms-artemis`), deren Konfigurationsdateien sowie die Artemis-XML-Deployments.
+
+Übrig bleiben nur noch die JMS-API und die Artemis-Client-Bibliotheken.

@@ -1,75 +1,183 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright (c) 2019, 2020 Sebastian Palarus All rights reserved. This 
-	program and the accompanying materials are made available under the terms 
-	of the Eclipse Public License v2.0 which accompanies this distribution, and 
-	is available at http://www.eclipse.org/legal/epl-v20.html Contributors: Sebastian 
-	Palarus - initial API and implementation -->
-
 <features name="${project.artifactId}-${project.version}"
-    xmlns="http://karaf.apache.org/xmlns/features/v1.3.0"
+    xmlns="http://karaf.apache.org/xmlns/features/v1.6.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.3.0 http://karaf.apache.org/xmlns/features/v1.3.0">
+    xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.6.0 https://karaf.apache.org/xmlns/features/v1.6.0">
 
-    <repository>mvn:org.apache.activemq/artemis-features/${artemis.version}/xml/features</repository>
-    <repository>mvn:io.hawt/hawtio-karaf/${hawtio.version}/xml/features</repository>
     <repository>mvn:org.apache.camel.karaf/apache-camel/${camel.version}/xml/features</repository>
+    <repository>mvn:org.apache.artemis/artemis-features/${artemis.version}/xml/features</repository>
+    <repository>mvn:io.hawt/hawtio-karaf/${hawtio.version}/xml/features</repository>
     <repository>mvn:org.apache.cxf.karaf/apache-cxf/${cxf.version}/xml/features</repository>
 
-    <!-- done (außer sqlserver >> jonas -->
-    <feature name="sodeac-core" description="sodeac core libs" version="${pom.version}">
-
-        <feature>scr</feature>
-        <feature>jdbc</feature>
-
-        <bundle>mvn:org.glassfish/jakarta.json/${jakarta.json.version}</bundle>
-
-        <bundle>mvn:org.sodeac/org.sodeac.karaf.sftphome/1.1.0</bundle>
-        <bundle>mvn:org.sodeac/org.sodeac.common/${sodeac.version}</bundle>
-        <bundle>mvn:org.sodeac/org.sodeac.streampartitioner.api/1.0.0</bundle>
-        <bundle>mvn:org.sodeac/org.sodeac.streampartitioner.provider/1.0.1</bundle>
-        <bundle>mvn:org.sodeac/org.sodeac.xuri/1.0.0</bundle>
-        <bundle>mvn:org.sodeac/org.sodeac.multichainlist/1.0.2</bundle>
-        <bundle>mvn:org.sodeac/org.sodeac.dbschema.api/1.0.0</bundle>
-        <bundle>mvn:org.sodeac/org.sodeac.dbschema.provider/1.0.2</bundle>
-        <bundle>mvn:org.sodeac/org.sodeac.dbschema.driver.base/1.0.0</bundle>
-        <bundle>mvn:org.sodeac/org.sodeac.dbschema.driver.h2/1.0.0</bundle>
-        <bundle>mvn:org.sodeac/org.sodeac.dbschema.driver.postgresql/1.0.0</bundle>
-
-        <bundle>mvn:org.postgresql/postgresql/${postgres.42.version}</bundle>
-        <bundle>mvn:com.h2database/h2/${h2.1.4.version}</bundle>
-        <bundle>mvn:com.h2database/h2/${h2.2.0.version}</bundle>
-        <bundle>wrap:mvn:org.firebirdsql.jdbc/jaybird-jdk18/${firebird.3.version}$Bundle-Name=Firebird 3 JDBC Driver&amp;Bundle-SymbolicName=org.firebirdsql.jdbc.jaybird&amp;Bundle-Version=${firebird.3.version}&amp;Export-Package= *;version=${firebird.3.version}</bundle> <!-- real bundle -->
-        <bundle>wrap:mvn:org.firebirdsql.jdbc/jaybird/${firebird.4.version}$Bundle-Name=Firebird 4 JDBC Driver&amp;Bundle-SymbolicName=org.firebirdsql.jdbc.jaybird&amp;Bundle-Version=${firebird.4.version}&amp;Export-Package= *;version=${firebird.4.export.version}</bundle> <!-- real bundle -->
-        <!-- FIXME: brauchen wir? >> text -->
-        <bundle>mvn:com.microsoft.sqlserver/mssql-jdbc/${sqlserver.version}</bundle>
-
-        <bundle>mvn:org.antlr/antlr4-runtime/${antlr-4.runtime.version}</bundle>
-
+    <feature name="sodeac-standalone" description="Full standalone stack: BSX core + optional extensions" version="${pom.version}">
+        <feature>bsx</feature>
+        <feature>bsx2</feature>
     </feature>
 
-    <!-- done -->
-    <feature name="sodeac-apache-commons" description="apache commons libs" version="${pom.version}">
+    <feature name="bsx" version="${project.version}" description="Core BSX feature — base bundles required by all BSX projects" start-level="76">
+        <feature>bsx-base</feature>
+        <feature>bsx-sodeac</feature>
+        <feature>bsx-camel</feature>
+        <feature>bsx-apache-commons</feature>
+        <feature>bsx-jackson</feature>
+        <feature>bsx-database</feature>
+        <feature>bsx-jms</feature>
 
-        <bundle>mvn:org.apache.commons/commons-lang3/${commons-lang3.version}</bundle>
-        <bundle>mvn:org.apache.commons/commons-text/${commons-text.version}</bundle>
-        <bundle>mvn:commons-io/commons-io/${commons-io.version}</bundle>
-        <bundle>mvn:org.apache.commons/commons-compress/${commons-compress.version}</bundle>
-        <bundle>mvn:org.apache.commons/commons-collections4/${commons-collections4.version}</bundle>
-        <!-- old -->
-        <!-- <bundle>mvn:commons-collections/commons-collections/${commons-collection.version}</bundle> -->
-        <bundle>mvn:commons-beanutils/commons-beanutils/${commons-beanutils.version}</bundle>
+        <!-- separate bsx-core project -->
+        <bundle>mvn:com.icg-software/com.icg-software.bsx.core/${bsx.core.version}</bundle>
+        <!-- bs:bsx-core projects + bsx-base-eip (dependant on mail.model)  -->
+        <bundle>mvn:com.icg-software/com.icg-software.bsx.utils/${bsx.utils.version}</bundle>
+        <bundle>mvn:com.icg-software/com.icg-software.integration.mail.model/${integration.mail.model.version}</bundle>
+        <bundle>mvn:com.icg-software.bsx/com.icg-software.bsx.eip/${bsx.eip.version}</bundle>
+        <bundle>mvn:com.icg-software/com.icg-software.bsx.db.common/${bsx.db.common.version}</bundle>
+        <bundle>mvn:com.icg-software/com.icg-software.bsx.jms.connetionfactory.bsx/${bsx.jms.connetionfactory.bsx.version}</bundle>
+        <bundle>mvn:com.icg-software/com.icg-software.bsx.karaf.commands/${bsx.karaf.commands.version}</bundle>
+        <bundle>mvn:com.icg-software/com.icg-software.integration.delegatemail/${integration.delegatemail.version}</bundle>
+        <bundle>mvn:com.icg-software/com.icg-software.integration.delegatemail.ssp.zerfdb/${integration.delegatemail.ssp.zerfdb.version}</bundle>
+        <bundle>mvn:com.icg-software/com.icg-software.integration.sendmail/${integration.sendmail.version}</bundle>
+
+        <bundle>mvn:com.icg-software/com.icg-software.integration.oracle.common/${oracle.common.version}</bundle>
+    </feature>
+
+    <feature name="bsx-base" version="${project.version}" description="BSX base OSGi dependencies" start-level="70">
+        <feature>scr</feature>
+        <feature>log</feature>
+        <feature>hawtio</feature>
+        <!-- provides jakarta.activation 2.1.4 (angus-activation) -->
+        <feature>camel-core</feature>
+
+        <!-- Utility libraries -->
+        <bundle>mvn:org.jspecify/jspecify/${jspecify.version}</bundle>
+        <bundle>mvn:com.google.guava/failureaccess/${failureaccess.version}</bundle>
+        <bundle>mvn:com.google.guava/guava/${guava.version}</bundle>
+        <bundle>mvn:com.google.code.gson/gson/${gson.version}</bundle>
+
+        <!-- jakarta.activation -->
+        <bundle>mvn:jakarta.xml.bind/jakarta.xml.bind-api/${jakarta.xml.bind-api.version}</bundle>
+    </feature>
+
+
+    <!-- for com.icg-software.bsx.db.common and later for bs-db features -->
+    <feature name="bsx-database" version="${project.version}" description="Database drivers and connection pooling" start-level="70">
+        <feature>transaction-manager-geronimo</feature>
+        <feature>jasypt-encryption</feature>
+        <feature>jpa</feature>
+        <feature>hibernate</feature>
+        <bundle>mvn:org.postgresql/postgresql/${postgres.version}</bundle>
+        <bundle>mvn:com.h2database/h2/${h2.version}</bundle>
+        <!-- for old stuff -->
+        <bundle>mvn:com.h2database/h2/${h2.1.4.version}</bundle>
+        <bundle>mvn:com.h2database/h2/${h2.2.0.version}</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.dom4j/${dom4j-2.version}</bundle>
+
         <bundle>mvn:org.apache.commons/commons-pool2/${commons-pool2.version}</bundle>
         <bundle>mvn:org.apache.commons/commons-dbcp2/${commons-dbcp2.version}</bundle>
+
+        <!-- for Tritom -->
+        <bundle>wrap:mvn:org.firebirdsql.jdbc/jaybird-jdk18/${firebird.3.version}$Bundle-Name=Firebird 3 JDBC Driver&amp;Bundle-SymbolicName=org.firebirdsql.jdbc.jaybird&amp;Bundle-Version=${firebird.3.version}&amp;Export-Package=*;version=${firebird.3.version}</bundle> <!-- real bundle -->
+        <bundle>wrap:mvn:org.firebirdsql.jdbc/jaybird/${firebird.4.version}$Bundle-Name=Firebird 4 JDBC Driver&amp;Bundle-SymbolicName=org.firebirdsql.jdbc.jaybird&amp;Bundle-Version=${firebird.4.version}&amp;Export-Package=*;version=${firebird.4.export.version}</bundle> <!-- real bundle -->
+        <!-- FIXME: brauchen wir? >> text -->
+        <!-- <bundle>mvn:com.microsoft.sqlserver/mssql-jdbc/${sqlserver.version}</bundle> -->
+    </feature>
+
+    <!-- for com.icg-software.bsx.jms.connetionfactory.bsx -->
+    <feature name="bsx-jms" version="${project.version}" description="JMS connection factory (Artemis jakarta + pooled-jms)" start-level="70">
+        <feature>artemis-jakarta-client</feature>
+        <feature>bsx-netty</feature>
+        <!-- pooled-jms 3.x uses jakarta.jms 3.1 namespace, compatible with artemis-jakarta-client -->
+        <bundle>mvn:org.messaginghub/pooled-jms/${pooled-jms.version}</bundle>
+    </feature>
+    <!-- base Netty bundles (netty-common, netty-codec, netty-transport, etc.) are provided by artemis-jakarta-client via bsx-jms -->
+    <feature name="bsx-netty" description="Additional Netty bundles not covered by Artemis" version="${pom.version}">
+        <bundle>mvn:io.netty/netty-codec-http2/${netty.version}</bundle>
+        <bundle>mvn:io.netty/netty-codec-dns/${netty.version}</bundle>
+        <bundle>mvn:io.netty/netty-resolver-dns/${netty.version}</bundle>
+        <bundle>mvn:io.netty/netty-codec-stomp/${netty.version}</bundle>
+        <bundle>mvn:io.netty/netty-codec-mqtt/${netty.version}</bundle>
+    </feature>
+
+    <feature name="bsx-camel" version="${project.version}" description="Camel bundles" start-level="70">
+        <!-- camel-core includes camel-api, camel-attachments, camel-file -->
+        <feature>camel-core</feature>
+        <feature>camel-blueprint</feature>
+        <feature>camel-jasypt</feature>
+        <feature>camel-zipfile</feature>
+        <feature>camel-ftp</feature>
+        <feature>camel-mail</feature>
+        <feature>camel-quartz</feature>
+        <feature>camel-csv</feature>
+        <!-- only supports jakarta.jms namespace -->
+        <feature>camel-jms</feature>
+
+        <feature>bsx-camel2</feature>
+    </feature>
+
+    <feature name="bsx-camel2" version="${project.version}" description="More Camel bundles" start-level="70">
+        <bundle>mvn:org.apache.groovy/groovy-jsr223/${groovy-bom.version}</bundle>
+        <bundle>mvn:org.apache.groovy/groovy-json/${groovy-bom.version}</bundle>
+        <bundle>mvn:org.apache.groovy/groovy-xml/${groovy-bom.version}</bundle>
+        <bundle>mvn:org.apache.groovy/groovy-datetime/${groovy-bom.version}</bundle>
+        <bundle>mvn:org.apache.groovy/groovy-nio/${groovy-bom.version}</bundle>
+        <bundle>mvn:org.apache.groovy/groovy-dateutil/${groovy-bom.version}</bundle>
+        <bundle>mvn:org.apache.groovy/groovy-sql/${groovy-bom.version}</bundle>
+
+        <feature>camel-groovy</feature>
+
+        <feature>camel-crypto</feature>
+        <feature>camel-xmlsecurity</feature>
+        <feature>camel-chunk</feature>
+        <feature>camel-spring</feature>
+        <feature>camel-stream</feature>
+        <feature>camel-jsch</feature>
+        <feature>camel-ssh</feature>
+        <feature>camel-netty</feature>
+        <feature>camel-netty-http</feature>
+        <feature>camel-http</feature>
+        <feature>camel-servlet</feature>
+        <feature>camel-jaxb</feature>
+        <feature>camel-saxon</feature>
+        <feature>camel-soap</feature>
+        <feature>camel-stax</feature>
+        <feature>camel-jpa</feature>
+        <feature>camel-jdbc</feature>
+        <feature>camel-sql</feature>
+        <feature>camel-reactive-streams</feature>
+        <feature>camel-rxjava</feature>
+        <!-- !!! OSGi only supports cxf v3 !!!
+        this camel: cxf v4.1.5 see https://mvnrepository.com/artifact/org.apache.camel.karaf/camel-cxf-all
+        for cxf v3 see https://mvnrepository.com/artifact/org.apache.camel/camel-cxf >> all camel would need to downgrade to camel v3! -->
+        <!-- <feature>camel-cxf</feature> -->
+    </feature>
+
+    <feature name="bsx-apache-commons" version="${project.version}" description="Apache commons bundles" start-level="70">
+        <bundle>mvn:org.apache.commons/commons-compress/${commons-compress.version}</bundle>
+        <bundle>mvn:org.apache.commons/commons-lang3/${commons-lang3.version}</bundle>
+        <bundle>mvn:org.apache.commons/commons-text/${commons-text.version}</bundle>
         <bundle>mvn:org.apache.commons/commons-vfs2/${commons-vfs2.version}</bundle>
+        <!-- fragment for commons-vfs2 >> for reaching sftp inside keepass -->
+        <bundle>mvn:eu.agno3.jcifs/jcifs-ng/${jcifs-ng.version}</bundle>
+        <bundle>mvn:org.sodeac/org.sodeac.karaf.thirdparty.vfs-jcifs-ng/${sodeac.version}</bundle>
+
+        <bundle>mvn:commons-io/commons-io/${commons-io.version}</bundle>
+        <!-- commons-validator and its transitive dependencies -->
+        <bundle>mvn:commons-collections/commons-collections/${commons-collections.version}</bundle>
+        <bundle>mvn:commons-beanutils/commons-beanutils/${commons-beanutils.version}</bundle>
         <bundle>mvn:commons-digester/commons-digester/${commons-digester.version}</bundle>
         <bundle>mvn:commons-validator/commons-validator/${commons-validator.version}</bundle>
 
+        <!-- not needed by core-bsx -->
+        <feature>bsx-apache-commons2</feature>
+    </feature>
+
+
+    <feature name="bsx-apache-commons2" version="${project.version}" description="More Apache commons bundles" start-level="70">
         <bundle>mvn:org.apache.commons/commons-configuration2/${commons-configuration2.version}</bundle>
         <bundle>mvn:org.apache.commons/commons-csv/${commons-csv.version}</bundle>
         <bundle>mvn:commons-dbutils/commons-dbutils/${commons-dbutils.version}</bundle>
         <bundle>mvn:commons-codec/commons-codec/${commons-codec.version}</bundle>
         <bundle>mvn:commons-net/commons-net/${commons-net.version}</bundle>
         <bundle>mvn:org.apache.commons/commons-math3/${commons-math3.version}</bundle>
+        <bundle>mvn:org.apache.commons/commons-collections4/${commons-collections4.version}</bundle>
         <bundle>mvn:commons-logging/commons-logging/${commons-logging.version}</bundle>
         <bundle>mvn:org.apache.commons/commons-jexl3/${commons-jexl3.version}</bundle>
         <bundle>mvn:commons-cli/commons-cli/${commons-cli.version}</bundle>
@@ -77,372 +185,143 @@
         <bundle>mvn:org.apache.httpcomponents/httpcore-osgi/${commons-httpcore}</bundle>
         <bundle>mvn:org.apache.httpcomponents/httpasyncclient-osgi/${commons-httpasyncclient}</bundle>
         <bundle>mvn:org.apache.httpcomponents/httpclient-osgi/${commons-httpclient}</bundle>
-
     </feature>
 
-    <!-- done -->
-    <feature name="sodeac-security" description="security libs" version="${pom.version}">
-
-        <!-- de/encryption (pgpAuthentifcation) -->
-        <bundle>mvn:org.bouncycastle/bcprov-jdk15on/${bouncycastle-bcprov.version}</bundle>
-        <bundle>mvn:org.bouncycastle/bcpg-jdk15on/${bouncycastle-bcpg.version}</bundle>
-        <bundle>mvn:org.bouncycastle/bcpkix-jdk15on/${bouncycastle-pkix.version}</bundle>
-
-        <!-- keycloak -->
-        <bundle>mvn:io.jsonwebtoken/jjwt-api/${jjwt-api.version}</bundle>
-        <bundle>mvn:io.jsonwebtoken/jjwt-impl/${jjwt-impl.version}</bundle>
-
+    <feature name="bsx-jackson" version="${project.version}" description="Jackson JSON/XML databinding" start-level="70">
+        <!-- annotations uses major.minor only (since Jackson 2.20) -->
+        <bundle>mvn:com.fasterxml.jackson.core/jackson-annotations/${jackson-annotations.version}</bundle>
+        <bundle>mvn:com.fasterxml.jackson.core/jackson-core/${jackson-bom.version}</bundle>
+        <bundle>mvn:com.fasterxml.jackson.core/jackson-databind/${jackson-bom.version}</bundle>
+        <bundle>mvn:com.fasterxml.jackson.datatype/jackson-datatype-jsr310/${jackson-bom.version}</bundle>
+        <!-- XML support with jackson-dataformat-xml: stax2-api (API) + woodstox-core (implementation);
+        dependency="true" so Karaf skips them if already provided (via camel-core/xml-specs-api) -->
+        <bundle dependency="true">mvn:org.codehaus.woodstox/stax2-api/${stax2-api.version}</bundle>
+        <bundle dependency="true">mvn:com.fasterxml.woodstox/woodstox-core/${jackson.version.dep.woodstox}</bundle>
+        <bundle>mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-xml/${jackson-bom.version}</bundle>
     </feature>
 
-    <!-- done-->
-    <feature name="sodeac-jaxws-bundles" description="sodeac jaxws libs" version="${pom.version}">
-
-        <!-- SERVICEMIX -->
-
-        <!-- <bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxws-api-2.2/${servicemix-spec.version}</bundle> -->
-        <bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxws-api-2.3/${servicemix-jaxws-2.3.version}</bundle>
-
-        <!-- <bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.saaj-api-1.3/${servicemix-spec.version}</bundle> -->
-        <!-- <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.saaj-impl/${servicemix-saaj-impl-1.3-version}</bundle> -->
-        <bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.saaj-api-1.4/${servicemix-saaj-api-1.4-version}</bundle>
-        <!-- <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.saaj-impl/${servicemix-saaj-impl-1.4-version}</bundle> -->
-
-        <!-- JAKARTA -->
-
-        <!-- <bundle>mvn:jakarta.xml.ws/jakarta.xml.ws-api/${jakarta.jaxws.version}</bundle> -->
-        <!-- <bundle>wrap:mvn:com.sun.xml.ws/jaxws-rt/${jakarta.jaxws.version}$Bundle-Name=JAX-WS
-            Runtime with module descriptor&amp;Bundle-SymbolicName=jaxws-rt&amp;Bundle-Version=${jakarta.jaxws.version}</bundle> -->
-        <!-- <bundle>mvn:com.sun.xml.messaging.saaj/saaj-impl/${jakarta.saaj-impl-1.3-version}</bundle> -->
-        <!-- <bundle>mvn:jakarta.xml.soap/jakarta.xml.soap-api/${jakarta.saaj-api-1.4-version}</bundle> -->
-        <!-- <bundle>mvn:org.jvnet.staxex/stax-ex/${stax-ex-version}</bundle> -->
-        <!-- <bundle>wrap:mvn:com.sun.xml.messaging.saaj/saaj-impl/${jakarta.saaj-impl-1.4-version}$Bundle-Name=Implementation
-            of Jakarta SOAP with Attachments Specification&amp;Bundle-SymbolicName=com.sun.xml.messaging.saaj.saaj-impl&amp;Bundle-Version=${jakarta.saaj-impl-1.4-version}</bundle> -->
-
+    <!-- Sodeac -->
+    <feature name="bsx-sodeac" version="${project.version}" description="All Sodeac features combined" start-level="75">
+        <feature>sodeac-common</feature>
+        <feature>sodeac-dbschema</feature>
+        <feature>sodeac-streampartitioner</feature>
+        <feature>sodeac-eventdispatcher</feature>
+        <bundle>mvn:org.sodeac/org.sodeac.karaf.sftphome/${sodeac.version}</bundle>
     </feature>
 
-    <!-- done, ohne kotlin-stdlib, okio, okhttp >> bsx-mailservice funktioniert ja schon... -->
-    <feature name="sodeac-common-bundles" description="sodeac core libs" version="${pom.version}">
-
-        <feature>sodeac-apache-commons</feature>
-        <feature>sodeac-security</feature>
-        <feature>sodeac-core</feature>
-        <feature>sodeac-jaxws-bundles</feature>
-
-        <!-- <bundle>mvn:org.json/json/20190722</bundle> -->
-        <!-- <bundle>mvn:io.dropwizard.metrics/metrics-core/4.1.9</bundle> -->
-
-        <bundle start-level="30">mvn:javax.validation/validation-api/${validation-api-1.version}</bundle>
-
-        <!-- <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.okio/${okio.version}</bundle>
-            <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.okhttp/${okhttp.version}</bundle> -->
-
-        <bundle>wrap:mvn:org.jetbrains.kotlin/kotlin-stdlib/${kotlin.version}$Bundle-Name=kotlin-stdlib&amp;Bundle-SymbolicName=kotlin-stdlib&amp;Bundle-Version=${kotlin.version}</bundle>
-        <bundle>wrap:mvn:org.jetbrains.kotlin/kotlin-stdlib-common/${kotlin.version}$Bundle-Name=kotlin-stdlib-common&amp;Bundle-SymbolicName=kotlin-stdlib-common&amp;Bundle-Version=${kotlin.version}</bundle>
-
-        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.okio/${okio.version}</bundle>
-        <bundle>wrap:mvn:com.squareup.okhttp3/okhttp/${okhttp.version}$Bundle-Name=okhttp&amp;Bundle-SymbolicName=com.squareup.okhttp3.okhttp&amp;Bundle-Version=${okhttp.version}&amp;Export-Package= *;version=${okhttp.version}&amp;Import-Package=okio,*;resolution:=optional</bundle>
-
-        <bundle>mvn:com.google.guava/failureaccess/${guava-failureaccess.version}</bundle>
-        <bundle>mvn:com.google.guava/guava/${guava.version}</bundle>
-        <bundle>mvn:com.googlecode.json-simple/json-simple/${json.simple.version}</bundle>
-        <bundle>mvn:com.google.code.gson/gson/${gson.version}</bundle>
-
-        <!-- JAKARTA -->
-
-        <!-- <bundle>mvn:jakarta.activation/jakarta.activation-api/${jakarta.activation.version}</bundle> -->
-        <!-- <bundle>mvn:com.sun.activation/jakarta.activation/${jakarta.activation.version}</bundle> -->
-        <!-- <bundle>mvn:com.sun.mail/jakarta.mail/${jakarta.java.mail.version}</bundle> -->
-
-        <!-- SERVICEMIX -->
-
-        <!-- FIXME: was mit denen? quartz braucht man definitiv nicht. warum braucht man antlr?  -->
-        <bundle start-level="30">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.activation-api-1.1/${servicemix-spec.version}</bundle>
-
-        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.dom4j/${dom4j-1.version}</bundle>
-        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.dom4j/${dom4j-2.version}</bundle>
-
-        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.antlr/${antlr-2.version}</bundle>
-
-        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xpp3/1.1.4c_7</bundle>
-        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.quartz/2.3.1_1</bundle>
-        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jaxb-impl/2.2.11_1</bundle>
-        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jzlib/1.1.3_2</bundle>
-
-        <bundle>mvn:jakarta.jws/jakarta.jws-api/${jakarta.jws.version}</bundle>
-
-        <!-- TODO: jaxrs reinmachen? -->
-        <bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.annotation-api-1.3/${annotation-api-1.3.version}</bundle>
-        <bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxrs-api-2.1/${servicemix-jaxrs-api-2.1.version}</bundle>
-
-        <!-- OSGI -->
-
-        <bundle>mvn:org.osgi/org.osgi.util.function/1.1.0</bundle>
-        <bundle>mvn:org.osgi/org.osgi.util.promise/1.1.1</bundle>
-
+    <feature name="sodeac-common" version="${project.version}" description="Sodeac common bundle" start-level="75">
+        <feature>bsx-base</feature>
+        <!-- prerequisite: sodeac.common uses jakarta.json (glassfish RI, matches sodeac compile dependency) -->
+        <bundle>mvn:org.glassfish/jakarta.json/${glassfish.jakarta.json.version}</bundle>
+        <bundle>mvn:org.sodeac/org.sodeac.common/${sodeac.version}</bundle>
     </feature>
 
-    <!-- done -->
-    <feature name="sodeac-jackson" description="jackson components" version="${pom.version}">
-
-        <bundle start-level="30">mvn:javax.validation/validation-api/${validation-api-2.version}</bundle>
-        <bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxrs-api-2.1/${servicemix-jaxrs-api-2.1.version}</bundle>
-
-        <bundle>mvn:com.fasterxml.jackson.core/jackson-core/${jackson.version}</bundle>
-        <bundle>mvn:com.fasterxml.jackson.core/jackson-annotations/${jackson.version}</bundle>
-        <bundle>mvn:com.fasterxml.jackson.core/jackson-databind/${jackson.version}</bundle>
-
-        <bundle>mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${jackson.version}</bundle>
-        <bundle>mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${jackson.version}</bundle>
-
-        <bundle>mvn:com.fasterxml.jackson.module/jackson-module-jsonSchema/${jackson.version}</bundle>
-        <bundle>mvn:com.fasterxml.jackson.module/jackson-module-jaxb-annotations/${jackson.version}</bundle>
-
-        <bundle>mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-xml/${jackson.version}</bundle>
-
-        <bundle>mvn:com.fasterxml.jackson.datatype/jackson-datatype-jsr310/${jackson.version}</bundle>
-
+    <feature name="sodeac-dbschema" version="${project.version}" description="Sodeac DB schema management" start-level="75">
+        <feature>sodeac-common</feature>
+        <bundle>mvn:org.sodeac/org.sodeac.dbschema.api/${sodeac.version}</bundle>
+        <bundle>mvn:org.sodeac/org.sodeac.dbschema.provider/${sodeac.version}</bundle>
+        <bundle>mvn:org.sodeac/org.sodeac.dbschema.driver.base/${sodeac.version}</bundle>
+        <bundle>mvn:org.sodeac/org.sodeac.dbschema.driver.h2/${sodeac.version}</bundle>
+        <bundle>mvn:org.sodeac/org.sodeac.dbschema.driver.postgresql/${sodeac.version}</bundle>
+        <!-- <bundle>mvn:org.sodeac/org.sodeac.dbschema.driver.oracle/${sodeac.version}</bundle> -->
     </feature>
 
-    <!-- TODO: done -->
-    <feature name="sodeac-cxf" description="cxf for sdc" version="${pom.version}">
+    <feature name="sodeac-streampartitioner" version="${project.version}" description="Sodeac stream partitioner" start-level="75">
+        <feature>sodeac-common</feature>
+        <bundle>mvn:org.sodeac/org.sodeac.streampartitioner.api/${sodeac.version}</bundle>
+        <bundle>mvn:org.sodeac/org.sodeac.streampartitioner.provider/${sodeac.version}</bundle>
+        <!-- <bundle>mvn:org.sodeac/org.sodeac.streampartitioner.example/${sodeac.version}</bundle> -->
+    </feature>
 
-        <!-- cxf feature without corba -->
+    <feature name="sodeac-eventdispatcher" version="${project.version}" description="Sodeac event dispatcher" start-level="75">
+        <feature>sodeac-common</feature>
+        <!-- prerequisites -->
+        <bundle>mvn:org.sodeac/org.sodeac.multichainlist/${sodeac.multichainlist.version}</bundle>
+        <bundle>mvn:org.sodeac/org.sodeac.xuri/${sodeac.xuri.version}</bundle>
+        <bundle>mvn:io.dropwizard.metrics/metrics-core/${dropwizard.metrics.version}</bundle>
+        <!-- event dispatcher bundles -->
+        <bundle>mvn:org.sodeac/org.sodeac.eventdispatcher.api/${sodeac.version}</bundle>
+        <bundle>mvn:org.sodeac/org.sodeac.eventdispatcher.common/${sodeac.version}</bundle>
+        <bundle>mvn:org.sodeac/org.sodeac.eventdispatcher.provider/${sodeac.version}</bundle>
+        <bundle>mvn:org.sodeac/org.sodeac.eventdispatcher.extension.jmx/${sodeac.version}</bundle>
+    </feature>
 
-        <feature>sodeac-jackson</feature>
-        <feature>sodeac-jaxws-bundles</feature>
+
+    <!-- ####################################################################################### -->
+    <!-- Optional features for projects deployed to Karaf alongside bsx -->
+    <feature name="bsx2" description="Optional extensions for projects deployed to Karaf alongside bsx" version="${pom.version}">
+        <feature>bsx2-jackson2</feature>
+        <feature>bsx2-security</feature>
+        <feature>bsx2-jaxws</feature>
+        <feature>bsx2-cxf</feature>
+    </feature>
+
+    <!-- brings in old javax.validation -->
+    <feature name="bsx2-jackson2" version="${project.version}" description="More Jackson JSON/XML databinding" start-level="70">
+        <bundle>mvn:javax.validation/validation-api/${validation-api-1.version}</bundle>
+        <bundle>mvn:com.fasterxml.jackson.module/jackson-module-jsonSchema/${jackson-bom.version}</bundle>
+    </feature>
+
+    <!-- CXF sub-features define their own start-level (35–40) internally -->
+    <feature name="bsx2-cxf" description="Full CXF 3.6 stack (JAX-WS, JAX-RS, WS-Security)" version="${pom.version}">
 
         <!-- <feature version="${cxf.version}">cxf</feature> <feature version="${cxf.version}">cxf-rs-security-oauth2</feature> -->
+        <!-- cxf feature without corba -->
+        <feature>cxf-core</feature>
+        <feature>cxf-jaxws</feature>
+        <feature>cxf-jaxrs</feature>
+        <feature>cxf-databinding-jaxb</feature>
+        <feature>cxf-databinding-aegis</feature>
+        <feature>cxf-bindings-coloc</feature>
+        <feature>cxf-http-provider</feature>
+        <feature>cxf-transports-local</feature>
+        <feature>cxf-transports-jms</feature>
+        <feature>cxf-transports-udp</feature>
+        <feature>cxf-xjc-runtime</feature>
+        <feature>cxf-ws-security</feature>
+        <feature>cxf-ws-rm</feature>
+        <feature>cxf-ws-mex</feature>
+        <!-- <feature>cxf-javascript</feature> -->
+        <!-- <feature>cxf-frontend-javascript</feature> -->
+        <feature>cxf-features-clustering</feature>
+        <feature>cxf-features-metrics</feature>
+        <feature>cxf-features-throttling</feature>
+        <feature>cxf-features-logging</feature>
 
-        <feature version="${cxf.version}">cxf-core</feature>
-        <feature version="${cxf.version}">cxf-jaxws</feature>
-        <feature version="${cxf.version}">cxf-jaxrs</feature>
-        <feature version="${cxf.version}">cxf-databinding-jaxb</feature>
-        <feature version="${cxf.version}">cxf-databinding-aegis</feature>
-        <feature version="${cxf.version}">cxf-bindings-coloc</feature>
-        <feature version="${cxf.version}">cxf-http-provider</feature>
-        <feature version="${cxf.version}">cxf-transports-local</feature>
-        <feature version="${cxf.version}">cxf-transports-jms</feature>
-        <feature version="${cxf.version}">cxf-transports-udp</feature>
-        <feature version="${cxf.version}">cxf-xjc-runtime</feature>
-        <feature version="${cxf.version}">cxf-ws-security</feature>
-        <feature version="${cxf.version}">cxf-rs-security-oauth2</feature>
-        <feature version="${cxf.version}">cxf-ws-rm</feature>
-        <feature version="${cxf.version}">cxf-ws-mex</feature>
-        <feature version="${cxf.version}">cxf-javascript</feature>
-        <feature version="${cxf.version}">cxf-frontend-javascript</feature>
-        <feature version="${cxf.version}">cxf-features-clustering</feature>
-        <feature version="${cxf.version}">cxf-features-metrics</feature>
-        <feature version="${cxf.version}">cxf-features-throttling</feature>
-        <feature version="${cxf.version}">cxf-features-logging</feature>
+        <feature>cxf-rs-security-oauth2</feature>
+        <bundle start-level="40">mvn:org.apache.cxf/cxf-rt-rs-security-sso-oidc/${cxf.version}</bundle>
 
-        <!-- <bundle>mvn:org.codehaus.woodstox/stax2-api/${stax2.version}</bundle> -->
+        <!-- Jackson JAX-RS providers: require javax.ws.rs (via cxf-specs), so they belong here -->
+        <bundle dependency="true">mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${jackson-bom.version}</bundle>
+        <bundle dependency="true">mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${jackson-bom.version}</bundle>
+        <bundle start-level="40">mvn:com.fasterxml.jackson.module/jackson-module-jaxb-annotations/${jackson-bom.version}</bundle>
 
-        <!-- <bundle>mvn:javax.persistence/javax.persistence-api/${persistence-api.version}</bundle> -->
-        <bundle>mvn:org.apache.cxf/cxf-rt-rs-security-sso-oidc/${cxf.version}</bundle>
-        <bundle>mvn:org.apache.cxf.karaf/cxf-karaf-commands/${cxf.version}</bundle>
-
-        <bundle>mvn:org.osgi/org.osgi.util.function/1.1.0</bundle>
-        <bundle>mvn:org.osgi/org.osgi.util.promise/1.1.1</bundle>
-
-        <bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.annotation-api-1.3/${annotation-api-1.3.version}</bundle>
-
-
+        <bundle dependency="true">mvn:org.apache.cxf.karaf/cxf-karaf-commands/${cxf.version}</bundle>
+        <bundle start-level="40">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.annotation-api-1.3/${annotation-api-1.3.version}</bundle>
     </feature>
 
-    <!--done -->
-    <feature name="sodeac-netty" description="sodeac netty components">
+    <!-- keycloak -->
+    <feature name="bsx2-security" description="JWT/security libraries (e.g. Keycloak integration)" version="${pom.version}" start-level="70">
+        <!-- bcprov/bcpkix already provided by Karaf system bundles -->
+        <!-- <bundle>mvn:org.bouncycastle/bcpg-jdk18on/${bouncycastle.version}</bundle> -->
 
-        <feature>sodeac-security</feature>
-
-        <!-- <bundle>mvn:io.netty/netty-common/${netty.version}</bundle> -->
-        <!-- <bundle>mvn:io.netty/netty-resolver/${netty.version}</bundle> -->
-        <!-- <bundle>mvn:io.netty/netty-buffer/${netty.version}</bundle> -->
-        <!-- <bundle>mvn:io.netty/netty-transport/${netty.version}</bundle> -->
-        <!-- <bundle>mvn:io.netty/netty-codec/${netty.version}</bundle> -->
-        <!-- <bundle>mvn:io.netty/netty-codec-http/${netty.version}</bundle> -->
-        <bundle>mvn:io.netty/netty-codec-http2/${netty.version}</bundle>
-        <!-- <bundle>mvn:io.netty/netty-codec/${netty.version}</bundle> -->
-        <!-- <bundle>mvn:io.netty/netty-codec-socks/${netty.version}</bundle> -->
-        <!-- <bundle>mvn:io.netty/netty-handler/${netty.version}</bundle> -->
-        <!-- <bundle>mvn:io.netty/netty-handler-proxy/${netty.version}</bundle> -->
-        <bundle>mvn:io.netty/netty-codec-dns/${netty.version}</bundle>
-        <bundle>mvn:io.netty/netty-resolver-dns/${netty.version}</bundle>
-        <!-- <bundle>mvn:io.netty/netty-transport-native-unix-common/${netty.version}</bundle> -->
-        <!-- <bundle>mvn:io.netty/netty-transport-native-epoll/${netty.version}</bundle> -->
-        <!-- <bundle>mvn:io.netty/netty-transport-native-kqueue/${netty.version}</bundle> -->
-        <!-- <bundle>mvn:io.netty/netty-tcnative-classes/${netty.tcnative.version}</bundle> -->
-        <bundle>mvn:io.netty/netty-codec-stomp/${netty.version}</bundle>
-        <bundle>mvn:io.netty/netty-codec-mqtt/${netty.version}</bundle>
-
+        <bundle>mvn:io.jsonwebtoken/jjwt-api/${jjwt.version}</bundle>
+        <bundle>mvn:io.jsonwebtoken/jjwt-impl/${jjwt.version}</bundle>
     </feature>
 
-    <!-- done -->
-    <feature name="sodeac-hibernate" description="sodeac hibernate components" version="${pom.version}">
-
-        <feature>transaction-api</feature>
-        <feature>aries-blueprint</feature>
-        <feature>jpa</feature>
-        <feature>hibernate</feature>
-
-        <!-- 		<bundle>mvn:javax.persistence/javax.persistence-api/${persistence-api.version}</bundle> -->
-        <bundle>mvn:javax.interceptor/javax.interceptor-api/${interceptor-api-1.version}</bundle>
-
-        <bundle>mvn:org.jboss.logging/jboss-logging/${jboss-logging.version}</bundle>
-
-        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.antlr/${antlr-2.version}</bundle>
-        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.dom4j/${dom4j-2.version}</bundle>
-
-        <!-- not needed only compile annotations -->
-        <bundle>mvn:org.apache.aries.blueprint/blueprint-maven-plugin-annotation/1.3.0</bundle>
-
-        <!--
-
-
-        <bundle>mvn:net.bytebuddy/byte-buddy/${bytebuddy.version}</bundle>
-        <bundle>mvn:org.jboss/jandex/${jandex.version}</bundle>
-        <bundle>mvn:org.javassist/javassist/${javassist.version}</bundle>
-        <bundle>mvn:com.fasterxml/classmate/${classmate.version}</bundle>
-
-        <bundle>mvn:org.hibernate.common/hibernate-commons-annotations/${hibernate-5-annotations.version}</bundle>
-        <bundle>mvn:org.hibernate/hibernate-core/${hibernate-5.version}</bundle>
-        <bundle>mvn:org.hibernate/hibernate-osgi/${hibernate-5.version}</bundle>
-
-         -->
-
+    <!-- for Starbucks -->
+    <feature name="bsx2-jaxws" description="JAX-WS API bundles for SOAP-based integrations (Starbucks)" version="${pom.version}" start-level="70">
+        <bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxws-api-2.3/${servicemix-jaxws-2.3.version}</bundle>
+        <bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.saaj-api-1.4/${servicemix-saaj-api-1.4-version}</bundle>
     </feature>
 
-    <feature name="sodeac-karaf-basics" description="karaf basics for sodeac distribution" version="${pom.version}">
+    <!-- JCloud, not needed -->
+    <!-- <feature name="bsx2-cloud" description="cloud components" version="${pom.version}">
 
-        <details>karaf basic features</details>
+        &lt;!&ndash; <feature>transaction</feature>
+        <feature>bsx2-security</feature>
 
-        <feature>standard</feature>
-        <feature>scr</feature>
-        <feature>http</feature>
-        <feature>webconsole</feature>
-        <feature>http-whiteboard</feature>
-        <feature>jasypt-encryption</feature>
-        <feature>jdbc</feature>
-        <feature>transaction</feature>
-        <feature>jndi</feature>
-        <feature>pax-jdbc</feature>
-        <feature>pax-jdbc-config</feature>
-        <feature>pax-jdbc-pool-dbcp2</feature>
-        <feature>pax-jdbc-spec</feature>
-        <feature>jms</feature>
-        <feature>pax-jms-pool</feature>
-        <feature>pax-jms-config</feature>
-        <feature>aries-blueprint</feature>
-        <feature>scheduler</feature>
-
-    </feature>
-
-    <!-- done -->
-    <feature name="sodeac-camel-basics" description="camel basics for sodeac distribution" version="${pom.version}">
-
-        <feature>scr</feature>
-        <feature>sodeac-cxf</feature>
-        <feature>sodeac-common-bundles</feature>
-        <feature>sodeac-hibernate</feature>
-        <feature>sodeac-netty</feature>
-        <feature>jdbc</feature>
-
-        <bundle>mvn:org.codehaus.groovy/groovy-jsr223/${groovy.version}</bundle>
-        <bundle>mvn:org.codehaus.groovy/groovy-json/${groovy.version}</bundle>
-        <bundle>mvn:org.codehaus.groovy/groovy-xml/${groovy.version}</bundle>
-        <bundle>mvn:org.codehaus.groovy/groovy-datetime/${groovy.version}</bundle>
-        <bundle>mvn:org.codehaus.groovy/groovy-nio/${groovy.version}</bundle>
-        <bundle>mvn:org.codehaus.groovy/groovy-dateutil/${groovy.version}</bundle>
-        <bundle>mvn:org.codehaus.groovy/groovy-sql/${groovy.version}</bundle>
-        <bundle>mvn:org.codehaus.groovy/groovy/${groovy.version}</bundle>
-
-        <feature>camel</feature>
-        <feature>camel-groovy</feature>
-        <feature>camel-jasypt</feature>
-        <feature>camel-crypto</feature>
-        <feature>camel-zipfile</feature>
-        <feature>camel-xmlsecurity</feature>
-        <feature>camel-chunk</feature>
-        <feature>camel-jms</feature>
-        <feature>camel-spring</feature>
-        <feature>camel-blueprint</feature>
-        <feature>camel-stream</feature>
-        <feature>camel-quartz2</feature>
-        <feature>camel-ftp</feature>
-        <feature>camel-jsch</feature>
-        <feature>camel-ssh</feature>
-        <feature>camel-netty4</feature>
-        <feature>camel-netty4-http</feature>
-        <feature>camel-mail</feature>
-        <feature>camel-http4</feature>
-        <feature>camel-cxf</feature>
-        <feature>camel-servlet</feature>
-        <feature>camel-eventadmin</feature>
-        <feature>camel-csv</feature>
-        <feature>camel-jaxb</feature>
-        <feature>camel-saxon</feature>
-        <feature>camel-soap</feature>
-        <feature>camel-stax</feature>
-        <feature>camel-jpa</feature>
-        <feature>camel-hystrix</feature>
-        <feature>camel-reactive-streams</feature>
-        <feature>camel-jdbc</feature>
-        <feature>camel-sql</feature>
-
-        <bundle>mvn:org.reactivestreams/reactive-streams/${reactive-streams.version}</bundle>
-        <bundle>mvn:io.reactivex.rxjava2/rxjava/${rxjava2.version}</bundle>
-        <bundle>mvn:org.apache.camel/camel-rxjava2/${camel.version}</bundle>
-
-    </feature>
-
-    <!-- done, eventuell fehlen basic features wie webconsole... -->
-    <feature name="sodeac-eip" description="eip stuff" version="${pom.version}">
-
-        <feature>standard</feature>
-        <feature>scr</feature>
-        <feature>http</feature>
-        <feature>webconsole</feature>
-        <feature>http-whiteboard</feature>
-        <feature>jasypt-encryption</feature>
-        <feature>jdbc</feature>
-        <feature>transaction</feature>
-        <feature>jndi</feature>
-        <feature>pax-jdbc</feature>
-        <feature>pax-jdbc-config</feature>
-
-        <!-- von  <bundle>mvn:org.apache.commons/commons-dbcp2/${commons-dbcp2.version}</bundle> -->
-        <feature>pax-jdbc-pool-dbcp2</feature>
-        <feature>pax-jdbc-spec</feature>
-        <feature>jms</feature>
-        <feature>pax-jms-pool</feature>
-        <feature>pax-jms-config</feature>
-        <feature>aries-blueprint</feature>
-        <feature>scheduler</feature>
-
-        <feature>artemis-core-client</feature>
-        <feature>artemis-jms-client</feature>
-
-        <feature>sodeac-security</feature>
-        <feature>sodeac-apache-commons</feature>
-        <feature>sodeac-cxf</feature>
-        <feature>sodeac-camel-basics</feature>
-
-        <bundle>mvn:eu.agno3.jcifs/jcifs-ng/${jcifs-ng.version}</bundle>
-        <bundle>mvn:org.sodeac/org.sodeac.karaf.thirdparty.vfs-jcifs-ng/${vfs-jcifs-ng.version}</bundle>
-
-    </feature>
-
-    <!-- auskommentiert, nur jcloud Zeug -->
-    <feature name="sodeac-cloud" description="cloud components" version="${pom.version}">
-
-        <feature>transaction</feature>
-        <feature>sodeac-security</feature>
-
-        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.okio/${jclouds.okio.version}
-        </bundle>
-        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.okhttp/${jclouds.okhttp.version}
-        </bundle>
-
-        <bundle>mvn:joda-time/joda-time/${jodatime.version}</bundle>
+        &lt;!&ndash; <bundle>mvn:joda-time/joda-time/${jodatime.version}</bundle> &ndash;&gt;
         <bundle>mvn:net.i2p.crypto/eddsa/${eddsa.version}</bundle>
         <bundle>wrap:mvn:com.hierynomus/asn-one/${hierynomus.asn.version}$Bundle-Name=hierynomus.asn-one&amp;Bundle-SymbolicName=hieronymous.asn-one&amp;Bundle-Version=${hierynomus.asn.version}</bundle>
         <bundle>mvn:com.hierynomus/sshj/${hierynomus.sshj.version}</bundle>
@@ -450,26 +329,22 @@
         <bundle>mvn:com.jcraft/jsch.agentproxy.core/${jsch-agentproxy-version}</bundle>
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jsch-agentproxy-sshj/${jsch-agentproxy-sshj.version}
         </bundle>
-        <!-- bundle>mvn:com.jcraft/jsch.agentproxy.connector-factory/0.0.9</bundle -->
+        &lt;!&ndash; bundle>mvn:com.jcraft/jsch.agentproxy.connector-factory/0.0.9</bundle &ndash;&gt;
         <bundle>mvn:com.jcraft/jsch.agentproxy.usocket-nc/${jsch-agentproxy-usocket.version}</bundle>
-        <bundle>mvn:com.jcraft/jsch.agentproxy.sshagent/${jsch-agentproxy-sshagent.version}</bundle>
+        <bundle>mvn:com.jcraft/jsch.agentproxy.sshagent/${jsch-agentproxy-sshagent.version}</bundle> &ndash;&gt;
 
-        <!-- special requirement for jcloud -->
-        <bundle>mvn:com.google.guava/guava/${guava.jclouds.version}</bundle>
-
-        <bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxrs-api-2.1/${servicemix-jaxrs-api-2.1.version}</bundle>
+        &lt;!&ndash; jclouds dependencies — kept commented out while jclouds is excluded &ndash;&gt;
+        &lt;!&ndash; <bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxrs-api-2.1/${servicemix-jaxrs-api-2.1.version}</bundle>
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.javax-inject/${inject-api-1.version}</bundle>
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aopalliance/${aopalliance.version}</bundle>
-
         <bundle>mvn:com.google.inject/guice/${guice-3.version}</bundle>
         <bundle>mvn:com.google.inject.extensions/guice-assistedinject/${guice-3.version}</bundle>
         <bundle>mvn:com.google.inject.extensions/guice-multibindings/${guice-3.version}</bundle>
-
+        &lt;!&ndash; already in bsx-base &ndash;&gt;
         <bundle>mvn:com.google.code.gson/gson/${gson.version}</bundle>
         <bundle>mvn:org.yaml/snakeyaml/${snakeyaml.version}</bundle>
 
-        <!-- FIXME: kommentieren -->
-        <bundle>mvn:org.apache.jclouds/jclouds-gson/${jclouds.gson.version}</bundle>
+         <bundle>mvn:org.apache.jclouds/jclouds-gson/${jclouds.gson.version}</bundle>
         <bundle>mvn:org.apache.jclouds/jclouds-core/${jclouds.version}</bundle>
         <bundle>mvn:org.apache.jclouds/jclouds-scriptbuilder/${jclouds.version}</bundle>
         <bundle>mvn:org.apache.jclouds/jclouds-compute/${jclouds.version}</bundle>
@@ -483,90 +358,25 @@
         <bundle>mvn:org.apache.jclouds.driver/jclouds-okhttp/${jclouds.version}</bundle>
 
         <bundle>mvn:org.apache.jclouds.api/docker/${jclouds.version}</bundle>
-        <bundle>mvn:org.apache.jclouds.api/oauth/${jclouds.version}</bundle>
+        <bundle>mvn:org.apache.jclouds.api/oauth/${jclouds.version}</bundle> &ndash;&gt;
+    </feature> -->
 
-    </feature>
+    <!-- Cave -->
+    <!--  <feature name="bsx2-cave" description="cave components" version="${pom.version}">
 
-    <!-- auskommentiert -->
-    <feature name="sodeac-cave" description="cave components" version="${pom.version}">
+         <feature>standard</feature>
+         <feature>http</feature>
+         <feature>scr</feature>
+         <feature>scheduler</feature>
+         <feature>bsx-jackson</feature>
+         <feature>cxf-jaxrs</feature>
 
-        <feature>standard</feature>
-        <feature>http</feature>
-        <feature>scr</feature>
-        <feature>scheduler</feature>
-        <feature>sodeac-jackson</feature>
-        <feature version="${cxf.version}">cxf-jaxrs</feature>
+         <bundle>mvn:org.apache.karaf.cave.repository/org.apache.karaf.cave.repository.api/${cave.version}</bundle>
+         <bundle>mvn:org.apache.karaf.cave.gateway/org.apache.karaf.cave.gateway.api/${cave.version}</bundle>
+         <bundle>mvn:org.apache.karaf.cave.deployer/org.apache.karaf.cave.deployer.api/${cave.version}</bundle>
+         <bundle>mvn:org.apache.karaf.cave.repository/org.apache.karaf.cave.repository.service/${cave.version}</bundle>
+         <bundle>mvn:org.apache.karaf.cave.gateway/org.apache.karaf.cave.gateway.service/${cave.version}</bundle>
+         <bundle>mvn:org.apache.karaf.cave.deployer/org.apache.karaf.cave.deployer.service/${cave.version}</bundle>
 
-        <bundle>mvn:org.apache.karaf.cave.repository/org.apache.karaf.cave.repository.api/${cave.version}</bundle>
-        <bundle>mvn:org.apache.karaf.cave.gateway/org.apache.karaf.cave.gateway.api/${cave.version}</bundle>
-        <bundle>mvn:org.apache.karaf.cave.deployer/org.apache.karaf.cave.deployer.api/${cave.version}</bundle>
-        <bundle>mvn:org.apache.karaf.cave.repository/org.apache.karaf.cave.repository.service/${cave.version}</bundle>
-        <bundle>mvn:org.apache.karaf.cave.gateway/org.apache.karaf.cave.gateway.service/${cave.version}</bundle>
-        <bundle>mvn:org.apache.karaf.cave.deployer/org.apache.karaf.cave.deployer.service/${cave.version}</bundle>
-
-    </feature>
-
-    <!-- TODO: brauchen standalone. Nicht master+worker -->
-    <feature name="sodeac-standalone" description="sodeac distribution" version="${pom.version}">
-
-        <feature>sodeac-karaf-basics</feature>
-        <feature>sodeac-apache-commons</feature>
-        <feature>sodeac-security</feature>
-
-        <feature>sodeac-common-bundles</feature>
-        <feature>sodeac-core</feature>
-        <feature>sodeac-cxf</feature>
-        <feature>sodeac-hibernate</feature>
-        <feature>hawtio</feature>
-        <feature>artemis-core-client</feature>
-        <feature>artemis-jms-client</feature>
-        <feature>artemis</feature>
-        <feature>sodeac-eip</feature>
-        <feature>pax-jms-artemis</feature>
-
-        <configfile finalname="etc/org.apache.activemq.artemis.cfg">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/cfg</configfile>
-        <configfile finalname="etc/artemis-sodeac-local.xml">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/xml/artemis-sodeac-local</configfile>
-        <configfile finalname="etc/artemis-sodeac-unlisten.xml">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/xml/artemis-sodeac-unlisten</configfile>
-
-        <feature>service-wrapper</feature>
-
-    </feature>
-
-    <feature name="sodeac-master" description="sodeac master" version="${pom.version}">
-
-        <feature>sodeac-karaf-basics</feature>
-        <feature>sodeac-security</feature>
-
-        <feature>sodeac-core</feature>
-        <feature>sodeac-hibernate</feature> <!-- 4 keycloak ? -->
-        <feature>hawtio</feature>
-        <feature>artemis-core-client</feature>
-        <feature>artemis-jms-client</feature>
-        <feature>artemis</feature>
-        <feature>pax-jms-artemis</feature>
-
-        <feature>sodeac-cloud</feature>
-        <!-- <feature>sodeac-cave</feature> -->
-
-        <configfile finalname="etc/org.apache.activemq.artemis.cfg">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/cfg</configfile>
-        <configfile finalname="etc/artemis-sodeac-local.xml">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/xml/artemis-sodeac-local</configfile>
-        <configfile finalname="etc/artemis-sodeac-unlisten.xml">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/xml/artemis-sodeac-unlisten</configfile>
-
-        <feature>service-wrapper</feature>
-
-    </feature>
-
-    <feature name="sodeac-worker" description="sodeac worker" version="${pom.version}">
-
-        <feature>sodeac-karaf-basics</feature>
-        <feature>sodeac-common-bundles</feature>
-        <feature>sodeac-core</feature>
-        <feature>sodeac-cxf</feature>
-        <feature>hawtio</feature>
-        <feature>artemis-core-client</feature>
-        <feature>artemis-jms-client</feature>
-        <feature>sodeac-camel-basics</feature>
-
-    </feature>
-
+     </feature> -->
 </features>
