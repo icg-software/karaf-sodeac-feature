@@ -10,18 +10,18 @@
     <repository>mvn:org.apache.cxf.karaf/apache-cxf/${cxf.version}/xml/features</repository>
 
     <feature name="sodeac-standalone" description="Full standalone stack: BSX core + optional extensions" version="${pom.version}">
-        <feature>bsx</feature>
+        <feature>bsx1</feature>
         <feature>bsx2</feature>
     </feature>
 
-    <feature name="bsx" version="${project.version}" description="Core BSX feature — base bundles required by all BSX projects" start-level="76">
-        <feature>bsx-base</feature>
-        <feature>bsx-sodeac</feature>
-        <feature>bsx-camel</feature>
-        <feature>bsx-apache-commons</feature>
-        <feature>bsx-jackson</feature>
-        <feature>bsx-database</feature>
-        <feature>bsx-jms</feature>
+    <feature name="bsx1" version="${project.version}" description="Core BSX feature — base bundles required by all BSX projects" start-level="76">
+        <feature>bsx1-base</feature>
+        <feature>bsx1-sodeac</feature>
+        <feature>bsx1-camel</feature>
+        <feature>bsx1-apache-commons</feature>
+        <feature>bsx1-jackson</feature>
+        <feature>bsx1-database</feature>
+        <feature>bsx1-jms</feature>
 
         <!-- separate bsx-core project -->
         <bundle>mvn:com.icg-software/com.icg-software.bsx.core/${bsx.core.version}</bundle>
@@ -39,7 +39,7 @@
         <bundle>mvn:com.icg-software/com.icg-software.integration.oracle.common/${oracle.common.version}</bundle>
     </feature>
 
-    <feature name="bsx-base" version="${project.version}" description="BSX base OSGi dependencies" start-level="70">
+    <feature name="bsx1-base" version="${project.version}" description="BSX base OSGi dependencies" start-level="70">
         <feature>scr</feature>
         <feature>log</feature>
         <feature>hawtio</feature>
@@ -58,7 +58,7 @@
 
 
     <!-- for com.icg-software.bsx.db.common and later for bs-db features -->
-    <feature name="bsx-database" version="${project.version}" description="Database drivers and connection pooling" start-level="70">
+    <feature name="bsx1-database" version="${project.version}" description="Database drivers and connection pooling" start-level="70">
         <feature>transaction-manager-geronimo</feature>
         <feature>jasypt-encryption</feature>
         <feature>jpa</feature>
@@ -81,14 +81,14 @@
     </feature>
 
     <!-- for com.icg-software.bsx.jms.connetionfactory.bsx -->
-    <feature name="bsx-jms" version="${project.version}" description="JMS connection factory (Artemis jakarta + pooled-jms)" start-level="70">
+    <feature name="bsx1-jms" version="${project.version}" description="JMS connection factory (Artemis jakarta + pooled-jms)" start-level="70">
         <feature>artemis-jakarta-client</feature>
-        <feature>bsx-netty</feature>
+        <feature>bsx1-netty</feature>
         <!-- pooled-jms 3.x uses jakarta.jms 3.1 namespace, compatible with artemis-jakarta-client -->
         <bundle>mvn:org.messaginghub/pooled-jms/${pooled-jms.version}</bundle>
     </feature>
     <!-- base Netty bundles (netty-common, netty-codec, netty-transport, etc.) are provided by artemis-jakarta-client via bsx-jms -->
-    <feature name="bsx-netty" description="Additional Netty bundles not covered by Artemis" version="${pom.version}">
+    <feature name="bsx1-netty" description="Additional Netty bundles not covered by Artemis" version="${pom.version}" start-level="70">
         <bundle>mvn:io.netty/netty-codec-http2/${netty.version}</bundle>
         <bundle>mvn:io.netty/netty-codec-dns/${netty.version}</bundle>
         <bundle>mvn:io.netty/netty-resolver-dns/${netty.version}</bundle>
@@ -96,7 +96,7 @@
         <bundle>mvn:io.netty/netty-codec-mqtt/${netty.version}</bundle>
     </feature>
 
-    <feature name="bsx-camel" version="${project.version}" description="Camel bundles" start-level="70">
+    <feature name="bsx1-camel" version="${project.version}" description="Camel bundles" start-level="70">
         <!-- camel-core includes camel-api, camel-attachments, camel-file -->
         <feature>camel-core</feature>
         <feature>camel-blueprint</feature>
@@ -109,10 +109,10 @@
         <!-- only supports jakarta.jms namespace -->
         <feature>camel-jms</feature>
 
-        <feature>bsx-camel2</feature>
+        <feature>bsx1-camel2</feature>
     </feature>
 
-    <feature name="bsx-camel2" version="${project.version}" description="More Camel bundles" start-level="70">
+    <feature name="bsx1-camel2" version="${project.version}" description="More Camel bundles" start-level="70">
         <bundle>mvn:org.apache.groovy/groovy-jsr223/${groovy-bom.version}</bundle>
         <bundle>mvn:org.apache.groovy/groovy-json/${groovy-bom.version}</bundle>
         <bundle>mvn:org.apache.groovy/groovy-xml/${groovy-bom.version}</bundle>
@@ -149,7 +149,7 @@
         <!-- <feature>camel-cxf</feature> -->
     </feature>
 
-    <feature name="bsx-apache-commons" version="${project.version}" description="Apache commons bundles" start-level="70">
+    <feature name="bsx1-apache-commons" version="${project.version}" description="Apache commons bundles" start-level="70">
         <bundle>mvn:org.apache.commons/commons-compress/${commons-compress.version}</bundle>
         <bundle>mvn:org.apache.commons/commons-lang3/${commons-lang3.version}</bundle>
         <bundle>mvn:org.apache.commons/commons-text/${commons-text.version}</bundle>
@@ -166,11 +166,11 @@
         <bundle>mvn:commons-validator/commons-validator/${commons-validator.version}</bundle>
 
         <!-- not needed by core-bsx -->
-        <feature>bsx-apache-commons2</feature>
+        <feature>bsx1-apache-commons2</feature>
     </feature>
 
 
-    <feature name="bsx-apache-commons2" version="${project.version}" description="More Apache commons bundles" start-level="70">
+    <feature name="bsx1-apache-commons2" version="${project.version}" description="More Apache commons bundles" start-level="70">
         <bundle>mvn:org.apache.commons/commons-configuration2/${commons-configuration2.version}</bundle>
         <bundle>mvn:org.apache.commons/commons-csv/${commons-csv.version}</bundle>
         <bundle>mvn:commons-dbutils/commons-dbutils/${commons-dbutils.version}</bundle>
@@ -187,7 +187,7 @@
         <bundle>mvn:org.apache.httpcomponents/httpclient-osgi/${commons-httpclient}</bundle>
     </feature>
 
-    <feature name="bsx-jackson" version="${project.version}" description="Jackson JSON/XML databinding" start-level="70">
+    <feature name="bsx1-jackson" version="${project.version}" description="Jackson JSON/XML databinding" start-level="70">
         <!-- annotations uses major.minor only (since Jackson 2.20) -->
         <bundle>mvn:com.fasterxml.jackson.core/jackson-annotations/${jackson-annotations.version}</bundle>
         <bundle>mvn:com.fasterxml.jackson.core/jackson-core/${jackson-bom.version}</bundle>
@@ -201,7 +201,7 @@
     </feature>
 
     <!-- Sodeac -->
-    <feature name="bsx-sodeac" version="${project.version}" description="All Sodeac features combined" start-level="75">
+    <feature name="bsx1-sodeac" version="${project.version}" description="All Sodeac features combined" start-level="75">
         <feature>sodeac-common</feature>
         <feature>sodeac-dbschema</feature>
         <feature>sodeac-streampartitioner</feature>
@@ -210,7 +210,7 @@
     </feature>
 
     <feature name="sodeac-common" version="${project.version}" description="Sodeac common bundle" start-level="75">
-        <feature>bsx-base</feature>
+        <feature>bsx1-base</feature>
         <!-- prerequisite: sodeac.common uses jakarta.json (glassfish RI, matches sodeac compile dependency) -->
         <bundle>mvn:org.glassfish/jakarta.json/${glassfish.jakarta.json.version}</bundle>
         <bundle>mvn:org.sodeac/org.sodeac.common/${sodeac.version}</bundle>
@@ -368,7 +368,7 @@
          <feature>http</feature>
          <feature>scr</feature>
          <feature>scheduler</feature>
-         <feature>bsx-jackson</feature>
+         <feature>bsx1-jackson</feature>
          <feature>cxf-jaxrs</feature>
 
          <bundle>mvn:org.apache.karaf.cave.repository/org.apache.karaf.cave.repository.api/${cave.version}</bundle>

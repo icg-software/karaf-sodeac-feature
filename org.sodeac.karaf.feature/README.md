@@ -19,7 +19,7 @@ feature:install sodeac-standalone
 ```bash
 
 # 1) bsx-mail-service (outlook)
-feature:repo-add mvn:com.icg-software/graph.sdk.feature/2.0.0-SNAPSHOT/xml/features
+feature:repo-add mvn:com.icg-software.bsx/graph.sdk.feature/2.0.0-SNAPSHOT/xml/features
 
 #installs all at once
 feature:install bsx-mailservice
