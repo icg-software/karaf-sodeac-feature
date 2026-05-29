@@ -11,7 +11,7 @@ karaf
 feature:repo-add mvn:org.sodeac/org.sodeac.karaf.feature/2.0.0-SNAPSHOT/xml/features
 
 #installs all at once
-feature:install sodeac-standalone
+feature:install bsx-standalone
 ```
 
 ### all other features

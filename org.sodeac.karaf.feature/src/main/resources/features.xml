@@ -9,7 +9,7 @@
     <repository>mvn:io.hawt/hawtio-karaf/${hawtio.version}/xml/features</repository>
     <repository>mvn:org.apache.cxf.karaf/apache-cxf/${cxf.version}/xml/features</repository>
 
-    <feature name="sodeac-standalone" description="Full standalone stack: BSX core + optional extensions" version="${pom.version}">
+    <feature name="bsx-standalone" description="Full standalone stack: BSX core + optional extensions" version="${pom.version}">
         <feature>bsx1</feature>
         <feature>bsx2</feature>
     </feature>
@@ -30,6 +30,9 @@
         <feature>hawtio</feature>
         <!-- provides jakarta.activation 2.1.4 (angus-activation) -->
         <feature>camel-core</feature>
+
+        <!-- Blueprint annotation classes (Retention=RUNTIME) must be present at runtime for BSX service bundles -->
+        <bundle>mvn:org.apache.aries.blueprint/blueprint-maven-plugin-annotation/${blueprint-maven-plugin-annotation.version}</bundle>
 
         <!-- Utility libraries -->
         <bundle>mvn:org.jspecify/jspecify/${jspecify.version}</bundle>
