@@ -92,10 +92,11 @@
         <feature>camel-zipfile</feature>
         <feature>camel-ftp</feature>
         <feature>camel-mail</feature>
-        <feature>camel-quartz</feature>
         <feature>camel-csv</feature>
+        <feature>camel-jackson</feature>
         <!-- only supports jakarta.jms namespace -->
         <feature>camel-jms</feature>
+        <feature>camel-quartz</feature>
 
         <feature>bsx1-camel2</feature>
     </feature>
