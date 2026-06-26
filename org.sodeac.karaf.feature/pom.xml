@@ -264,20 +264,6 @@
                                     <type>xml</type>
                                     <classifier>features</classifier>
                                 </artifact>
-                                <artifact>
-                                    <file>target/classes/artemis-sodeac-local.xml</file>
-                                    <type>xml</type>
-                                    <classifier>artemis-sodeac-local</classifier>
-                                </artifact>
-                                <artifact>
-                                    <file>target/classes/artemis-sodeac-unlisten.xml</file>
-                                    <type>xml</type>
-                                    <classifier>artemis-sodeac-unlisten</classifier>
-                                </artifact>
-                                <artifact>
-                                    <file>target/classes/org.apache.activemq.artemis.cfg</file>
-                                    <type>cfg</type>
-                                </artifact>
                             </artifacts>
                         </configuration>
                     </execution>

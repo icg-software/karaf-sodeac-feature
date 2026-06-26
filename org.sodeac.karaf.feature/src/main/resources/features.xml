@@ -494,13 +494,8 @@
         <feature>hawtio</feature>
         <feature>artemis-core-client</feature>
         <feature>artemis-jms-client</feature>
-        <feature>artemis</feature>
         <feature>sodeac-eip</feature>
         <feature>pax-jms-artemis</feature>
-
-        <configfile finalname="etc/org.apache.activemq.artemis.cfg">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/cfg</configfile>
-        <configfile finalname="etc/artemis-sodeac-local.xml">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/xml/artemis-sodeac-local</configfile>
-        <configfile finalname="etc/artemis-sodeac-unlisten.xml">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/xml/artemis-sodeac-unlisten</configfile>
 
         <feature>service-wrapper</feature>
 
@@ -516,15 +511,10 @@
         <feature>hawtio</feature>
         <feature>artemis-core-client</feature>
         <feature>artemis-jms-client</feature>
-        <feature>artemis</feature>
         <feature>pax-jms-artemis</feature>
 
         <feature>sodeac-cloud</feature>
         <!-- <feature>sodeac-cave</feature> -->
-
-        <configfile finalname="etc/org.apache.activemq.artemis.cfg">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/cfg</configfile>
-        <configfile finalname="etc/artemis-sodeac-local.xml">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/xml/artemis-sodeac-local</configfile>
-        <configfile finalname="etc/artemis-sodeac-unlisten.xml">mvn:org.sodeac/org.sodeac.karaf.feature/${pom.version}/xml/artemis-sodeac-unlisten</configfile>
 
         <feature>service-wrapper</feature>
 
