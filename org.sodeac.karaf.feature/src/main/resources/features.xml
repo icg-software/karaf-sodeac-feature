@@ -243,6 +243,7 @@
         <feature>bsx2-security</feature>
         <feature>bsx2-jaxws</feature>
         <feature>bsx2-cxf</feature>
+        <feature>bsx2-misc</feature>
     </feature>
 
     <!-- brings in old javax.validation -->
@@ -302,6 +303,11 @@
     <feature name="bsx2-jaxws" description="JAX-WS API bundles for SOAP-based integrations (Starbucks)" version="${pom.version}" start-level="70">
         <bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxws-api-2.3/${servicemix-jaxws-2.3.version}</bundle>
         <bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.saaj-api-1.4/${servicemix-saaj-api-1.4-version}</bundle>
+    </feature>
+
+    <feature name="bsx2-misc" description="Additional bundles" version="${pom.version}" start-level="70">
+        <bundle>wrap:mvn:com.github.mwiede/jsch/${jsch.version}$Export-Package=com.jcraft.jsch;version=${jsch.version}&amp;Bundle-SymbolicName=org.apache.servicemix.bundles.jsch.mwiede&amp;Bundle-Version=${jsch.version}</bundle>
+        <!-- <bundle>wrap:mvn:org.firebirdsql.jdbc/jaybird/${firebird.4.version}$Bundle-Name=Firebird 4 JDBC Driver&amp;Bundle-SymbolicName=org.firebirdsql.jdbc.jaybird&amp;Bundle-Version=${firebird.4.version}&amp;Export-Package=*;version=${firebird.4.export.version}</bundle> &lt;!&ndash; real bundle &ndash;&gt; -->
     </feature>
 
     <!-- JCloud, not needed -->
