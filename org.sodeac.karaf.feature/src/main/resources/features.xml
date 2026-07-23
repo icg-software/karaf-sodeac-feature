@@ -307,6 +307,8 @@
 
     <feature name="bsx2-misc" description="Additional bundles" version="${pom.version}" start-level="70">
         <bundle>wrap:mvn:com.github.mwiede/jsch/${jsch.version}$Export-Package=com.jcraft.jsch;version=${jsch.version}&amp;Bundle-SymbolicName=org.apache.servicemix.bundles.jsch.mwiede&amp;Bundle-Version=${jsch.version}</bundle>
+        <!--  -->
+        <bundle>mvn:com.opencsv/opencsv/${opencsv.version}</bundle>
         <!-- <bundle>wrap:mvn:org.firebirdsql.jdbc/jaybird/${firebird.4.version}$Bundle-Name=Firebird 4 JDBC Driver&amp;Bundle-SymbolicName=org.firebirdsql.jdbc.jaybird&amp;Bundle-Version=${firebird.4.version}&amp;Export-Package=*;version=${firebird.4.export.version}</bundle> &lt;!&ndash; real bundle &ndash;&gt; -->
     </feature>
 
