@@ -37,23 +37,9 @@
         <cxf.version>3.6.11</cxf.version>
         <annotation-api-1.3.version>1.3_3</annotation-api-1.3.version>
 
-        <!-- apache commons, rest -->
-        <commons-configuration2.version>2.15.0</commons-configuration2.version>
-        <commons-csv.version>1.14.1</commons-csv.version>
-        <commons-dbutils.version>1.8.1</commons-dbutils.version>
-        <commons-codec.version>1.22.0</commons-codec.version>
-        <commons-net.version>3.13.0</commons-net.version>
-        <commons-math3.version>3.6.1</commons-math3.version>
-        <commons-collections.version>3.2.2</commons-collections.version>
-        <commons-logging.version>1.3.6</commons-logging.version>
-        <commons-jexl3.version>3.6.2</commons-jexl3.version>
-        <commons-cli.version>1.11.0</commons-cli.version>
-
-        <commons-httpcore>4.4.16</commons-httpcore>
-        <commons-httpclient>4.5.14</commons-httpclient>
-        <commons-httpasyncclient>4.1.5</commons-httpasyncclient>
         <jcifs-ng.version>2.1.10</jcifs-ng.version>
-
+        <!-- legacy v3, needed transitively by commons-validator; commons-collections4 in osgi-parent is the modern replacement -->
+        <commons-collections.version>3.2.2</commons-collections.version>
         <!-- for Jackson -->
         <validation-api-1.version>1.1.0.Final</validation-api-1.version>
 

@@ -171,9 +171,9 @@
         <bundle>mvn:org.apache.commons/commons-jexl3/${commons-jexl3.version}</bundle>
         <bundle>mvn:commons-cli/commons-cli/${commons-cli.version}</bundle>
 
-        <bundle>mvn:org.apache.httpcomponents/httpcore-osgi/${commons-httpcore}</bundle>
-        <bundle>mvn:org.apache.httpcomponents/httpasyncclient-osgi/${commons-httpasyncclient}</bundle>
-        <bundle>mvn:org.apache.httpcomponents/httpclient-osgi/${commons-httpclient}</bundle>
+        <bundle>mvn:org.apache.httpcomponents/httpcore-osgi/${httpcore.version}</bundle>
+        <bundle>mvn:org.apache.httpcomponents/httpasyncclient-osgi/${httpasyncclient.version}</bundle>
+        <bundle>mvn:org.apache.httpcomponents/httpclient-osgi/${httpclient.version}</bundle>
     </feature>
 
     <feature name="bsx1-jackson" version="${project.version}" description="Jackson JSON/XML databinding" start-level="70">
