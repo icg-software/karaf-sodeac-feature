@@ -38,7 +38,9 @@
         <bundle>mvn:org.jspecify/jspecify/${jspecify.version}</bundle>
         <bundle>mvn:com.google.guava/failureaccess/${failureaccess.version}</bundle>
         <bundle>mvn:com.google.guava/guava/${guava.version}</bundle>
-        <bundle>mvn:com.google.code.gson/gson/${gson.version}</bundle>
+        <!-- overwrite=merge + wildcard Export-Package: gson's own manifest exports only its public API,
+        but microsoft-graph-core needs com.google.gson.internal(.bind) internally to parse error responses -->
+        <bundle>wrap:mvn:com.google.code.gson/gson/${gson.version}$overwrite=merge&amp;Export-Package=com.google.gson*;version=${gson.version}</bundle>
 
         <!-- jakarta.activation -->
         <bundle>mvn:jakarta.xml.bind/jakarta.xml.bind-api/${jakarta.xml.bind-api.version}</bundle>
@@ -148,6 +150,7 @@
         <bundle>mvn:org.sodeac/org.sodeac.karaf.thirdparty.vfs-jcifs-ng/${sodeac.version}</bundle>
 
         <bundle>mvn:commons-io/commons-io/${commons-io.version}</bundle>
+        <!-- TODO: test without old collections (assembly should fail) -->
         <!-- commons-validator and its transitive dependencies -->
         <bundle>mvn:commons-collections/commons-collections/${commons-collections.version}</bundle>
         <bundle>mvn:commons-beanutils/commons-beanutils/${commons-beanutils.version}</bundle>
