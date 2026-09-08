@@ -47,8 +47,6 @@
         <dom4j-2.version>2.1.4_1</dom4j-2.version>
 
         <!-- for Tritom -->
-        <firebird.3.version>3.0.12</firebird.3.version>
-        <firebird.4.version>4.0.5.java8</firebird.4.version>
         <firebird.4.export.version>4.0.5</firebird.4.export.version>
         <!-- <sqlserver.version>9.4.1.jre8</sqlserver.version> -->
 

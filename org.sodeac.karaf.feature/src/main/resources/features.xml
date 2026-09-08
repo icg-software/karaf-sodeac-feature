@@ -63,7 +63,8 @@
         <bundle>mvn:org.apache.commons/commons-pool2/${commons-pool2.version}</bundle>
         <bundle>mvn:org.apache.commons/commons-dbcp2/${commons-dbcp2.version}</bundle>
 
-        <!-- for Tritom -->
+        <!-- Tritom -->
+        <!-- Starbucks datasources: dev (zeus) = v4, prod = v3 -->
         <bundle>wrap:mvn:org.firebirdsql.jdbc/jaybird-jdk18/${firebird.3.version}$Bundle-Name=Firebird 3 JDBC Driver&amp;Bundle-SymbolicName=org.firebirdsql.jdbc.jaybird&amp;Bundle-Version=${firebird.3.version}&amp;Export-Package=*;version=${firebird.3.version}</bundle> <!-- real bundle -->
         <bundle>wrap:mvn:org.firebirdsql.jdbc/jaybird/${firebird.4.version}$Bundle-Name=Firebird 4 JDBC Driver&amp;Bundle-SymbolicName=org.firebirdsql.jdbc.jaybird&amp;Bundle-Version=${firebird.4.version}&amp;Export-Package=*;version=${firebird.4.export.version}</bundle> <!-- real bundle -->
         <!-- FIXME: brauchen wir? >> text -->
