@@ -48,6 +48,8 @@
 
         <!-- for Tritom -->
         <firebird.4.export.version>4.0.5</firebird.4.export.version>
+        <!-- JCA API (javax.resource*); Jaybird 3 + 4 FBXADataSource need it (removed only in Jaybird 5) -->
+        <geronimo-j2ee-connector-spec.version>1.0</geronimo-j2ee-connector-spec.version>
         <!-- <sqlserver.version>9.4.1.jre8</sqlserver.version> -->
 
         <!-- bsx2-security -->

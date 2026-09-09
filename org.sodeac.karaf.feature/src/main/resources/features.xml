@@ -65,6 +65,8 @@
 
         <!-- Tritom -->
         <!-- Starbucks datasources: dev (zeus) = v4, prod = v3 -->
+        <!-- JCA API for Jaybird's FBXADataSource (javax.resource*); not brought in by transaction-manager-geronimo (pax-transx = JTA only) -->
+        <bundle>mvn:org.apache.geronimo.specs/geronimo-j2ee-connector_1.6_spec/${geronimo-j2ee-connector-spec.version}</bundle>
         <bundle>wrap:mvn:org.firebirdsql.jdbc/jaybird-jdk18/${firebird.3.version}$Bundle-Name=Firebird 3 JDBC Driver&amp;Bundle-SymbolicName=org.firebirdsql.jdbc.jaybird&amp;Bundle-Version=${firebird.3.version}&amp;Export-Package=*;version=${firebird.3.version}</bundle> <!-- real bundle -->
         <bundle>wrap:mvn:org.firebirdsql.jdbc/jaybird/${firebird.4.version}$Bundle-Name=Firebird 4 JDBC Driver&amp;Bundle-SymbolicName=org.firebirdsql.jdbc.jaybird&amp;Bundle-Version=${firebird.4.version}&amp;Export-Package=*;version=${firebird.4.export.version}</bundle> <!-- real bundle -->
         <!-- FIXME: brauchen wir? >> text -->
