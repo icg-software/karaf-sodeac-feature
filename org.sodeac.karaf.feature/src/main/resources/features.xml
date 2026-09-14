@@ -296,10 +296,11 @@
         <bundle start-level="40">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.annotation-api-1.3/${annotation-api-1.3.version}</bundle>
     </feature>
 
-    <!-- keycloak -->
-    <feature name="bsx2-security" description="JWT/security libraries (e.g. Keycloak integration)" version="${pom.version}" start-level="70">
+    <!-- keycloak, pgp -->
+    <feature name="bsx2-security" description="JWT/security libraries (e.g. Keycloak integration, PGP)" version="${pom.version}" start-level="70">
         <!-- bcprov/bcpkix already provided by Karaf system bundles -->
-        <!-- <bundle>mvn:org.bouncycastle/bcpg-jdk18on/${bouncycastle.version}</bundle> -->
+        <bundle>mvn:org.bouncycastle/bcpg-jdk18on/${bouncycastle.version}</bundle>
+        <bundle>wrap:mvn:org.pgpainless/pgpainless-core/${pgpainless.version}$Export-Package=org.pgpainless*;version=${pgpainless.version}</bundle>
 
         <bundle>mvn:io.jsonwebtoken/jjwt-api/${jjwt.version}</bundle>
         <bundle>mvn:io.jsonwebtoken/jjwt-impl/${jjwt.version}</bundle>

@@ -53,8 +53,6 @@
         <!-- <sqlserver.version>9.4.1.jre8</sqlserver.version> -->
 
         <!-- bsx2-security -->
-        <!-- same version as karaf 4.4.10 -->
-        <bouncycastle.version>1.83</bouncycastle.version>
         <jjwt.version>0.13.0</jjwt.version>
 
         <!-- bsx2-jaxws -->
