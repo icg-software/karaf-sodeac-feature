@@ -118,6 +118,7 @@
         <feature>camel-groovy</feature>
 
         <feature>camel-crypto</feature>
+        <feature>camel-crypto-pgp</feature>
         <feature>camel-xmlsecurity</feature>
         <feature>camel-chunk</feature>
         <feature>camel-spring</feature>
