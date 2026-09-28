@@ -50,7 +50,9 @@
         <firebird.4.export.version>4.0.5</firebird.4.export.version>
         <!-- JCA API (javax.resource*); Jaybird 3 + 4 FBXADataSource need it (removed only in Jaybird 5) -->
         <geronimo-j2ee-connector-spec.version>1.0</geronimo-j2ee-connector-spec.version>
-        <!-- <sqlserver.version>9.4.1.jre8</sqlserver.version> -->
+
+        <!-- mssql-jdbc's DataSourceFactory needs [1.1,2); Karaf's own jpa feature still ships 1.0.0 -->
+        <osgi.service.jdbc.version>1.1.0</osgi.service.jdbc.version>
 
         <!-- bsx2-security -->
         <jjwt.version>0.13.0</jjwt.version>

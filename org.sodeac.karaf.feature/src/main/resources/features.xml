@@ -69,8 +69,9 @@
         <bundle>mvn:org.apache.geronimo.specs/geronimo-j2ee-connector_1.6_spec/${geronimo-j2ee-connector-spec.version}</bundle>
         <bundle>wrap:mvn:org.firebirdsql.jdbc/jaybird-jdk18/${firebird.3.version}$Bundle-Name=Firebird 3 JDBC Driver&amp;Bundle-SymbolicName=org.firebirdsql.jdbc.jaybird&amp;Bundle-Version=${firebird.3.version}&amp;Export-Package=*;version=${firebird.3.version}</bundle> <!-- real bundle -->
         <bundle>wrap:mvn:org.firebirdsql.jdbc/jaybird/${firebird.4.version}$Bundle-Name=Firebird 4 JDBC Driver&amp;Bundle-SymbolicName=org.firebirdsql.jdbc.jaybird&amp;Bundle-Version=${firebird.4.version}&amp;Export-Package=*;version=${firebird.4.export.version}</bundle> <!-- real bundle -->
-        <!-- FIXME: brauchen wir? >> text -->
-        <!-- <bundle>mvn:com.microsoft.sqlserver/mssql-jdbc/${sqlserver.version}</bundle> -->
+        <!-- mssql-jdbc's DataSourceFactory requires org.osgi.service.jdbc [1.1,2); Karaf's own jpa feature only ships 1.0.0 -->
+        <bundle>mvn:org.osgi/org.osgi.service.jdbc/${osgi.service.jdbc.version}</bundle>
+        <bundle>mvn:com.microsoft.sqlserver/mssql-jdbc/${sqlserver.version}</bundle>
     </feature>
 
     <!-- for com.icg-software.bsx.jms.connetionfactory.bsx -->
@@ -319,7 +320,6 @@
         <bundle>mvn:com.opencsv/opencsv/${opencsv.version}</bundle>
         <!-- excel support -->
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.poi/${poi.version}</bundle>
-        <!-- <bundle>wrap:mvn:org.firebirdsql.jdbc/jaybird/${firebird.4.version}$Bundle-Name=Firebird 4 JDBC Driver&amp;Bundle-SymbolicName=org.firebirdsql.jdbc.jaybird&amp;Bundle-Version=${firebird.4.version}&amp;Export-Package=*;version=${firebird.4.export.version}</bundle> &lt;!&ndash; real bundle &ndash;&gt; -->
     </feature>
 
     <!-- JCloud, not needed -->
