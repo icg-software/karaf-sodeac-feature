@@ -103,6 +103,8 @@
         <!-- only supports jakarta.jms namespace -->
         <feature>camel-jms</feature>
         <feature>camel-quartz</feature>
+        <!-- own embedded Jetty 12 (jakarta.servlet) next to Pax Web's Jetty 9.4 (javax.servlet) -->
+        <feature>camel-jetty</feature>
 
         <feature>bsx1-camel2</feature>
     </feature>
