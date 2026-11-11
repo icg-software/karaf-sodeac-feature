@@ -1,4 +1,4 @@
-# karaf-sodeac-feature
+# [karaf-sodeac-feature](https://github.com/icg-software/karaf-sodeac-feature)
 
 ## Installation in Karaf 4.4.10
 
